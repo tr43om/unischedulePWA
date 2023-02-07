@@ -18,7 +18,9 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className={roboto.className}>{children}</body>
+      <body className={`${roboto.className} container mx-auto p-4`}>
+        {children}
+      </body>
     </html>
   );
 }
