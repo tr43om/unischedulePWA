@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Roboto } from "@next/font/google";
+import { BottomNav } from "@/components";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -20,6 +21,7 @@ export default function RootLayout({
       <head />
       <body className={`${roboto.className} container mx-auto p-4`}>
         {children}
+        <BottomNav />
       </body>
     </html>
   );
