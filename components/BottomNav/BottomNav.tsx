@@ -16,21 +16,27 @@ const BottomNav = () => {
       <Link href="/">
         <HomeIcon
           className={`h-6 w-6  cursor-pointer ${
-            pathname === "/" ? "text-gray-900" : "text-gray-400"
+            pathname === "/"
+              ? "text-primary hover:text-primary-focus"
+              : "text-gray-400 hover:text-gray-800"
           }`}
         />
       </Link>
       <Link href="/search">
         <MagnifyingGlassIcon
           className={`h-6 w-6  cursor-pointer ${
-            pathname === "/search" ? "text-gray-900" : "text-gray-400"
+            pathname === "/search"
+              ? "text-primary hover:text-primary-focus"
+              : "text-gray-400 hover:text-gray-800"
           }`}
         />
       </Link>
       <Link href="/settings">
         <SettingsIcon
           className={`h-6 w-6  cursor-pointer ${
-            pathname === "/settings" ? "text-gray-900" : "text-gray-400"
+            pathname === "/settings"
+              ? "text-primary hover:text-primary-focus"
+              : "text-gray-400 hover:text-gray-800"
           }`}
         />
       </Link>
