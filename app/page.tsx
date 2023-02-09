@@ -24,7 +24,6 @@ const getSchedule = async () => {
 export default async function Home() {
   const schedule = await getSchedule();
 
-  console.log(schedule);
   return (
     <main>
       <StripeCalendar />
