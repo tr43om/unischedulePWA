@@ -4,7 +4,7 @@ import { StripeCalendar } from "@/components";
 import { useScheduleStore } from "@/zustandStore";
 import { CurrentDate } from "@/components/CurrentDate";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <StripeCalendar />
