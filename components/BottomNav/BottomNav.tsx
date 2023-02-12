@@ -12,7 +12,7 @@ const BottomNav = () => {
   const pathname = usePathname();
 
   return (
-    <nav className=" fixed inset-x-0  bottom-5 mx-auto  flex w-full justify-between px-5 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg">
+    <nav className=" fixed  inset-x-0 bottom-1 mx-auto  flex w-full max-w-[340px] justify-around rounded-lg bg-primary-content p-5 px-5 sm:max-w-screen-sm md:max-w-screen-sm">
       <Link href="/">
         <HomeIcon
           className={`h-6 w-6  cursor-pointer ${

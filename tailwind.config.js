@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class", '[data-theme="dracula"]'],
   mode: "jit",
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -9,8 +10,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
-    themes: ["cupcake", "drakula", "dark", "light", "bumblebee"],
+    themes: ["cupcake", "dracula", "light", "bumblebee", "pastel", "lofi"],
+    darkTheme: "dracula",
   },
 };

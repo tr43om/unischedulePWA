@@ -3,6 +3,18 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-}
 
-module.exports = nextConfig
+  images: {
+    domains: ["firebasestorage.googleapis.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+        port: "",
+        pathname: "/v0/b/omsu-schedule.appspot.com/**",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;

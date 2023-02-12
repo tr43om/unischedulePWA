@@ -1,8 +1,10 @@
+"use client";
 import "./globals.css";
-import { Roboto } from "@next/font/google";
+import { Roboto, IBM_Plex_Sans } from "@next/font/google";
 import { BottomNav } from "@/components";
+import { useAppearanceStore } from "../zustandStore/appearanceStore/index";
 
-const roboto = Roboto({
+const plex = IBM_Plex_Sans({
   weight: ["400", "700"],
   subsets: ["cyrillic-ext", "latin-ext"],
 });
@@ -13,15 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className={`${roboto.className} container mx-auto p-4`}>
+      <body className={`${plex.className} container mx-auto max-w-md p-4`}>
         {children}
-        <BottomNav />
       </body>
     </html>
   );
