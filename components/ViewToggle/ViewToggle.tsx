@@ -11,17 +11,13 @@ const ViewToggle = () => {
     <div className="flex  justify-end gap-2">
       <div className="btn-group ">
         <button
-          className={` btn-sm btn ${
-            localStorage.getItem("theme") === "lofi" && "btn-outline"
-          } ${view === "day" && "btn-active"}`}
+          className={` btn-sm btn  ${view === "day" && "btn-active"}`}
           onClick={() => setView("day")}
         >
           <CalendarIcon className={`h-5 w-5  `} />
         </button>
         <button
-          className={` btn-sm btn   ${view === "week" && "btn-active"} ${
-            localStorage.getItem("theme") === "lofi" && "btn-outline"
-          }`}
+          className={` btn-sm btn   ${view === "week" && "btn-active"} `}
           onClick={() => setView("week")}
         >
           <CalendarDaysIcon className={`h-5 w-5 `} />

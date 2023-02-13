@@ -3,9 +3,10 @@ import {
   ScheduleList,
   SearchBar,
   StripeCalendar,
+  CurrentDate,
   ViewToggle,
+  SearchModal,
 } from "@/components";
-import { CurrentDate } from "@/components/CurrentDate";
 
 import { CalendarControls } from "@/components/CalendarControls";
 

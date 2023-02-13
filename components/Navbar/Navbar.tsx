@@ -10,13 +10,18 @@ import {
 } from "@heroicons/react/24/outline";
 import { themeChange } from "theme-change";
 import { useAppearanceStore } from "@/zustandStore";
+import { SearchModal } from "../SearchModal";
 
 const Navbar = () => {
+  const [modal, setModal] = useState(false);
   const { setTheme, theme } = useAppearanceStore();
   useEffect(() => {
     themeChange(false);
   }, []);
   const [dark, setDark] = useState(localStorage.getItem("theme") === "dracula");
+
+  const closeModal = () => setModal(false);
+  const openModal = () => setModal(true);
 
   const toggleTheme = () => setDark((d) => !d);
   return (
@@ -34,7 +39,7 @@ const Navbar = () => {
               <label
                 className={`swap-rotate swap ${dark && "swap-active"}`}
                 onClick={toggleTheme}
-                // data-set-theme={`${dark ? "lofi" : "dracula"}`}
+                data-set-theme={`${dark ? "light" : "dracula"}`}
               >
                 <SunIcon className={`swap-off   h-5 w-5`} />
                 <MoonIcon className={`swap-on  h-5 w-5 `} />
@@ -55,9 +60,13 @@ const Navbar = () => {
         <a className="btn-ghost btn text-xl normal-case">uniSchedule</a>
       </div>
       <div className="navbar-end">
-        <div className="grid h-full w-12 cursor-pointer place-items-center  hover:text-primary">
-          <MagnifyingGlassIcon className=" h-5 w-5 " />
-        </div>
+        <label
+          className=" grid h-full w-12 cursor-pointer place-items-center  hover:text-primary"
+          htmlFor="my-modal-4"
+        >
+          <MagnifyingGlassIcon className=" h-5 w-5 " onClick={openModal} />
+          {modal && <SearchModal closeModal={closeModal} />}
+        </label>
       </div>
     </div>
   );

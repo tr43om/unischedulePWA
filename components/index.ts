@@ -7,3 +7,4 @@ export * from "./SearchBar";
 export * from "./ScheduleCard";
 export * from "./Navbar";
 export * from "./ViewToggle";
+export * from "./SearchModal";
