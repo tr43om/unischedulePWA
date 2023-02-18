@@ -9,10 +9,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { themeChange } from "theme-change";
-import { useAppearanceStore } from "@/zustandStore";
 import { SearchModal } from "../SearchModal";
-import { db } from "@/firebase.config";
-import { collection, doc, getDocs } from "firebase/firestore";
 
 const Navbar = () => {
   const [modal, setModal] = useState(false);
@@ -39,7 +36,7 @@ const Navbar = () => {
           >
             <li>
               <label
-                className={`swap-rotate swap ${dark && "swap-active"}`}
+                className={`swap swap-rotate ${dark && "swap-active"}`}
                 onClick={toggleTheme}
                 data-set-theme={`${dark ? "light" : "dracula"}`}
               >
