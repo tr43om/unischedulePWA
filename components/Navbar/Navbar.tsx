@@ -15,8 +15,10 @@ const Navbar = () => {
   const [modal, setModal] = useState(false);
   useEffect(() => {
     themeChange(false);
+
+    setDark(localStorage.getItem("theme") === "dracula");
   }, []);
-  const [dark, setDark] = useState(localStorage.getItem("theme") === "dracula");
+  const [dark, setDark] = useState(true);
 
   const closeModal = () => setModal(false);
   const openModal = () => setModal(true);
@@ -36,7 +38,7 @@ const Navbar = () => {
           >
             <li>
               <label
-                className={`swap swap-rotate ${dark && "swap-active"}`}
+                className={`swap-rotate swap ${dark && "swap-active"}`}
                 onClick={toggleTheme}
                 data-set-theme={`${dark ? "light" : "dracula"}`}
               >
