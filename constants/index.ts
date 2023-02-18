@@ -6,6 +6,8 @@ import {
   addDays,
 } from "date-fns";
 
+export const BASE_URL = "https://eservice.omsu.ru/schedule/backend";
+
 const secondSemesterStarts = new Date(getYear(new Date()), 1, 8);
 const secondSemesterEnds = addWeeks(secondSemesterStarts, 17);
 

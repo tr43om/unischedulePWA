@@ -22,13 +22,16 @@ const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
     minute: "2-digit",
   });
   return (
-    <li className="rounded-lg p-5 shadow-lg" key={schedule.id}>
+    <li
+      className="rounded-lg border border-neutral border-opacity-50 p-6"
+      key={schedule.id}
+    >
       <div className="flex  h-6 items-center      bg-base-100 text-primary-content">
         <ClockIcon width={15} height={15} className="text-gray-400" />
         <p className="text-sm  text-gray-400">{lessonStarts}</p>
       </div>
       <div className="card block  max-w-md  hover:cursor-pointer ">
-        <div className="mb-1 flex justify-between">
+        <div className="mb-3 flex justify-between">
           <h3 className=" font-bold transition duration-300 ease-in-out sm:text-lg ">
             {schedule.subject}
           </h3>

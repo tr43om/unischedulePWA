@@ -13,8 +13,7 @@ export default async function handler(
     const response = await fetch(
       "https://eservice.omsu.ru/schedule/backend/dict/groups"
     );
-    const data = await response.json();
-    console.log(data);
+    const { data } = await response.json();
     res.json(data);
   } catch (error) {
     console.error(error);

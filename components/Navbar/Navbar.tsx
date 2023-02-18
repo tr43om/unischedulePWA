@@ -11,10 +11,12 @@ import {
 import { themeChange } from "theme-change";
 import { useAppearanceStore } from "@/zustandStore";
 import { SearchModal } from "../SearchModal";
+import MeiliSearch from "meilisearch";
+import { db } from "@/firebase.config";
+import { collection, doc, getDocs } from "firebase/firestore";
 
 const Navbar = () => {
   const [modal, setModal] = useState(false);
-  const { setTheme, theme } = useAppearanceStore();
   useEffect(() => {
     themeChange(false);
   }, []);
@@ -24,6 +26,7 @@ const Navbar = () => {
   const openModal = () => setModal(true);
 
   const toggleTheme = () => setDark((d) => !d);
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start -ml-5">

@@ -22,3 +22,6 @@ export const getCurrentWeek = (date: Date) => {
 
   return currentWeek;
 };
+
+export const fetcher = (url: string, init?: RequestInit) =>
+  fetch(url).then((res) => res.json());
