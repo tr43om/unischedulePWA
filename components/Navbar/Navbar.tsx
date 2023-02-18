@@ -11,7 +11,6 @@ import {
 import { themeChange } from "theme-change";
 import { useAppearanceStore } from "@/zustandStore";
 import { SearchModal } from "../SearchModal";
-import MeiliSearch from "meilisearch";
 import { db } from "@/firebase.config";
 import { collection, doc, getDocs } from "firebase/firestore";
 
