@@ -1,16 +1,4 @@
-import { OmsuGroupType } from "@/types";
-import {
-  CollectionReference,
-  collection,
-  orderBy,
-  query,
-  where,
-  collectionGroup,
-  Query,
-} from "firebase/firestore";
-import { db } from "../firebase.config";
-import { useCollectionDataOnce } from "react-firebase-hooks/firestore";
-import { OmsuScheduleType } from "../types/index";
+import { OmsuScheduleType } from "@/types";
 import useSwr from "swr";
 import { fetcher } from "@/utils";
 

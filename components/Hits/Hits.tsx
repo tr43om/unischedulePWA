@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Highlight } from "../Highlight";
+import { Highlight } from "@/components";
 import { OmsuGroupType } from "@/types";
 import { useSearchStore } from "@/zustandStore";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
-import { useKeyPress } from "@/hooks/useKeyPress";
+import { useKeyPress } from "@/hooks";
 
 type HitsProps<T> = {
   hits: Fuzzysort.KeyResults<T>;

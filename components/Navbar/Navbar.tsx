@@ -9,7 +9,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { themeChange } from "theme-change";
-import { SearchModal } from "../SearchModal";
+import { SearchModal } from "@/components";
 import { useSearchStore, useUserStore } from "@/zustandStore";
 import { useKeyPress } from "@/hooks/useKeyPress";
 
@@ -40,7 +40,7 @@ const Navbar = () => {
     <div className="navbar bg-base-100">
       <div className="navbar-start -ml-5">
         <div className="dropdown-hover dropdown">
-          <label tabIndex={0} className="btn-ghost btn-circle btn">
+          <label tabIndex={0} className="btn btn-ghost btn-circle">
             <Bars3BottomLeftIcon className="h-5 w-5" />
           </label>
           <ul
@@ -69,7 +69,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn-ghost btn text-xl normal-case">uniSchedule</a>
+        <a className="btn btn-ghost text-xl normal-case">uniSchedule</a>
       </div>
       <div className="navbar-end">
         <MagnifyingGlassIcon

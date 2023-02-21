@@ -6,7 +6,7 @@ import { format, getDay, getWeek, setHours } from "date-fns";
 import { ru } from "date-fns/locale";
 import { useDateStore, useScheduleStore } from "@/zustandStore";
 import "swiper/swiper.min.css";
-import { CalendarControls } from "../CalendarControls";
+import { CalendarControls } from "@/components";
 
 const DateCard = ({ date }: { date: Date }) => {
   const { selectDate, selectedDate } = useDateStore((state) => {

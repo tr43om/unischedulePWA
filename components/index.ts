@@ -8,3 +8,8 @@ export * from "./ScheduleCard";
 export * from "./Navbar";
 export * from "./ViewToggle";
 export * from "./SearchModal";
+export * from "./Highlight";
+export * from "./Hits";
+export * from "./NoSearchResults";
+export * from "./Recents";
+export * from "./Favorites";
