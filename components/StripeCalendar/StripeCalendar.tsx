@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { STUDY_DAYS } from "@/constants";
-import { format, setHours } from "date-fns";
+import { format, getDay, getWeek, setHours } from "date-fns";
 import { ru } from "date-fns/locale";
 import { useDateStore, useScheduleStore } from "@/zustandStore";
 import "swiper/swiper.min.css";
@@ -12,8 +12,6 @@ const DateCard = ({ date }: { date: Date }) => {
   const { selectDate, selectedDate } = useDateStore((state) => {
     return { selectedDate: state.selectedDate, selectDate: state.selectDate };
   });
-
-  const { getSchedule } = useScheduleStore();
 
   const weekDay = format(date, "EEEEEE", { locale: ru });
   const day = date.getDate();
@@ -29,7 +27,6 @@ const DateCard = ({ date }: { date: Date }) => {
       className={`group mx-1 flex w-16 cursor-pointer justify-center rounded-lg	transition-all	 duration-300  hover:shadow-lg `}
       onClick={() => {
         selectDate(date.getTime());
-        getSchedule();
       }}
     >
       <div className="flex items-center ">
@@ -53,7 +50,11 @@ const DateCard = ({ date }: { date: Date }) => {
 const StripeCalendar = () => {
   const selectDate = useDateStore((state) => state.selectDate);
   const currentWeek = useDateStore((state) => state.currentWeek);
-  const { getSchedule } = useScheduleStore();
+  console.log(currentWeek);
+
+  useEffect(() => {
+    selectDate(STUDY_DAYS[currentWeek - 1][getDay(new Date()) - 1].getTime());
+  }, []);
 
   return (
     <section className="mb-5 print:hidden">
@@ -62,7 +63,6 @@ const StripeCalendar = () => {
         initialSlide={currentWeek - 1}
         onSlideChange={({ activeIndex, clickedIndex, realIndex }) => {
           selectDate(STUDY_DAYS[activeIndex][0].getTime());
-          getSchedule();
         }}
       >
         {STUDY_DAYS.map((week, index) => (

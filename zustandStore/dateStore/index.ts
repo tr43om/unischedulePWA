@@ -15,7 +15,7 @@ export const useDateStore = create<Store>()(
   devtools(
     immer((set) => ({
       selectedDate: new Date(new Date().setHours(0, 0, 0, 0)).getTime(),
-      currentWeek: 1,
+      currentWeek: getCurrentWeek(new Date()),
       currentWeekday: "понедельник",
       selectDate: (date) => {
         set((state) => {

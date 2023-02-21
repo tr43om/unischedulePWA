@@ -17,6 +17,5 @@ export default async function handler(
     res.json(data);
   } catch (error) {
     console.error(error);
-    return { jopa: "jopa" };
   }
 }

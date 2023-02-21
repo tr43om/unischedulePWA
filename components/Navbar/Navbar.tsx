@@ -10,20 +10,31 @@ import {
 } from "@heroicons/react/24/outline";
 import { themeChange } from "theme-change";
 import { SearchModal } from "../SearchModal";
+import { useSearchStore, useUserStore } from "@/zustandStore";
+import { useKeyPress } from "@/hooks";
 
 const Navbar = () => {
-  const [modal, setModal] = useState(false);
+  const [dark, setDark] = useState(true);
+  const { isOpen, toggleSearch } = useSearchStore();
+  const { groupId } = useUserStore();
+
+  const [loaded, setLoaded] = useState(false);
+
+  // Modal on
+  useKeyPress({
+    callback: toggleSearch,
+    hotkey: "ctrl+k",
+  });
+
   useEffect(() => {
     themeChange(false);
-
+    setLoaded(true);
     setDark(localStorage.getItem("theme") === "dracula");
   }, []);
-  const [dark, setDark] = useState(true);
-
-  const closeModal = () => setModal(false);
-  const openModal = () => setModal(true);
 
   const toggleTheme = () => setDark((d) => !d);
+
+  const isModalShown = !groupId || isOpen;
 
   return (
     <div className="navbar bg-base-100">
@@ -61,13 +72,11 @@ const Navbar = () => {
         <a className="btn-ghost btn text-xl normal-case">uniSchedule</a>
       </div>
       <div className="navbar-end">
-        <label
-          className=" grid h-full w-12 cursor-pointer place-items-center  hover:text-primary"
-          htmlFor="my-modal-4"
-        >
-          <MagnifyingGlassIcon className=" h-5 w-5 " onClick={openModal} />
-          {modal && <SearchModal closeModal={closeModal} />}
-        </label>
+        <MagnifyingGlassIcon
+          className=" h-5 cursor-pointer  hover:text-primary"
+          onClick={toggleSearch}
+        />
+        {loaded && isModalShown && <SearchModal />}
       </div>
     </div>
   );

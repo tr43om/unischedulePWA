@@ -8,13 +8,11 @@ import {
 } from "react";
 import { debounce } from "throttle-debounce";
 
-interface FuzzyOptions extends Fuzzysort.KeyOptions {
-  highlight?: boolean;
-}
+interface FuzzyOptions extends Fuzzysort.KeyOptions {}
 
 export const useFuzzy = <T extends { id: number }>(
   list: T[],
-  options: Fuzzysort.KeyOptions
+  options: FuzzyOptions
 ): {
   hits: Fuzzysort.KeyResults<T>;
   onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;

@@ -11,16 +11,15 @@ import {
 import { db } from "../firebase.config";
 import { useCollectionDataOnce } from "react-firebase-hooks/firestore";
 import { OmsuScheduleType } from "../types/index";
+import useSwr from "swr";
+import { fetcher } from "@/utils";
 
-export const useSchedule = (group: string, day: string) => {
-  const path = `omsu-schedule/${group}/${day}`;
-  const reference = collection(db, path) as CollectionReference<
-    OmsuScheduleType[]
-  >;
-
-  console.log(path);
-
-  const [schedule, isLoading, error] = useCollectionDataOnce(reference);
+export const useSchedule = (groupID: number) => {
+  const {
+    data: schedule,
+    isLoading,
+    error,
+  } = useSwr<{ data: OmsuScheduleType[] }>(`/api/schedule/${groupID}`, fetcher);
 
   return { schedule, isLoading, error };
 };

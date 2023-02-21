@@ -15,18 +15,11 @@ type ScheduleListProps = {
 
 const ScheduleList = () => {
   const scheduleList = useScheduleStore((state) => state.schedule);
-  const { schedule } = useSchedule("ЯПБ-901-О-11", "27.02.2023");
-
-  const { data: groups } = useSwr<{ data: OmsuGroupType[] }>(
-    "/api/groups",
-    fetcher
-  );
-
-  console.log("SWR", groups);
+  const { schedule } = useSchedule(1342);
 
   // if (scheduleList.length < 1) return <div>No bitches</div>;
   return (
-    <ul className=" mt-5 grid gap-10">
+    <ul className=" mt-5 grid gap-10 ">
       {scheduleList.map((schedule, i) => (
         <ScheduleCard schedule={schedule} key={schedule.id} />
       ))}
