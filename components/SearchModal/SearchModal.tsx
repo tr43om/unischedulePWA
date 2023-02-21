@@ -5,13 +5,13 @@ import { SearchBar } from "../SearchBar";
 
 import { Hits } from "../Hits";
 
-import { useFuzzy } from "../../hooks/useFuzzy";
+import { useFuzzy } from "@/hooks/useFuzzy";
 import { useGroups } from "@/hooks/useGroups";
-import { useSearchStore } from "../../zustandStore/searchStore/index";
+import { useSearchStore } from "@/zustandStore";
 import { Recents } from "../Recents";
 import { NoSearchResults } from "../NoSearchResults";
 import { Favorites } from "../Favorites";
-import { useKeyPress } from "@/hooks";
+import { useKeyPress } from "@/hooks/useKeyPress";
 import { SearchNavigationHints } from "../SearchNavigationHints";
 
 type SearchModal = {};

@@ -11,7 +11,7 @@ import {
 import { themeChange } from "theme-change";
 import { SearchModal } from "../SearchModal";
 import { useSearchStore, useUserStore } from "@/zustandStore";
-import { useKeyPress } from "@/hooks";
+import { useKeyPress } from "@/hooks/useKeyPress";
 
 const Navbar = () => {
   const [dark, setDark] = useState(true);
