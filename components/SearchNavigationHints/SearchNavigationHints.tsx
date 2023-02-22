@@ -3,7 +3,7 @@ import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/react/24/outline";
 
 const SearchNavigationHints = () => {
   return (
-    <div className=" flex items-center justify-end gap-4  border-t-[1px] border-base-100 border-opacity-50  px-6 py-3">
+    <div className=" hidden items-center justify-end gap-4 border-t-[1px]  border-base-100 border-opacity-50 px-6  py-3 sm:flex">
       <div className="flex items-center gap-1">
         <div className="kbd kbd-sm ">
           <ArrowUpIcon className="h-2.5  text-gray-400" />

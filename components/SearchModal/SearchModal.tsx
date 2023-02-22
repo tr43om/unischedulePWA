@@ -25,6 +25,7 @@ const SearchModal = ({}: SearchModal) => {
   const recentsLength = useSearchStore((state) => state.recents).length;
   const toggleSearch = useSearchStore((state) => state.toggleSearch);
   const chooseQuery = useSearchStore((state) => state.chooseQuery);
+  const noQueryItemsLength = favoritesLength + recentsLength;
 
   const { hits, onSearch, query } = useFuzzy(groups || [], {
     key: "name",
@@ -32,7 +33,11 @@ const SearchModal = ({}: SearchModal) => {
     threshold: -45,
   });
 
-  const noQueryItemsLength = favoritesLength + recentsLength;
+  const showRecentsAndFavorites = !query && noQueryItemsLength >= 1;
+  const showFavorites = recentsLength >= 1;
+  const showRecents = favoritesLength >= 1;
+  const showNoSearchResults = query && hits.length === 0;
+  const showNavigationHints = noQueryItemsLength >= 1;
 
   // Modal off
   useKeyPress({
@@ -86,17 +91,21 @@ const SearchModal = ({}: SearchModal) => {
             }}
           >
             <SearchBar search={onSearch} />
-            <div className="relative mt-3  grid  overflow-hidden rounded-lg bg-white  dark:bg-neutral ">
-              {hits.length >= 1 && <Hits hits={hits} choose={chooseQuery} />}
-              {!query && (
-                <div className="grid gap-5 py-6 px-6">
-                  <Recents active={activeRecentOrFavorite} />
-                  <Favorites active={activeRecentOrFavorite} />
-                </div>
-              )}
-              {query && hits.length === 0 && <NoSearchResults query={query} />}
-              <SearchNavigationHints />
-            </div>
+            {
+              <div className="relative mt-3  grid  overflow-hidden rounded-lg bg-white  dark:bg-neutral ">
+                {hits.length >= 1 && <Hits hits={hits} choose={chooseQuery} />}
+                {showRecentsAndFavorites && (
+                  <div className="grid gap-5 py-6 px-6">
+                    {showRecents && <Recents active={activeRecentOrFavorite} />}
+                    {showFavorites && (
+                      <Favorites active={activeRecentOrFavorite} />
+                    )}
+                  </div>
+                )}
+                {showNoSearchResults && <NoSearchResults query={query} />}
+                {showNavigationHints && <SearchNavigationHints />}
+              </div>
+            }
           </div>
         </div>
       </div>
