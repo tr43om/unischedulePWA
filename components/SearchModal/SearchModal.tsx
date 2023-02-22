@@ -21,11 +21,11 @@ const SearchModal = ({}: SearchModal) => {
   const { groups } = useGroups();
   const [activeRecentOrFavorite, setActiveRecentOrFavorite] = useState(0);
 
-  const favoritesLength = useSearchStore((state) => state.favorites).length;
-  const recentsLength = useSearchStore((state) => state.recents).length;
+  const favorites = useSearchStore((state) => state.favorites);
+  const recents = useSearchStore((state) => state.recents);
   const toggleSearch = useSearchStore((state) => state.toggleSearch);
   const chooseQuery = useSearchStore((state) => state.chooseQuery);
-  const noQueryItemsLength = favoritesLength + recentsLength;
+  const noQueryItemsLength = favorites.length + recents.length;
 
   const { hits, onSearch, query } = useFuzzy(groups || [], {
     key: "name",
@@ -34,9 +34,9 @@ const SearchModal = ({}: SearchModal) => {
   });
 
   const showRecentsAndFavorites = !query && noQueryItemsLength >= 1;
-  const showFavorites = recentsLength >= 1;
-  const showRecents = favoritesLength >= 1;
-  const showNoSearchResults = query && hits.length === 0;
+  const showFavorites = recents.length >= 1;
+  const showRecents = favorites.length >= 1;
+  const showNoSearchResults = query.length >= 1 && hits.length === 0;
   const showNavigationHints = noQueryItemsLength >= 1;
 
   // Modal off
@@ -96,8 +96,10 @@ const SearchModal = ({}: SearchModal) => {
                 {hits.length >= 1 && <Hits hits={hits} choose={chooseQuery} />}
                 {showRecentsAndFavorites && (
                   <div className="grid gap-5 py-6 px-6">
-                    {showRecents && <Recents active={activeRecentOrFavorite} />}
-                    {showFavorites && (
+                    {recents.length >= 1 && (
+                      <Recents active={activeRecentOrFavorite} />
+                    )}
+                    {favorites.length >= 1 && (
                       <Favorites active={activeRecentOrFavorite} />
                     )}
                   </div>
