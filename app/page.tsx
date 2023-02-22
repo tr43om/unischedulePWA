@@ -18,7 +18,7 @@ export default async function Home() {
       </div>
 
       <StripeCalendar />
-      <ViewToggle />
+      {/* <ViewToggle /> */}
       <ScheduleList />
     </main>
   );

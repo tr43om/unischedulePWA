@@ -8,13 +8,13 @@ type SearchBarProps = {
 
 const SearchBar = ({ search }: SearchBarProps) => {
   return (
-    <div className="relative flex h-14 w-full  items-center overflow-hidden rounded-lg  bg-neutral px-3 focus-within:shadow-lg">
+    <div className="relative flex h-14 w-full  items-center overflow-hidden rounded-lg  bg-white bg-opacity-50 px-3 focus-within:shadow-lg dark:bg-neutral">
       <div className="grid h-full w-12 place-items-center ">
-        <MagnifyingGlassIcon className="h-5 text-base-content" />
+        <MagnifyingGlassIcon className="h-5  text-gray-400" />
       </div>
 
       <input
-        className="peer h-full w-full bg-neutral  pl-1 text-base  text-base-content outline-none"
+        className="peer h-full w-full bg-white bg-opacity-50 pl-1 text-base text-base-content  outline-none dark:bg-neutral"
         type="text"
         id="search"
         autoFocus

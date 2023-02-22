@@ -48,7 +48,7 @@ const Hits = <T extends OmsuGroupType>({ hits, choose }: HitsProps<T>) => {
           onMouseEnter={() => setActiveHit(i)}
           key={hit.obj.id}
           className={`flex w-full cursor-pointer items-center justify-between  border-b-[1px] border-b-base-100    border-opacity-50 py-3 px-6 transition  delay-100 ease-in-out first:pt-3  ${
-            i === activeHit && " bg-neutral-focus"
+            i === activeHit && "bg-gray-300 dark:bg-neutral-focus"
           }`}
         >
           <div>

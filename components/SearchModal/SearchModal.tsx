@@ -73,7 +73,7 @@ const SearchModal = ({}: SearchModal) => {
       ></div>
 
       <div
-        className="top-50 fixed left-0 right-0 z-10  w-full overflow-y-auto "
+        className="fixed top-16 left-0 right-0 z-10  w-full overflow-y-auto "
         onClick={toggleSearch}
       >
         <div className="flex min-h-full w-full items-end justify-center  text-center sm:items-center sm:p-0">
@@ -84,7 +84,7 @@ const SearchModal = ({}: SearchModal) => {
             }}
           >
             <SearchBar search={onSearch} />
-            <div className="relative mt-3  grid  overflow-hidden rounded-lg bg-neutral ">
+            <div className="relative mt-3  grid  overflow-hidden rounded-lg bg-white  dark:bg-neutral ">
               {hits.length >= 1 && <Hits hits={hits} choose={chooseQuery} />}
               {!query && (
                 <div className="grid gap-5 py-6 px-6">

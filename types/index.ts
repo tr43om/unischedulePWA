@@ -35,7 +35,7 @@ export type ScheduleType = {
   week: string;
 };
 
-export type OmsuScheduleType = {
+export type OmsuScheduleResponse = {
   id: number;
   day: string;
   week: number;
@@ -44,12 +44,30 @@ export type OmsuScheduleType = {
   type_work: "Лаб" | "Лек";
   lesson_id: number;
   teacher: string;
+  professors: {
+    name: string;
+    id: number;
+  }[];
   teacher_id: number;
   group: string;
   group_id: number;
   auditCorps: string;
+  auditories: {
+    name: string;
+    id: number;
+  }[];
   auditory_id: number;
 };
+
+export interface OmsuScheduleDto
+  extends Pick<
+    OmsuScheduleResponse,
+    "auditories" | "professors" | "week" | "lesson" | "lesson_id" | "id"
+  > {
+  startsAt: string;
+  type: string;
+  endsAt: string;
+}
 
 export type OmsuGroupType = {
   id: number;
