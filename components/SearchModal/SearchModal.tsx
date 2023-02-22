@@ -20,16 +20,33 @@ type SearchModal = {};
 const SearchModal = ({}: SearchModal) => {
   const { groups } = useGroups();
   const [activeRecentOrFavorite, setActiveRecentOrFavorite] = useState(0);
-  const favorites = useSearchStore((state) => state.favorites);
-  const recents = useSearchStore((state) => state.recents);
 
-  console.log("activeRecentOrFavorite", activeRecentOrFavorite);
+  const favoritesLength = useSearchStore((state) => state.favorites).length;
+  const recentsLength = useSearchStore((state) => state.recents).length;
+  const toggleSearch = useSearchStore((state) => state.toggleSearch);
+  const chooseQuery = useSearchStore((state) => state.chooseQuery);
 
+  const { hits, onSearch, query } = useFuzzy(groups || [], {
+    key: "name",
+    limit: 5,
+    threshold: -45,
+  });
+
+  const noQueryItemsLength = favoritesLength + recentsLength;
+
+  // Modal off
+  useKeyPress({
+    callback: toggleSearch,
+    keys: ["Escape"],
+    hotkey: "ctrl+k",
+  });
+
+  // Arrows navigation for recents and favorites
   useKeyPress({
     callback: () =>
-      activeRecentOrFavorite < favorites.length + recents.length - 1
+      activeRecentOrFavorite < noQueryItemsLength - 1
         ? setActiveRecentOrFavorite((cur) => cur + 1)
-        : activeRecentOrFavorite === favorites.length + recents.length - 1
+        : activeRecentOrFavorite === noQueryItemsLength - 1
         ? setActiveRecentOrFavorite(0)
         : null,
     keys: ["ArrowDown"],
@@ -40,25 +57,9 @@ const SearchModal = ({}: SearchModal) => {
       activeRecentOrFavorite > 0
         ? setActiveRecentOrFavorite((cur) => cur - 1)
         : activeRecentOrFavorite === 0
-        ? setActiveRecentOrFavorite(favorites.length + recents.length - 1)
+        ? setActiveRecentOrFavorite(noQueryItemsLength - 1)
         : null,
     keys: ["ArrowUp"],
-  });
-
-  const toggleSearch = useSearchStore((state) => state.toggleSearch);
-  const chooseQuery = useSearchStore((state) => state.chooseQuery);
-
-  const { hits, onSearch, query } = useFuzzy(groups || [], {
-    key: "name",
-    limit: 5,
-    threshold: -45,
-  });
-
-  // Modal off
-  useKeyPress({
-    callback: toggleSearch,
-    keys: ["Escape"],
-    hotkey: "ctrl+k",
   });
 
   return (
