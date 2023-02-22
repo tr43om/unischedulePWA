@@ -13,3 +13,4 @@ export * from "./Hits";
 export * from "./NoSearchResults";
 export * from "./Recents";
 export * from "./Favorites";
+export * from "./SearchNavigationHints";

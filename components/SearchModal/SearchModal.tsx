@@ -1,18 +1,19 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { SearchBar } from "../SearchBar";
-
-import { Hits } from "../Hits";
 
 import { useFuzzy } from "@/hooks/useFuzzy";
 import { useGroups } from "@/hooks/useGroups";
 import { useSearchStore } from "@/zustandStore";
-import { Recents } from "../Recents";
-import { NoSearchResults } from "../NoSearchResults";
-import { Favorites } from "../Favorites";
+import {
+  Recents,
+  Hits,
+  NoSearchResults,
+  Favorites,
+  SearchNavigationHints,
+  SearchBar,
+} from "@/components";
 import { useKeyPress } from "@/hooks/useKeyPress";
-import { SearchNavigationHints } from "../SearchNavigationHints";
 
 type SearchModal = {};
 
