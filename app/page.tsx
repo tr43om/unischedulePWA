@@ -3,10 +3,9 @@ import {
   ScheduleList,
   StripeCalendar,
   CurrentDate,
+  CalendarControls,
   ViewToggle,
 } from "@/components";
-
-import { CalendarControls } from "@/components/CalendarControls";
 
 export default async function Home() {
   return (

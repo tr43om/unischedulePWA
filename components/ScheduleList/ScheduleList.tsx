@@ -1,6 +1,6 @@
 "use client";
 import { OmsuGroupType, ScheduleType } from "@/types";
-import { useScheduleStore } from "@/zustandStore";
+import { useScheduleStore, useUserStore } from "@/zustandStore";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import { MapPinIcon, ClockIcon } from "@heroicons/react/24/outline";
@@ -17,8 +17,9 @@ type ScheduleListProps = {
 
 const ScheduleList = () => {
   const scheduleList = useScheduleStore((state) => state.schedule);
+  const groupID = useUserStore((state) => state.groupId);
   const selectedDate = useDateStore((state) => state.selectedDate);
-  const { schedule, isLoading } = useSchedule(1342, selectedDate);
+  const { schedule, isLoading } = useSchedule(groupID || 0, selectedDate);
   console.log(
     "DATE",
     startOfDay(new Date()).getTime() === new Date("02.21.2023").getTime()
