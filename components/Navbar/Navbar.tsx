@@ -11,7 +11,7 @@ import {
 import { themeChange } from "theme-change";
 import { SearchModal } from "@/components";
 import { useSearchStore, useUserStore } from "@/zustandStore";
-import { useKeyPress } from "@/hooks";
+// import { useKeyPress } from "@/hooks";
 
 const Navbar = () => {
   const [dark, setDark] = useState(true);
@@ -20,11 +20,11 @@ const Navbar = () => {
 
   const [loaded, setLoaded] = useState(false);
 
-  // Modal on
-  useKeyPress({
-    callback: toggleSearch,
-    hotkey: "ctrl+k",
-  });
+  // // Modal on
+  // useKeyPress({
+  //   callback: toggleSearch,
+  //   hotkey: "ctrl+k",
+  // });
 
   useEffect(() => {
     themeChange(false);
