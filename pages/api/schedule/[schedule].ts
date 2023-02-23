@@ -15,6 +15,8 @@ export default async function handler(
     const response = await fetch(
       `https://eservice.omsu.ru/schedule/backend/schedule/group/${schedule}`
     );
+
+    console.log("FETCH");
     const { data } = await response.json();
 
     res.json(data);

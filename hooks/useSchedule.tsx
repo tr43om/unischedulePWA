@@ -1,24 +1,32 @@
-import { OmsuScheduleResponse } from "@/types";
+import { OmsuScheduleResponse, OmsuScheduleDto } from "@/types";
 import useSwr from "swr";
 import { fetcher } from "@/utils";
 import { startOfDay } from "date-fns";
+import { useMemo, useCallback } from "react";
 
 import * as _ from "lodash";
-import { OmsuScheduleDto } from "../types/index";
 
 export const useSchedule = (groupID: number, selectedDate: number) => {
   const { data, isLoading, error } = useSwr<
     { day: string; lessons: OmsuScheduleResponse[] }[]
   >(`/api/schedule/${groupID}`, fetcher);
 
-  const scheduleOfSelectedDay = _.filter(data, ({ day }) => {
-    const [date, month, year] = day.split(".");
-    return new Date(`${year}, ${month}, ${date}`).getTime() === selectedDate;
-  });
+  const scheduleOfSelectedDay = useMemo(
+    () =>
+      _.filter(data, ({ day }) => {
+        const [date, month, year] = day.split(".");
+        return new Date(`${year}/${month}/${date}`).getTime() === selectedDate;
+      }),
+    [data, selectedDate]
+  );
 
-  const scheduleGroupedByTime = _.map(scheduleOfSelectedDay, ({ lessons }) =>
-    _.groupBy(lessons, "time")
-  )[0];
+  const scheduleGroupedByTime = useMemo(
+    () =>
+      _.map(scheduleOfSelectedDay, ({ lessons }) =>
+        _.groupBy(lessons, "time")
+      )[0],
+    [scheduleOfSelectedDay]
+  );
 
   const startsAt = (time: number) => {
     switch (time) {
@@ -66,29 +74,33 @@ export const useSchedule = (groupID: number, selectedDate: number) => {
     }
   };
 
-  const schedule = _.map(scheduleGroupedByTime, (time) =>
-    _.reduce(
-      time,
-      (acc, cur) => {
-        acc.professors = acc.professors || [];
-        acc.auditories = acc.auditories || [];
-        acc.professors.push({ name: cur.teacher, id: cur.teacher_id });
-        acc.auditories.push({ name: cur.auditCorps, id: cur.auditory_id });
-        acc = {
-          id: cur.id,
-          week: cur.week,
-          type: cur.type_work,
-          lesson: cur.lesson,
-          lesson_id: cur.lesson_id,
-          startsAt: startsAt(cur.time),
-          endsAt: endsAt(cur.time),
-          professors: acc.professors,
-          auditories: acc.auditories,
-        };
-        return acc;
-      },
-      {} as OmsuScheduleDto
-    )
+  const schedule = useMemo(
+    () =>
+      _.map(scheduleGroupedByTime, (time) =>
+        _.reduce(
+          time,
+          (acc, cur) => {
+            acc.professors = acc.professors || [];
+            acc.auditories = acc.auditories || [];
+            acc.professors.push({ name: cur.teacher, id: cur.teacher_id });
+            acc.auditories.push({ name: cur.auditCorps, id: cur.auditory_id });
+            acc = {
+              id: cur.id,
+              week: cur.week,
+              type: cur.type_work,
+              lesson: cur.lesson,
+              lesson_id: cur.lesson_id,
+              startsAt: startsAt(cur.time),
+              endsAt: endsAt(cur.time),
+              professors: acc.professors,
+              auditories: acc.auditories,
+            };
+            return acc;
+          },
+          {} as OmsuScheduleDto
+        )
+      ),
+    [scheduleGroupedByTime]
   );
 
   return { schedule, isLoading, error };

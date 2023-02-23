@@ -13,19 +13,25 @@ import {
 import { db } from "@/firebase.config";
 import { useDateStore } from "../dateStore";
 import { ScheduleType } from "@/types";
+import { OmsuScheduleDto } from "../../types/index";
 
 type Store = {
-  groupId: number;
-  addGroupId: (id: number) => void;
-  schedule: ScheduleType[];
+  schedule: OmsuScheduleDto[];
+  addSchedule: (schedule: OmsuScheduleDto[]) => void;
 };
 
 export const useScheduleStore = create<Store>()(
   devtools(
-    immer((set, get) => ({
-      schedule: [],
-      groupId: 0,
-      addGroupId: (id) => set((state) => (state.groupId = id)),
-    }))
+    persist(
+      immer((set, get) => ({
+        schedule: [],
+        addSchedule(schedule) {
+          set((state) => {
+            state.schedule = schedule;
+          });
+        },
+      })),
+      { name: "schedule" }
+    )
   )
 );
