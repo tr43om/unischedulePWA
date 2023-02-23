@@ -14,7 +14,7 @@ const SearchBar = ({ search }: SearchBarProps) => {
       </div>
 
       <input
-        className="peer h-full w-full bg-white bg-opacity-50 pl-1 text-base text-base-content  outline-none dark:bg-neutral"
+        className="peer h-full w-full bg-white bg-opacity-0 pl-1 text-base text-base-content  outline-none dark:bg-neutral"
         type="text"
         id="search"
         autoFocus

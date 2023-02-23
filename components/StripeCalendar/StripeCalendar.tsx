@@ -24,7 +24,7 @@ const DateCard = ({ date }: { date: Date }) => {
 
   return (
     <div
-      className={`group mx-1 flex w-16 cursor-pointer justify-center rounded-lg	transition-all	 duration-300  hover:shadow-lg `}
+      className={`group mx-1 flex w-16 cursor-pointer justify-center rounded-lg	transition-all	 duration-300   `}
       onClick={() => {
         selectDate(date.getTime());
       }}

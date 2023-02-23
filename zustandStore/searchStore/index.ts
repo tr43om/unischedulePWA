@@ -29,7 +29,7 @@ export const useSearchStore = create<Store>()(
           isOpen: false,
           chooseQuery: (query: OmsuGroupType) => {
             get().closeSearch();
-            useUserStore.getState().addGroupId(query.id);
+            useUserStore.getState().chooseGroup(query);
             get().addToRecents(query);
           },
           toggleSearch: () =>
