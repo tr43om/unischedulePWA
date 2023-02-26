@@ -11,10 +11,10 @@ import { debounce } from "throttle-debounce";
 interface FuzzyOptions extends Fuzzysort.KeyOptions {}
 
 export const useFuzzy = <T extends { id: number }>(
-  list: T[],
+  lists: T[][],
   options: FuzzyOptions
 ): {
-  hits: Fuzzysort.KeyResults<T>;
+  hits: Fuzzysort.KeyResults<T>[];
   onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   query: string;
   setQuery: debounce<Dispatch<SetStateAction<string>>>;
@@ -23,8 +23,8 @@ export const useFuzzy = <T extends { id: number }>(
   const [query, updateQuery] = useState("");
 
   const hits = useMemo(
-    () => fuzzysort.go(query, list, options),
-    [query, options, list]
+    () => lists.map((list) => fuzzysort.go(query, list, options)),
+    [query, options, lists]
   );
 
   // debounce updateQuery and rename it `setQuery` so it's transparent

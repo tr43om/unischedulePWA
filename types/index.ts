@@ -62,7 +62,14 @@ export type OmsuScheduleResponse = {
 export interface OmsuScheduleDto
   extends Pick<
     OmsuScheduleResponse,
-    "auditories" | "professors" | "week" | "lesson" | "lesson_id" | "id"
+    | "auditories"
+    | "professors"
+    | "week"
+    | "lesson"
+    | "lesson_id"
+    | "id"
+    | "group"
+    | "group_id"
   > {
   startsAt: string;
   type: string;
@@ -73,4 +80,9 @@ export type OmsuGroupType = {
   id: number;
   name: string;
   course: number;
+};
+
+export type OmsuProfessorType = {
+  id: number;
+  name: string;
 };

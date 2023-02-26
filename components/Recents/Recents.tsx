@@ -9,9 +9,24 @@ type RecentsProps = {
 };
 
 const Recents = ({ active }: RecentsProps) => {
-  const recents = useSearchStore((state) => state.recents);
-  const addToFavorites = useSearchStore((state) => state.addToFavorites);
-  const deleteFromRecents = useSearchStore((state) => state.deleteFromRecents);
+  const { recents, chooseQuery, deleteFromRecents, addToFavorites } =
+    useSearchStore(
+      ({
+        chooseQuery,
+        favorites,
+        recents,
+        deleteFromRecents,
+        addToFavorites,
+      }) => {
+        return {
+          favorites,
+          recents,
+          deleteFromRecents,
+          chooseQuery,
+          addToFavorites,
+        };
+      }
+    );
 
   return (
     <div>
@@ -21,6 +36,7 @@ const Recents = ({ active }: RecentsProps) => {
           <div
             key={`${recent.id}-recent`}
             className="group flex cursor-pointer items-center  justify-between   border-b-[1px]   border-b-base-100  border-opacity-50 py-1.5 transition delay-100 ease-in-out last:border-b-[0] "
+            onClick={() => chooseQuery(recent)}
           >
             <p
               className={`${
@@ -29,7 +45,7 @@ const Recents = ({ active }: RecentsProps) => {
             >
               {recent.name}
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
               <div
                 className="tooltip tooltip-left"
                 data-tip="Добавить в избранное"

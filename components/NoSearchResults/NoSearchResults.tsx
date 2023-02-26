@@ -8,7 +8,7 @@ type NoSearchResultsProps = {
 const NoSearchResults = ({ query }: NoSearchResultsProps) => {
   return (
     <div className="py-6 px-6 text-center">
-      Группа &ldquo;{query}&rdquo; не существует
+      Группа или преподаватель по запросу: &ldquo;{query}&rdquo; не существует
     </div>
   );
 };

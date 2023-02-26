@@ -1,0 +1,1 @@
+export {default as GroupsHits} from './GroupsHits'

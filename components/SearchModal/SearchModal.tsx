@@ -1,43 +1,48 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
-import { useFuzzy } from "@/hooks/useFuzzy";
-import { useGroups } from "@/hooks/useGroups";
+import { useFuzzy, useGroups, useKeyPress, useProfessors } from "@/hooks";
 import { useSearchStore } from "@/zustandStore";
 import {
-  Recents,
   Hits,
   NoSearchResults,
-  Favorites,
   SearchNavigationHints,
   SearchBar,
+  NoQuery,
 } from "@/components";
-import { useKeyPress } from "@/hooks/useKeyPress";
 
 type SearchModal = {};
 
 const SearchModal = ({}: SearchModal) => {
   const { groups } = useGroups();
-  const [activeRecentOrFavorite, setActiveRecentOrFavorite] = useState(0);
+  const { professors } = useProfessors();
 
-  const favorites = useSearchStore((state) => state.favorites);
-  const recents = useSearchStore((state) => state.recents);
-  const toggleSearch = useSearchStore((state) => state.toggleSearch);
-  const chooseQuery = useSearchStore((state) => state.chooseQuery);
+  const { chooseQuery, favorites, recents, toggleSearch } = useSearchStore(
+    ({ favorites, recents, toggleSearch, chooseQuery }) => {
+      return { favorites, recents, toggleSearch, chooseQuery };
+    }
+  );
+
   const noQueryItemsLength = favorites.length + recents.length;
 
-  const { hits, onSearch, query } = useFuzzy(groups || [], {
+  const {
+    hits: [groupsHits, professorsHits],
+    onSearch,
+    query,
+  } = useFuzzy([groups, professors], {
     key: "name",
     limit: 5,
     threshold: -45,
   });
 
   const showRecentsAndFavorites = !query && noQueryItemsLength >= 1;
-  const showFavorites = recents.length >= 1;
-  const showRecents = favorites.length >= 1;
-  const showNoSearchResults = query.length >= 1 && hits.length === 0;
-  const showNavigationHints = noQueryItemsLength >= 1;
+  const showNoSearchResults =
+    query.length >= 1 && groupsHits.length === 0 && professorsHits.length === 0;
+  const showNavigationHints = noQueryItemsLength >= 1 || query.length >= 1;
+
+  const showHits = groupsHits.length + professorsHits.length >= 1;
+  const ref = useRef<HTMLDivElement>(null);
 
   // Modal off
   useKeyPress({
@@ -46,64 +51,39 @@ const SearchModal = ({}: SearchModal) => {
     hotkey: "ctrl+k",
   });
 
-  // Arrows navigation for recents and favorites
-  useKeyPress({
-    callback: () =>
-      activeRecentOrFavorite < noQueryItemsLength - 1
-        ? setActiveRecentOrFavorite((cur) => cur + 1)
-        : activeRecentOrFavorite === noQueryItemsLength - 1
-        ? setActiveRecentOrFavorite(0)
-        : null,
-    keys: ["ArrowDown"],
-  });
-
-  useKeyPress({
-    callback: () =>
-      activeRecentOrFavorite > 0
-        ? setActiveRecentOrFavorite((cur) => cur - 1)
-        : activeRecentOrFavorite === 0
-        ? setActiveRecentOrFavorite(noQueryItemsLength - 1)
-        : null,
-    keys: ["ArrowUp"],
-  });
-
   return (
     <div
-      className="relative z-10 "
+      className=" z-10 "
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
     >
       <div
-        className="fixed inset-0 bg-base-300 bg-opacity-75 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 h-screen overflow-y-hidden bg-base-300 bg-opacity-75 backdrop-blur-sm transition-opacity"
         onClick={toggleSearch}
       ></div>
 
       <div
-        className="fixed top-16 left-0 right-0 z-10  w-full overflow-y-auto "
+        className="fixed -top-10 left-0 right-0 z-10 h-full   w-full  "
         onClick={toggleSearch}
       >
-        <div className="flex min-h-full w-full items-end justify-center  text-center sm:items-center sm:p-0">
+        <div className="z-15 flex h-full w-full  items-center   justify-center text-center sm:p-0">
           <div
-            className="relative w-full max-w-xs transform  overflow-hidden  rounded-lg text-left  transition-all sm:max-w-lg"
+            className="relative w-full   max-w-xs transform      rounded-lg   text-left transition-all sm:max-w-lg"
             onClick={(e) => {
               e.stopPropagation();
             }}
           >
             <SearchBar search={onSearch} />
             {
-              <div className="relative mt-3  grid  overflow-hidden rounded-lg bg-white  dark:bg-neutral ">
-                {hits.length >= 1 && <Hits hits={hits} choose={chooseQuery} />}
-                {showRecentsAndFavorites && (
-                  <div className="grid gap-5 py-6 px-6">
-                    {recents.length >= 1 && (
-                      <Recents active={activeRecentOrFavorite} />
-                    )}
-                    {favorites.length >= 1 && (
-                      <Favorites active={activeRecentOrFavorite} />
-                    )}
-                  </div>
-                )}
+              <div
+                className={`${
+                  showNavigationHints && "pb-14"
+                } z-30 mt-3  grid max-h-72 overflow-y-auto rounded-lg bg-white scrollbar-thin  scrollbar-thumb-primary  dark:bg-neutral  dark:scrollbar-track-neutral-focus    dark:scrollbar-thumb-base-100`}
+                ref={ref}
+              >
+                {showHits && <Hits hits={[groupsHits, professorsHits]} />}
+                {showRecentsAndFavorites && <NoQuery />}
                 {showNoSearchResults && <NoSearchResults query={query} />}
                 {showNavigationHints && <SearchNavigationHints />}
               </div>

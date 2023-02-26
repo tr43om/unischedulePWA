@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "unischedule",
+  description: "OmSU schedule",
+};
+
 import {
   Navbar,
   ScheduleList,
@@ -5,19 +10,17 @@ import {
   CurrentDate,
   CalendarControls,
   ViewToggle,
+  ResultsFor,
 } from "@/components";
 
 export default async function Home() {
   return (
     <main>
       <Navbar />
-      <div className="flex justify-between">
-        <CurrentDate />
-        <CalendarControls />
-      </div>
 
       <StripeCalendar />
       {/* <ViewToggle /> */}
+      <ResultsFor />
       <ScheduleList />
     </main>
   );

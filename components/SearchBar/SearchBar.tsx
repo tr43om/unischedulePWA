@@ -20,13 +20,8 @@ const SearchBar = ({ search }: SearchBarProps) => {
         autoFocus
         autoComplete="off"
         placeholder="Найти расписание..."
-        onKeyDown={(e) => {
-          if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-            e.preventDefault();
-          }
-        }}
         onChange={(e) => {
-          e.preventDefault();
+          // e.preventDefault();
           search(e);
         }}
         defaultValue=""

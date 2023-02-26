@@ -17,7 +17,7 @@ const Highlight = <T,>({
     <div className={`${containerClassName} text-base`}>
       {fuzzysort.highlight(hit, (match) => (
         <span
-          className={hightlightClassname ? hightlightClassname : "font-bold"}
+          className={hightlightClassname ? hightlightClassname : "font-bold "}
           key={`highlight-${match}`}
         >
           {match}

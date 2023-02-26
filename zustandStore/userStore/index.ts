@@ -2,27 +2,44 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { devtools } from "zustand/middleware";
 import { persist } from "zustand/middleware";
-import { OmsuGroupType } from "@/types";
+import { OmsuGroupType, OmsuProfessorType } from "@/types";
 
 type Store = {
   groupId: number | null;
+  professorId: number | null;
   course: number | null;
   name: string | null;
-  chooseGroup: (group: OmsuGroupType) => void;
+  storeInfoAbout: (data: OmsuGroupType | OmsuProfessorType) => void;
 };
+
+function isGroup(
+  data: OmsuGroupType | OmsuProfessorType
+): data is OmsuGroupType {
+  return (data as OmsuGroupType).course !== undefined;
+}
 
 export const useUserStore = create<Store>()(
   devtools(
     persist(
       immer((set, get) => ({
+        professorId: null,
         groupId: null,
         course: null,
         name: null,
-        chooseGroup: (group) =>
+        storeInfoAbout: (data) =>
           set((state) => {
-            state.groupId = group.id;
-            state.course = group.course;
-            state.name = group.name;
+            if (isGroup(data)) {
+              state.professorId = null;
+
+              state.groupId = data.id;
+              state.name = data.name;
+              state.course = data.course;
+            } else {
+              state.groupId = null;
+
+              state.name = data.name;
+              state.professorId = data.id;
+            }
           }),
       })),
       { name: "userStore" }

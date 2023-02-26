@@ -1,8 +1,10 @@
-"use client";
 import "./globals.css";
 import { Roboto, IBM_Plex_Sans } from "@next/font/google";
-import { BottomNav } from "@/components";
-import { useAppearanceStore } from "../zustandStore/appearanceStore/index";
+
+export const metadata = {
+  title: "unischedule",
+  description: "OmSU schedule",
+};
 
 const plex = IBM_Plex_Sans({
   weight: ["400", "700"],
@@ -16,8 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="dracula">
-      <head />
-      <body className={`${plex.className} container mx-auto max-w-md p-4`}>
+      <body className={`${plex.className} container mx-auto max-w-md  p-4`}>
         {children}
       </body>
     </html>

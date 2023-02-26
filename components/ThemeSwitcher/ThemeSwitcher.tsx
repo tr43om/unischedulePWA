@@ -9,9 +9,9 @@ const ThemeSwitcher = () => {
 
   return (
     <label
-      className={`swap-rotate swap ${dark && "swap-active"} hover:text-primary`}
+      className={`swap swap-rotate ${dark && "swap-active"} hover:text-primary`}
       onClick={toggleTheme}
-      data-set-theme={`${dark ? "light" : "dracula"}`}
+      data-set-theme={`${dark ? "cmyk" : "dracula"}`}
     >
       <SunIcon className={`swap-off   h-5 `} />
       <MoonIcon className={`swap-on  h-5 `} />

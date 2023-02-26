@@ -1,3 +1,4 @@
+"use client";
 import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 
 type UseKeyPressProps = {
@@ -35,7 +36,6 @@ export const useKeyPress = (props: UseKeyPressProps) => {
         }
 
         if (ev.key === hotkey.split("+")[1].toLowerCase() && mainKey) {
-          console.log("HOTKEY");
           ev.preventDefault();
           ev.stopPropagation();
           callbackRef.current(ev);
