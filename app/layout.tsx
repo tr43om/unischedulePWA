@@ -18,6 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="dracula">
+      <head>
+        <title>unischedule</title>
+      </head>
       <body className={`${plex.className} container mx-auto max-w-md  p-4`}>
         {children}
       </body>
