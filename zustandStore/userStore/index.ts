@@ -7,9 +7,10 @@ import { OmsuGroupType, OmsuProfessorType } from "@/types";
 type Store = {
   groupId: number | null;
   professorId: number | null;
-  course: number | null;
   name: string | null;
   storeInfoAbout: (data: OmsuGroupType | OmsuProfessorType) => void;
+  storeGroup: (id: number, name: string) => void;
+  storeProfessor: (id: number, name: string) => void;
 };
 
 function isGroup(
@@ -33,13 +34,28 @@ export const useUserStore = create<Store>()(
 
               state.groupId = data.id;
               state.name = data.name;
-              state.course = data.course;
             } else {
               state.groupId = null;
 
               state.name = data.name;
               state.professorId = data.id;
             }
+          }),
+
+        storeGroup: (id, name) =>
+          set((state) => {
+            state.professorId = null;
+            state.name = name;
+
+            state.groupId = id;
+          }),
+
+        storeProfessor: (id, name) =>
+          set((state) => {
+            state.professorId = id;
+            state.name = name;
+
+            state.groupId = null;
           }),
       })),
       { name: "userStore" }

@@ -1,17 +1,4 @@
-export const metadata = {
-  title: "unischedule",
-  description: "OmSU schedule",
-};
-
-import {
-  Navbar,
-  ScheduleList,
-  StripeCalendar,
-  CurrentDate,
-  CalendarControls,
-  ViewToggle,
-  ResultsFor,
-} from "@/components";
+import { Navbar, ScheduleList, StripeCalendar } from "@/components";
 
 export default async function Home() {
   return (
@@ -19,8 +6,6 @@ export default async function Home() {
       <Navbar />
 
       <StripeCalendar />
-      {/* <ViewToggle /> */}
-      <ResultsFor />
       <ScheduleList />
     </main>
   );

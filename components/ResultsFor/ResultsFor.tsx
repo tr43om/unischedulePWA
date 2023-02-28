@@ -1,22 +1,23 @@
 "use client";
 
-import { useUserStore } from "@/zustandStore";
 import React, { useEffect, useState } from "react";
 
-const ResultsFor = () => {
+type ResultsForProps = {
+  resultsFor: string;
+};
+
+const ResultsFor = ({ resultsFor }: ResultsForProps) => {
   const [rehydrated, setRehydrated] = useState(false);
-  const name = useUserStore((state) => state.name);
 
   useEffect(() => {
     setRehydrated(true);
   }, []);
 
-  if (!name && !rehydrated) return null;
   return (
     <>
       {rehydrated && (
         <p className="  badge  text-xs ">
-          <span className="text-white">{name}</span>
+          <span className="text-white">{resultsFor}</span>
         </p>
       )}
     </>

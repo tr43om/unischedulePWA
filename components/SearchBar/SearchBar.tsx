@@ -10,7 +10,11 @@ const SearchBar = ({ search }: SearchBarProps) => {
   return (
     <div className="relative flex h-14 w-full  items-center overflow-hidden rounded-lg  bg-white bg-opacity-50 px-3 focus-within:shadow-lg dark:bg-neutral">
       <div className="grid h-full w-12 place-items-center ">
-        <MagnifyingGlassIcon className="h-5  text-gray-400" />
+        <MagnifyingGlassIcon
+          className="  text-gray-400"
+          width={20}
+          height={20}
+        />
       </div>
 
       <input
@@ -21,7 +25,6 @@ const SearchBar = ({ search }: SearchBarProps) => {
         autoComplete="off"
         placeholder="Найти расписание..."
         onChange={(e) => {
-          // e.preventDefault();
           search(e);
         }}
         defaultValue=""

@@ -19,6 +19,8 @@ type ScheduleCardProps = {
 const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
   const groupID = useUserStore((state) => state.groupId);
   const professorId = useUserStore((state) => state.professorId);
+  const chooseGroup = useUserStore((state) => state.storeGroup);
+  const chooseProfessor = useUserStore((state) => state.storeProfessor);
   return (
     <li
       className="rounded-lg border border-neutral border-opacity-50 p-6"
@@ -42,7 +44,7 @@ const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
           <div className="grid ">
             {schedule.professors.map(({ id, name }, i) => (
               <div
-                key={id}
+                key={`professor-${id}-${schedule.id}`}
                 className="grid gap-2 border-b-[1px] border-primary border-opacity-30 py-3 last:border-none"
               >
                 <div className="flex items-center ">
@@ -51,14 +53,13 @@ const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
                       <span className="text-xs">{name.split("")[0]}</span>
                     </div>
                   </div>
-                  <div className="indicator">
-                    <span className=" indicator-item">
-                      <LinkIcon className="h-3" />
-                    </span>
-                    <p className="btn-ghost  btn-xs btn text-sm normal-case ">
-                      {name}
-                    </p>
-                  </div>
+
+                  <p
+                    className=" btn-link btn-xs btn text-sm normal-case"
+                    onClick={() => chooseProfessor(id, name)}
+                  >
+                    {name}
+                  </p>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <MapPinIcon
@@ -74,9 +75,17 @@ const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
         )}
 
         {professorId && (
-          <div className="btn-link btn-xs btn flex items-center justify-start gap-1.5 justify-self-start">
-            <UserIcon width={15} height={15} className="text-primary" />
-            <p className="text-sm">{schedule.group}</p>
+          <div>
+            {schedule.groups.map(({ id, name }) => (
+              <div
+                key={`group-${id}-${schedule.id}`}
+                className="btn-link btn-xs btn flex items-center justify-start gap-1.5 justify-self-start"
+                onClick={() => chooseGroup(id, name)}
+              >
+                <UserIcon width={15} height={15} className="text-primary" />
+                <p className="text-sm">{name}</p>
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -84,4 +93,4 @@ const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
   );
 };
 
-export default ScheduleCard;
+export default React.memo(ScheduleCard);

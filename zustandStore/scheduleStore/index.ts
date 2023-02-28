@@ -2,17 +2,7 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { devtools } from "zustand/middleware";
 import { persist } from "zustand/middleware";
-import {
-  Query,
-  collection,
-  getDocs,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
-import { db } from "@/firebase.config";
-import { useDateStore } from "../dateStore";
-import { ScheduleType } from "@/types";
+
 import { OmsuScheduleDto } from "../../types/index";
 
 type Store = {

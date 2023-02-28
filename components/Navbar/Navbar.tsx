@@ -5,7 +5,7 @@ import { themeChange } from "theme-change";
 import { SearchModal, ThemeSwitcher } from "@/components";
 import { useSearchStore, useUserStore } from "@/zustandStore";
 import { useKeyPress } from "@/hooks";
-
+import { useTheme } from "next-themes";
 const Navbar = () => {
   const { isOpen, toggleSearch } = useSearchStore();
   const { groupId, professorId } = useUserStore();
@@ -35,7 +35,9 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <MagnifyingGlassIcon
-          className=" h-5 cursor-pointer  hover:text-primary"
+          className=" cursor-pointer  hover:text-primary"
+          width={20}
+          height={20}
           onClick={toggleSearch}
         />
         {isModalShown && <SearchModal />}

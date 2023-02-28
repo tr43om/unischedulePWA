@@ -44,33 +44,29 @@ export type OmsuScheduleResponse = {
   type_work: "Лаб" | "Лек";
   lesson_id: number;
   teacher: string;
-  professors: {
-    name: string;
-    id: number;
-  }[];
+
   teacher_id: number;
+  auditCorps: string;
   group: string;
   group_id: number;
-  auditCorps: string;
-  auditories: {
-    name: string;
-    id: number;
-  }[];
+
   auditory_id: number;
 };
 
 export interface OmsuScheduleDto
-  extends Pick<
-    OmsuScheduleResponse,
-    | "auditories"
-    | "professors"
-    | "week"
-    | "lesson"
-    | "lesson_id"
-    | "id"
-    | "group"
-    | "group_id"
-  > {
+  extends Pick<OmsuScheduleResponse, "week" | "lesson" | "lesson_id" | "id"> {
+  professors: {
+    name: string;
+    id: number;
+  }[];
+  groups: {
+    name: string;
+    id: number;
+  }[];
+  auditories: {
+    name: string;
+    id: number;
+  }[];
   startsAt: string;
   type: string;
   endsAt: string;
