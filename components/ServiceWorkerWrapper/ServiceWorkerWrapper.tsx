@@ -1,9 +1,5 @@
-"use client";
-
-import { useEffect } from "react";
-
 const ServiceWorkerWrapper = () => {
-  useEffect(() => {
+  if (typeof window !== "undefined") {
     window.addEventListener("load", async () => {
       if ("serviceWorker" in navigator) {
         try {
@@ -14,8 +10,9 @@ const ServiceWorkerWrapper = () => {
         }
       }
     });
-  });
-  return null;
+  }
+
+  return <></>;
 };
 
 export default ServiceWorkerWrapper;
