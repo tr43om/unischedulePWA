@@ -25,3 +25,4 @@ export * from "./ProfessorsHits";
 export * from "./SkeletonScheduleCard";
 export * from "./ThemeProviders";
 export * from "./AnalyticsWrapper";
+export * from "./ServiceWorkerWrapper";

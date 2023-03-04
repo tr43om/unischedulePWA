@@ -1,7 +1,11 @@
 import "./globals.css";
 import { Roboto, IBM_Plex_Sans } from "@next/font/google";
 import Script from "next/script";
-import { AnalyticsWrapper, ThemeProviders } from "@/components";
+import {
+  AnalyticsWrapper,
+  ServiceWorkerWrapper,
+  ThemeProviders,
+} from "@/components";
 
 const plex = IBM_Plex_Sans({
   weight: ["400", "700"],
@@ -23,22 +27,10 @@ export default function RootLayout({
       </head>
       <body className={`${plex.className} container mx-auto max-w-md  p-4`}>
         <AnalyticsWrapper />
+        <ServiceWorkerWrapper />
         <ThemeProviders data-theme defaultTheme="dracula" enableSystem>
           {children}
         </ThemeProviders>
-
-        <Script id="serviceworker-script">
-          {`window.addEventListener("load", async () => {
-              if ("serviceWorker" in navigator) {
-                try {
-                  await navigator.serviceWorker.register("/sw.js");
-                  console.log("sw SUCCESS");
-                } catch (e) {
-                  console.log("sw error");
-                }
-              }
-            });`}
-        </Script>
       </body>
     </html>
   );
