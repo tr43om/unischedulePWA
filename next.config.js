@@ -10,11 +10,13 @@ const config = {
 };
 
 const nextConfig = require("next-pwa")({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-  runtimeCaching,
-  buildExcludes: [/middleware-manifest.json$/],
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+    runtimeCaching,
+    buildExcludes: [/middleware-manifest.json$/],
+  },
 })(config);
 
 module.exports = nextConfig;
