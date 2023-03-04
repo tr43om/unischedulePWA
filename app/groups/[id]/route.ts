@@ -6,6 +6,7 @@ export async function GET(
 ) {
   try {
     const { id } = params;
+
     const response = await fetch(
       `https://eservice.omsu.ru/schedule/backend/schedule/group/${id}`,
       { next: { revalidate: 60 } }
