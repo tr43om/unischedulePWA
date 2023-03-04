@@ -1,3 +1,5 @@
+"use client";
+
 const ServiceWorkerWrapper = () => {
   window.addEventListener("load", async () => {
     if ("serviceWorker" in navigator) {
