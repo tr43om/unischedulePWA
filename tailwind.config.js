@@ -17,30 +17,9 @@ module.exports = {
   ],
   daisyui: {
     themes: [
-      "pastel",
       "cmyk",
       "dracula",
-      {
-        light: {
-          primary: "#0284c7",
-
-          secondary: "#BD93F9",
-
-          accent: "#FFB86C",
-
-          neutral: "#414558",
-
-          "base-100": "#e0e7ff",
-
-          info: "#8BE9FD",
-
-          success: "#50FA7B",
-
-          warning: "#F1FA8C",
-
-          error: "#FF5555",
-        },
-      },
+      
     ],
     darkTheme: "dracula",
   },

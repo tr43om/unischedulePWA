@@ -21,7 +21,6 @@ export const useSchedule = (
   >(`${groupID ? "groups/" + groupID : "professors/" + professorId}`, fetcher);
 
   if (!groupID && !professorId) return { schedule: [], isLoading, error };
-  console.log(data);
 
   const scheduleOfSelectedDay = _.filter(data, (day) => {
     const [date, month, year] = day.day.split(".");
@@ -111,8 +110,6 @@ export const useSchedule = (
       {} as OmsuScheduleDto
     )
   );
-
-  console.log("SCHEDULE", schedule);
 
   return { schedule, isLoading, error };
 };

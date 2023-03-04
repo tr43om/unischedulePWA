@@ -1,9 +1,9 @@
 {
   "display": "standalone",
-  "scope": "/",
   "start_url": "/",
   "name": "unischedule",
   "short_name": "unischedule",
+  "scope": "/app",
   "description": "Schedule for omsu",
   "icons": [
     {

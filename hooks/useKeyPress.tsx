@@ -44,7 +44,6 @@ export const useKeyPress = (props: UseKeyPressProps) => {
 
       if (keys && keys.some((key) => ev.key === key)) {
         callbackRef.current(ev);
-        console.log(ev.key);
       }
     },
     [keys, hotkey]

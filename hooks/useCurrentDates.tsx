@@ -16,8 +16,6 @@ export const useCurrentDates = () => {
   const firstSemesterStarts = new Date(getYear(new Date()), 8, 1);
   const firstSemesterEnds = addWeeks(firstSemesterStarts, 17);
 
-  console.log("CURRENT DAYS HOOK");
-
   const SEMESTER_START_DATE =
     new Date().getMonth() >= 9 && new Date().getMonth() <= 12
       ? firstSemesterStarts

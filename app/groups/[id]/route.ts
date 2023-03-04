@@ -7,7 +7,6 @@ export async function GET(
 ) {
   try {
     const { id } = params;
-    console.log(id);
     const response = await fetch(
       `https://eservice.omsu.ru/schedule/backend/schedule/group/${id}`
     );

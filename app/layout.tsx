@@ -1,8 +1,7 @@
-"use client";
 import "./globals.css";
 import { Roboto, IBM_Plex_Sans } from "@next/font/google";
 import Script from "next/script";
-import { ThemeProviders } from "@/components";
+import { AnalyticsWrapper, ThemeProviders } from "@/components";
 
 const plex = IBM_Plex_Sans({
   weight: ["400", "700"],
@@ -23,6 +22,7 @@ export default function RootLayout({
         <title>unischedule</title>
       </head>
       <body className={`${plex.className} container mx-auto max-w-md  p-4`}>
+        <AnalyticsWrapper />
         <ThemeProviders data-theme defaultTheme="dracula" enableSystem>
           {children}
         </ThemeProviders>
@@ -30,7 +30,6 @@ export default function RootLayout({
         {/* <Script id="serviceworker-script">
           {`if(serviceWorker in navigator) {
             window.addEventListener('load', () => {
-              console.log('okkk')
               navigator.serviceWorker.register(./serviceworker.js);
             })
           }`}
