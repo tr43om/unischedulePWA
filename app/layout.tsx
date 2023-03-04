@@ -1,5 +1,3 @@
-"use client";
-
 import "./globals.css";
 import { Roboto, IBM_Plex_Sans } from "@next/font/google";
 import Script from "next/script";
@@ -32,23 +30,6 @@ export default function RootLayout({
         <ThemeProviders data-theme defaultTheme="dracula" enableSystem>
           {children}
         </ThemeProviders>
-        <Script
-          onReady={() =>
-            window.addEventListener("load", async () => {
-              if ("serviceWorker" in navigator) {
-                console.log("jopa");
-                try {
-                  await navigator.serviceWorker.register("/sw.js");
-                  console.log("sw SUCCESS");
-                } catch (e) {
-                  console.log("sw error");
-                }
-              } else {
-                console.log("asdasd");
-              }
-            })
-          }
-        />
       </body>
     </html>
   );
