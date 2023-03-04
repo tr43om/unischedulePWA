@@ -20,6 +20,8 @@ export const useSchedule = (
     OmsuScheduleServerRes[]
   >(`${groupID ? "groups/" + groupID : "professors/" + professorId}`, fetcher);
 
+  // console.log(data);
+
   if (!groupID && !professorId) return { schedule: [], isLoading, error };
 
   const scheduleOfSelectedDay = _.filter(data, (day) => {
