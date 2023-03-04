@@ -1,19 +1,20 @@
 /** @type {import('next').NextConfig} */
 // import withPWA from "next-pwa";
 
-// const runtimeCaching = require("next-pwa/cache");
+const runtimeCaching = require("next-pwa/cache");
 
-const nextConfig = require("next-pwa")({
+const config = {
   experimental: {
     appDir: true,
   },
-  pwa: {
-    dest: "public",
-    register: true,
-    skipWaiting: true,
-    runtimeCaching: require("next-pwa/cache"),
-    buildExcludes: [/middleware-manifest.json$/],
-  },
-});
+};
+
+const nextConfig = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  runtimeCaching,
+  buildExcludes: [/middleware-manifest.json$/],
+})(config);
 
 module.exports = nextConfig;
