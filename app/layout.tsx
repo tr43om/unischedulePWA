@@ -17,17 +17,23 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+        <meta name="theme-color" content="#fff" />
         <title>unischedule</title>
       </head>
       <body className={`${plex.className} container mx-auto max-w-md  p-4`}>
-        <ThemeProviders data-theme defaultTheme="system" enableSystem>
+        <ThemeProviders data-theme defaultTheme="dracula" enableSystem>
           {children}
         </ThemeProviders>
 
-        {/* <Script id="theme-script" strategy="beforeInteractive">
-          {`const theme = localStorage.getItem('theme') || 'cmyk';
-          console.log('theme', theme)
-          document.documentElement.dataset.theme = theme;`}
+        {/* <Script id="serviceworker-script">
+          {`if(serviceWorker in navigator) {
+            window.addEventListener('load', () => {
+              console.log('okkk')
+              navigator.serviceWorker.register(./serviceworker.js);
+            })
+          }`}
         </Script> */}
       </body>
     </html>

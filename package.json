@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@happykit/analytics": "^1.0.1",
     "@heroicons/react": "^2.0.14",
     "@next/font": "13.1.6",
     "@tailwindcss/typography": "^0.5.9",
@@ -28,6 +29,7 @@
     "immer": "^9.0.19",
     "lodash": "^4.17.21",
     "next": "^13.2.1",
+    "next-pwa": "^5.6.0",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

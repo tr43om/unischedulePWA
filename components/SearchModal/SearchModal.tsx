@@ -18,7 +18,7 @@ const SearchModal = ({}: SearchModal) => {
   const { groups } = useGroups();
   const { professors } = useProfessors();
 
-  const { chooseQuery, favorites, recents, toggleSearch } = useSearchStore(
+  const { favorites, recents, toggleSearch } = useSearchStore(
     ({ favorites, recents, toggleSearch, chooseQuery }) => {
       return { favorites, recents, toggleSearch, chooseQuery };
     }
@@ -59,7 +59,7 @@ const SearchModal = ({}: SearchModal) => {
       aria-modal="true"
     >
       <div
-        className="fixed inset-0 h-screen overflow-y-hidden bg-base-300 bg-opacity-75 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 h-screen bg-base-300 bg-opacity-75 backdrop-blur-sm transition-opacity overflow-y-hidden"
         onClick={toggleSearch}
       ></div>
 

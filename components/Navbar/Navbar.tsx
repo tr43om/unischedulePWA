@@ -40,7 +40,7 @@ const Navbar = () => {
           height={20}
           onClick={toggleSearch}
         />
-        {isModalShown && <SearchModal />}
+        {isOpen && <SearchModal />}
       </div>
     </div>
   );
