@@ -27,13 +27,18 @@ export default function RootLayout({
           {children}
         </ThemeProviders>
 
-        {/* <Script id="serviceworker-script">
-          {`if(serviceWorker in navigator) {
-            window.addEventListener('load', () => {
-              navigator.serviceWorker.register(./serviceworker.js);
-            })
-          }`}
-        </Script> */}
+        <Script id="serviceworker-script">
+          {`window.addEventListener("load", async () => {
+  if ("serviceWorker" in navigator) {
+    try {
+      await navigator.serviceWorker.register("/sw.js");
+      console.log("sw SUCCESS");
+    } catch (e) {
+      console.log("sw error");
+    }
+  }
+});`}
+        </Script>
       </body>
     </html>
   );

@@ -1,17 +1,24 @@
 /** @type {import('next').NextConfig} */
+// import withPWA from "next-pwa";
 
-const withPWA = require("next-pwa")({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-  // disable: process.env.NODE_ENV === "development",
-  scope: "/app",
-});
+// const withPWA = require("next-pwa")({
+//   dest: "public",
+//   register: true,
+//   skipWaiting: true,
+//   // disable: process.env.NODE_ENV === "development",
+//   scope: "/app",
+// });
 
-const nextConfig = {
+const config = {
   experimental: {
     appDir: true,
   },
 };
 
-module.exports = withPWA(nextConfig);
+const nextConfig = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+})(config);
+
+module.exports = nextConfig;
