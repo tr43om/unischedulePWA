@@ -8,7 +8,8 @@ export async function GET(
   try {
     const { id } = params;
     const response = await fetch(
-      `https://eservice.omsu.ru/schedule/backend/schedule/tutor/${id}`
+      `https://eservice.omsu.ru/schedule/backend/schedule/tutor/${id}`,
+      { next: { revalidate: 20 } }
     );
 
     const { data } = await response.json();
