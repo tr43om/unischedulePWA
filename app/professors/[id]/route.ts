@@ -9,7 +9,7 @@ export async function GET(
     const { id } = params;
     const response = await fetch(
       `https://eservice.omsu.ru/schedule/backend/schedule/tutor/${id}`,
-      { next: { revalidate: 20 } }
+      { next: { revalidate: 10 }, cache: "no-store" }
     );
 
     const { data } = await response.json();
