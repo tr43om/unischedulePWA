@@ -25,6 +25,10 @@ const ScheduleList = ({ schedule }: ScheduleListProps) => {
 
   console.log(scheduleOfSelectedDay);
 
+  if (!scheduleOfSelectedDay) {
+    <p>{schedule.type}</p>;
+  }
+
   // if (isLoading) {
   //   return (
   //     <div>
