@@ -17,10 +17,13 @@ type ScheduleListProps = {
 
 const ScheduleList = ({ schedule }: ScheduleListProps) => {
   const selectedDate = useDateStore((state) => state.selectedDate);
+  console.log(schedule);
 
   const scheduleOfSelectedDay = _.find(schedule.data, (day) => {
     return day.timestamp === selectedDate;
   });
+
+  console.log(scheduleOfSelectedDay);
 
   // if (isLoading) {
   //   return (
