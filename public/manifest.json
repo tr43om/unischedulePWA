@@ -1,6 +1,6 @@
 {
   "display": "standalone",
-  "start_url": ".",
+  "start_url": "/",
   "orientation": "portrait",
   "name": "unischedule",
   "short_name": "unischedule",

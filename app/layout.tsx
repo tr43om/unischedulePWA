@@ -1,13 +1,6 @@
 import "./globals.css";
-import { Roboto, IBM_Plex_Sans } from "@next/font/google";
-import Script from "next/script";
-import {
-  AnalyticsWrapper,
-  Navbar,
-  ServiceWorkerWrapper,
-  StripeCalendar,
-  ThemeProviders,
-} from "@/components";
+import { IBM_Plex_Sans } from "@next/font/google";
+import { AnalyticsWrapper, ThemeProviders } from "@/components";
 
 const plex = IBM_Plex_Sans({
   weight: ["400", "700"],
