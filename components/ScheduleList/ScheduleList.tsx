@@ -10,6 +10,7 @@ import {
   ResultsFor,
 } from "@/components";
 import * as _ from "lodash";
+import { isSameDay } from "date-fns";
 
 type ScheduleListProps = {
   schedule: TransformedScheduleDto;
@@ -21,7 +22,7 @@ const ScheduleList = ({ schedule }: ScheduleListProps) => {
   console.log(selectedDate);
 
   const scheduleOfSelectedDay = _.find(schedule.data, (day) => {
-    return day.timestamp === selectedDate;
+    return isSameDay(selectedDate, day.timestamp);
   });
 
   console.log(scheduleOfSelectedDay);
