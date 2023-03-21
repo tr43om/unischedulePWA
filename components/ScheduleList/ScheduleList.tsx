@@ -17,6 +17,7 @@ type ScheduleListProps = {
 
 const ScheduleList = ({ schedule }: ScheduleListProps) => {
   const selectedDate = useDateStore((state) => state.selectedDate);
+  console.log(schedule);
   console.log(selectedDate);
 
   const scheduleOfSelectedDay = _.find(schedule.data, (day) => {
