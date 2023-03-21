@@ -32,7 +32,7 @@ export const getCurrentWeek = (date: Date) => {
 export const fetcher = (url: string, init?: RequestInit) =>
   fetch(url).then((res) => res.json());
 
-const startsAt = (time: number) => {
+const lessonsStartAt = (time: number) => {
   switch (time) {
     case 1:
       return "8:45";
@@ -55,7 +55,7 @@ const startsAt = (time: number) => {
   }
 };
 
-const endsAt = (time: number) => {
+const lessonsEndAt = (time: number) => {
   switch (time) {
     case 1:
       return "10:20";
@@ -84,43 +84,46 @@ export const transformSchedule = (
 ) => {
   const scheduleFor =
     type === "group" ? data[0].lessons[0].group : data[0].lessons[0].teacher;
+
   const schedule = _.map(data, ({ lessons, day }) => {
     const [date, month, year] = day.split(".");
     const timestamp = new Date(`${year}/${month}/${date}`).getTime();
 
-    // const groupedSchedule = _.groupBy(lessons, "time");
+    const groupedSchedule = _.groupBy(lessons, "time");
 
-    const professors = _.map(lessons, (lesson) => ({
-      name: lesson.teacher,
-      id: lesson.teacher_id,
-    }));
+    const formattedLessons = _.map(groupedSchedule, (course) => {
+      const { lesson, lesson_id, week, type_work: type, id, time } = course[0];
 
-    const auditories = _.map(lessons, (lesson) => ({
-      name: lesson.auditCorps,
-      id: lesson.auditory_id,
-    }));
+      const professors = _.map(course, ({ teacher, teacher_id }) => ({
+        name: teacher,
+        id: teacher_id,
+      }));
 
-    const groups = _.map(lessons, (lesson) => ({
-      name: lesson.group,
-      id: lesson.group_id,
-    }));
+      const auditories = _.map(course, ({ auditCorps, auditory_id }) => ({
+        name: auditCorps,
+        id: auditory_id,
+      }));
 
-    const formattedLessons = _.map(lessons, (lesson) => {
-      const formattedLessonName = lesson.lesson
+      const groups = _.map(course, ({ group, group_id }) => ({
+        name: group,
+        id: group_id,
+      }));
+
+      const formattedLessonName = lesson
         .split(" ")
-        .splice(0, lesson.lesson.split(" ").length - 1)
+        .splice(0, lesson.split(" ").length - 1)
         .join(" ");
       return {
         lesson: formattedLessonName,
         groups,
         professors,
         auditories,
-        id: lesson.id,
-        week: lesson.week,
-        type: lesson.type_work,
-        lesson_id: lesson.lesson_id,
-        startsAt: startsAt(lesson.time),
-        endsAt: endsAt(lesson.time),
+        id,
+        week,
+        type,
+        lesson_id,
+        startsAt: lessonsStartAt(time),
+        endsAt: lessonsEndAt(time),
       };
     });
 

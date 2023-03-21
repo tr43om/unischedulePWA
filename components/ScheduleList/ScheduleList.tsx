@@ -18,19 +18,15 @@ type ScheduleListProps = {
 
 const ScheduleList = ({ schedule }: ScheduleListProps) => {
   const selectedDate = useDateStore((state) => state.selectedDate);
-  console.log(schedule);
-  console.log(selectedDate);
 
   const scheduleOfSelectedDay = _.find(schedule.data, (day) => {
     return isSameDay(selectedDate, day.timestamp);
   });
 
   console.log(scheduleOfSelectedDay);
-
-  if (!scheduleOfSelectedDay) {
-    <p>{schedule.type}</p>;
+  if (scheduleOfSelectedDay === undefined) {
+    return <NoSchedule />;
   }
-
   // if (isLoading) {
   //   return (
   //     <div>
@@ -42,10 +38,6 @@ const ScheduleList = ({ schedule }: ScheduleListProps) => {
   //       </div>
   //     </div>
   //   );
-  // }
-
-  // if (schedule.length < 1) {
-  //   return <NoSchedule />;
   // }
 
   return (

@@ -8,7 +8,12 @@ export const useProfessors = () => {
   const { data, isLoading, error } = useSwr<OmsuProfessorType[]>(
     "../api/professors",
     fetcher,
-    { suspense: true }
+    {
+      suspense: true,
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
   );
 
   const professors = _.sortBy(data, "name");

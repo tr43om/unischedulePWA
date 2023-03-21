@@ -1,4 +1,4 @@
-import { ResultsFor, ScheduleList } from "@/components";
+import { NoSchedule, ResultsFor, ScheduleList } from "@/components";
 import { OmsuScheduleResponse } from "@/types";
 import { transformSchedule } from "@/utils";
 
