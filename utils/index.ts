@@ -86,7 +86,9 @@ export const transformSchedule = (
     type === "group" ? data[0].lessons[0].group : data[0].lessons[0].teacher;
   const schedule = _.map(data, ({ lessons, day }) => {
     const [date, month, year] = day.split(".");
-    const timestamp = new Date(`${year}/${month}/${date}`).getTime();
+    const timestamp = new Date(
+      new Date(`${year}/${month}/${date}`).setHours(0, 0, 0, 0)
+    ).getTime();
 
     // const groupedSchedule = _.groupBy(lessons, "time");
 
