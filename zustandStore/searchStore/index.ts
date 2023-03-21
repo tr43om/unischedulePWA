@@ -4,10 +4,12 @@ import { devtools } from "zustand/middleware";
 import { persist } from "zustand/middleware";
 import { OmsuGroupType, OmsuProfessorType } from "types";
 import { useUserStore } from "../userStore";
+import { useRouter } from "next/router";
 
 type RecentType = {
   id: number;
   name: string;
+  type?: string;
 };
 
 interface FavoriteType extends RecentType {}
@@ -20,7 +22,10 @@ type Store = {
   recents: RecentType[];
   deleteFromRecents: (id: number) => void;
   deleteFromFavorites: (id: number) => void;
-  addToRecents: (query: OmsuGroupType | OmsuProfessorType) => void;
+  addToRecents: (
+    query: OmsuGroupType | OmsuProfessorType,
+    type: "group" | "professor"
+  ) => void;
   addToFavorites: (query: OmsuGroupType | OmsuProfessorType) => void;
   isDuplicate: (query: OmsuGroupType | OmsuProfessorType) => void;
   favorites: FavoriteType[];
@@ -49,13 +54,12 @@ export const useSearchStore = create<Store>()(
           chooseQuery: (query) => {
             get().closeSearch();
             useUserStore.getState().storeInfoAbout(query);
-            get().addToRecents(query);
+            const type = "course" in query ? "group" : "professor";
+            get().addToRecents(query, type);
           },
           toggleSearch: () =>
             set((state) => {
-              // if (useUserStore.getState().groupId !== null) {
               state.isOpen = !state.isOpen;
-              // }
             }),
           closeSearch: () =>
             set((state) => {
@@ -71,7 +75,7 @@ export const useSearchStore = create<Store>()(
             });
           },
 
-          addToRecents: (query) => {
+          addToRecents: (query, type) => {
             // 1. Check if group exists in favorites or recents arrays
             const duplicate = get().recents.find(
               (item) => item.id === query.id
@@ -90,7 +94,7 @@ export const useSearchStore = create<Store>()(
             set((state) => {
               // 2. If there is no duplicate in recents and favorites, add to recents
               if (!existsInRecents && !existsInFavorites) {
-                state.recents.unshift(query);
+                state.recents.unshift({ ...query, type });
                 // 3. If there are more than 4 recents displayed, delete the last one
               } else if (state.recents.length >= 5) {
                 state.recents.pop();

@@ -1,26 +1,19 @@
-"use client";
-
-import { ScheduleType } from "@/types";
 import {
   ClockIcon,
   MapPinIcon,
   UserIcon,
   LinkIcon,
 } from "@heroicons/react/24/outline";
-import Image from "next/image";
 import React from "react";
 import { OmsuScheduleDto } from "../../types/index";
-import { useUserStore } from "@/zustandStore";
+import Link from "next/link";
 
 type ScheduleCardProps = {
+  type: "group" | "professor";
   schedule: OmsuScheduleDto;
 };
 
-const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
-  const groupID = useUserStore((state) => state.groupId);
-  const professorId = useUserStore((state) => state.professorId);
-  const chooseGroup = useUserStore((state) => state.storeGroup);
-  const chooseProfessor = useUserStore((state) => state.storeProfessor);
+const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
   return (
     <li
       className="rounded-lg border border-neutral border-opacity-50 p-6"
@@ -40,7 +33,7 @@ const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
           <p className="badge badge-sm">{schedule.type}</p>
         </div>
 
-        {groupID && (
+        {type === "group" && (
           <div className="grid ">
             {schedule.professors.map(({ id, name }, i) => (
               <div
@@ -54,12 +47,12 @@ const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
                     </div>
                   </div>
 
-                  <p
+                  <Link
+                    href={`../professors/${id}`}
                     className=" btn-link btn-xs btn text-sm normal-case"
-                    onClick={() => chooseProfessor(id, name)}
                   >
                     {name}
-                  </p>
+                  </Link>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <MapPinIcon
@@ -74,17 +67,17 @@ const ScheduleCard = ({ schedule }: ScheduleCardProps) => {
           </div>
         )}
 
-        {professorId && (
+        {type === "professor" && (
           <div>
             {schedule.groups.map(({ id, name }) => (
-              <div
+              <Link
+                href={`../groups/${id}`}
                 key={`group-${id}-${schedule.id}`}
                 className="btn-link btn-xs btn flex items-center justify-start gap-1.5 justify-self-start"
-                onClick={() => chooseGroup(id, name)}
               >
                 <UserIcon width={15} height={15} className="text-primary" />
                 <p className="text-sm">{name}</p>
-              </div>
+              </Link>
             ))}
           </div>
         )}

@@ -2,7 +2,7 @@ import { useState, useEffect, RefObject, useCallback } from "react";
 import { useKeyPress } from "./useKeyPress";
 import * as _ from "lodash";
 import { debounce } from "throttle-debounce";
-import { flushSync } from "react-dom";
+import { useRouter } from "next/router";
 
 type UseHitsNavigationProps<T> = {
   scrollTo: RefObject<HTMLDivElement>;
@@ -75,13 +75,13 @@ export const useHitsNavigation = <T,>(props: UseHitsNavigationProps<T>) => {
     keys: ["ArrowUp"],
   });
 
-  useKeyPress({
-    callback: () => {
-      const query = hits[active];
-      props.choose(query as T);
-    },
-    keys: ["Enter"],
-  });
+  // useKeyPress({
+  //   callback: () => {
+  //     const query = hits[active];
+  //     props.choose(query as T);
+  //   },
+  //   keys: ["Enter"],
+  // });
 
   return {
     activeList,

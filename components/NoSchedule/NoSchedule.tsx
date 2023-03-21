@@ -2,8 +2,7 @@ import React from "react";
 import * as _ from "lodash";
 
 const NoSchedule = () => {
-  const emojis = ["🎉", "🤯", "😭", "👺", "😵", "🥹", "🥲", "😤", "😇"];
-  // const emojis = ["&#x1F600;", "&#x1F602;", "&#x1F605;"];
+  const emojis = ["🎉", "🤯", "😭", "👺", "😵", "😤", "😇"];
 
   return (
     <div className="mt-16 flex flex-col items-center justify-center gap-5 ">

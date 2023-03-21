@@ -30,7 +30,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/error.js",
-    "app/error.js"
+    "app/error.js",
+    "app/groups/[group]/loading.tsx"
   ],
   "exclude": ["node_modules"]
 }

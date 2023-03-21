@@ -5,17 +5,32 @@ import { OmsuProfessorType } from "@/types";
 import { useSearchStore } from "@/zustandStore";
 import { Highlight } from "@/components";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { useKeyPress } from "@/hooks";
+import { useRouter } from "next/navigation";
 
 type HitsProps<T> = {
   hits: Fuzzysort.KeyResults<T>;
   active: number;
+  activeHit: OmsuProfessorType;
 };
 
 const ProfessorsHits = <T extends OmsuProfessorType>({
   hits,
   active,
+  activeHit,
 }: HitsProps<T>) => {
   const chooseProfessor = useSearchStore((state) => state.chooseQuery);
+
+  const router = useRouter();
+
+  useKeyPress({
+    callback: () => {
+      chooseProfessor(activeHit);
+      router.push(`professors/${activeHit.id}`);
+    },
+    keys: ["Enter"],
+  });
 
   return (
     <section>
@@ -23,7 +38,8 @@ const ProfessorsHits = <T extends OmsuProfessorType>({
 
       <div>
         {hits.map((hit, i) => (
-          <div
+          <Link
+            href={`professors/${hit.obj.id}`}
             onClick={() => {
               chooseProfessor(hit.obj);
               console.log(hit.obj);
@@ -42,7 +58,7 @@ const ProfessorsHits = <T extends OmsuProfessorType>({
               <Highlight hit={hit} containerClassName="text-primary" />
             </div>
             <ChevronRightIcon className="h-4" />
-          </div>
+          </Link>
         ))}
       </div>
     </section>

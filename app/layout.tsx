@@ -3,7 +3,9 @@ import { Roboto, IBM_Plex_Sans } from "@next/font/google";
 import Script from "next/script";
 import {
   AnalyticsWrapper,
+  Navbar,
   ServiceWorkerWrapper,
+  StripeCalendar,
   ThemeProviders,
 } from "@/components";
 
@@ -26,8 +28,8 @@ export default function RootLayout({
       </head>
       <body className={`${plex.className} container mx-auto max-w-md  p-4`}>
         <AnalyticsWrapper />
-        <ServiceWorkerWrapper />
-        <ThemeProviders data-theme defaultTheme="dracula" enableSystem>
+        {/* <ServiceWorkerWrapper /> */}
+        <ThemeProviders data-theme defaultTheme="cmyk" enableSystem>
           {children}
         </ThemeProviders>
       </body>

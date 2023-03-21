@@ -39,10 +39,18 @@ const Hits = <T extends OmsuGroupType | OmsuProfessorType>({
   return (
     <div className="grid  h-full gap-5 overflow-y-auto first:pt-5" ref={ref}>
       {groupsHits.length >= 1 && (
-        <GroupsHits hits={groupsHits} active={activeGroup} />
+        <GroupsHits
+          hits={groupsHits}
+          active={activeGroup}
+          activeHit={activeHit as OmsuGroupType}
+        />
       )}
       {professorsHits.length >= 1 && (
-        <ProfessorsHits hits={professorsHits} active={activeProfessor} />
+        <ProfessorsHits
+          hits={professorsHits}
+          active={activeProfessor}
+          activeHit={activeHit as OmsuProfessorType}
+        />
       )}
     </div>
   );

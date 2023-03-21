@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { format, getDay, getWeek, isSunday, setHours } from "date-fns";
-import { useDateStore, useScheduleStore } from "@/zustandStore";
+import { useDateStore } from "@/zustandStore";
 import "swiper/swiper.min.css";
 import { CalendarControls, CurrentDate, CalendarDate } from "@/components";
 import { Swiper as SwiperType } from "swiper/types";

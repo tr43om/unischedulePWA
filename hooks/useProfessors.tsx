@@ -6,8 +6,9 @@ import * as _ from "lodash";
 
 export const useProfessors = () => {
   const { data, isLoading, error } = useSwr<OmsuProfessorType[]>(
-    "/professors",
-    fetcher
+    "../api/professors",
+    fetcher,
+    { suspense: true }
   );
 
   const professors = _.sortBy(data, "name");

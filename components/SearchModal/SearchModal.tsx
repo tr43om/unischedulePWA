@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 import { useFuzzy, useGroups, useKeyPress, useProfessors } from "@/hooks";
 import { useSearchStore } from "@/zustandStore";
@@ -11,18 +11,24 @@ import {
   SearchBar,
   NoQuery,
 } from "@/components";
+import { OmsuGroupType, OmsuProfessorType } from "@/types";
+import Image from "next/image";
+import WelcomeIllustration from "@/assets/welcome.svg";
+import { useRouter } from "next/navigation";
 
-type SearchModal = {};
+type SearchModalProps = {
+  fullwidth?: boolean;
+};
 
-const SearchModal = ({}: SearchModal) => {
-  const { groups } = useGroups();
-  const { professors } = useProfessors();
-
-  const { favorites, recents, toggleSearch } = useSearchStore(
-    ({ favorites, recents, toggleSearch, chooseQuery }) => {
-      return { favorites, recents, toggleSearch, chooseQuery };
+const SearchModal = ({ fullwidth }: SearchModalProps) => {
+  const { favorites, recents, toggleSearch, isOpen } = useSearchStore(
+    ({ favorites, recents, toggleSearch, chooseQuery, isOpen }) => {
+      return { favorites, recents, toggleSearch, chooseQuery, isOpen };
     }
   );
+
+  const { groups } = useGroups();
+  const { professors } = useProfessors();
 
   const noQueryItemsLength = favorites.length + recents.length;
 
@@ -44,12 +50,7 @@ const SearchModal = ({}: SearchModal) => {
   const showHits = groupsHits.length + professorsHits.length >= 1;
   const ref = useRef<HTMLDivElement>(null);
 
-  // Modal off
-  useKeyPress({
-    callback: toggleSearch,
-    keys: ["Escape"],
-    hotkey: "ctrl+k",
-  });
+  if (!isOpen && !fullwidth) return null;
 
   return (
     <div
@@ -79,11 +80,25 @@ const SearchModal = ({}: SearchModal) => {
               <div
                 className={`${
                   showNavigationHints && "pb-14"
-                } z-30 mt-3  grid max-h-72 overflow-y-auto rounded-lg bg-white scrollbar-thin  scrollbar-thumb-primary  dark:bg-neutral  dark:scrollbar-track-neutral-focus    dark:scrollbar-thumb-base-100`}
+                } z-30 mt-3  grid h-72 max-h-72 overflow-y-auto rounded-lg bg-white scrollbar-thin  scrollbar-thumb-primary  dark:bg-neutral  dark:scrollbar-track-neutral-focus    dark:scrollbar-thumb-base-100`}
                 ref={ref}
               >
                 {showHits && <Hits hits={[groupsHits, professorsHits]} />}
-                {showRecentsAndFavorites && <NoQuery />}
+                {/* {showRecentsAndFavorites && <NoQuery />} */}
+                {recents.length < 1 && favorites.length < 1 && !query && (
+                  <div className="mt-5 grid  items-center justify-items-center">
+                    {/* <Image
+                      src={WelcomeIllustration}
+                      alt="searching"
+                      width={200}
+                      height={200}
+                    /> */}
+                    <p className="text-md font-bold">
+                      Хватит искать расписание, начни им пользоваться
+                    </p>
+                  </div>
+                )}
+                {!query && <NoQuery />}
                 {showNoSearchResults && <NoSearchResults query={query} />}
                 {showNavigationHints && <SearchNavigationHints />}
               </div>

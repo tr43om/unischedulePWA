@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { useTheme } from "next-themes";
+import { themeChange } from "theme-change";
 
 const ThemeSwitcher = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [th, setTh] = useState("");
   const { theme, setTheme } = useTheme();
   useEffect(() => {
+    themeChange(false);
     setIsMounted(true);
     if (theme) {
       setTh(theme);
@@ -23,7 +25,7 @@ const ThemeSwitcher = () => {
   return (
     <>
       <label
-        className={`swap-rotate swap ${
+        className={`swap swap-rotate ${
           th === "dracula" && "swap-active"
         } hover:text-primary`}
         onClick={switchTheme}

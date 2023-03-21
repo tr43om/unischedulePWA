@@ -1,11 +1,25 @@
-import { Navbar, ScheduleList, StripeCalendar } from "@/components";
-export default async function Home() {
+import {
+  Navbar,
+  ScheduleList,
+  SearchModal,
+  StripeCalendar,
+} from "@/components";
+import { OmsuGroupType, OmsuProfessorType } from "@/types";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const DynamicModal = dynamic(
+  () => import("@/components/SearchModal").then((modal) => modal.SearchModal),
+  {
+    ssr: false,
+    loading: () => <div>loading </div>,
+  }
+);
+
+export default function Home() {
   return (
     <main>
-      <Navbar />
-
-      <StripeCalendar />
-      <ScheduleList />
+      <DynamicModal fullwidth={true} />
     </main>
   );
 }
