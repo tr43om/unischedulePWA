@@ -1,13 +1,9 @@
-import {
-  Navbar,
-  ScheduleList,
-  SearchModal,
-  StripeCalendar,
-} from "@/components";
-import { OmsuGroupType, OmsuProfessorType } from "@/types";
+"use client";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import Loading from "./loading";
+import { useEffect } from "react";
+import { useRouter, redirect } from "next/navigation";
+import { useUserStore } from "@/zustandStore";
 
 const DynamicModal = dynamic(
   () => import("@/components/SearchModal").then((modal) => modal.SearchModal),
@@ -18,6 +14,18 @@ const DynamicModal = dynamic(
 );
 
 export default function Home() {
+  const { groupId, professorId } = useUserStore((state) => state);
+  const redirectRoute = groupId
+    ? `groups/${groupId}`
+    : professorId
+    ? `professors/${professorId}`
+    : "";
+
+  useEffect(() => {
+    if (groupId || professorId) {
+      redirect(redirectRoute);
+    }
+  }, []);
   return (
     <main>
       <DynamicModal fullwidth={true} />

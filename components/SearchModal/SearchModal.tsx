@@ -87,14 +87,14 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
                 {/* {showRecentsAndFavorites && <NoQuery />} */}
                 {recents.length < 1 && favorites.length < 1 && !query && (
                   <div className="mt-5 grid  items-center justify-items-center">
-                    {/* <Image
+                    <Image
                       src={WelcomeIllustration}
                       alt="searching"
                       width={200}
                       height={200}
-                    /> */}
-                    <p className="text-md font-bold">
-                      Хватит искать расписание, начни им пользоваться
+                    />
+                    <p className="text-sm ">
+                      Не нужно быть детективом, чтобы узнать следующую пару
                     </p>
                   </div>
                 )}
