@@ -8,19 +8,19 @@ const ViewToggle = () => {
   const { setView, view } = useAppearanceStore();
 
   return (
-    <div className="flex  justify-end gap-2">
+    <div className="  hidden justify-end gap-2 lg:flex">
       <div className="btn-group ">
         <button
-          className={` btn btn-sm  ${view === "day" && "btn-active"}`}
+          className={` btn btn-md  ${view === "day" && " btn-active"}`}
           onClick={() => setView("day")}
         >
-          <CalendarIcon width={20} height={20} />
+          <CalendarIcon width={23} height={23} />
         </button>
         <button
-          className={` btn btn-sm   ${view === "week" && "btn-active"} `}
+          className={` btn btn-md   ${view === "week" && " btn-active"} `}
           onClick={() => setView("week")}
         >
-          <CalendarDaysIcon width={20} height={20} />
+          <CalendarDaysIcon width={23} height={23} />
         </button>
       </div>
     </div>

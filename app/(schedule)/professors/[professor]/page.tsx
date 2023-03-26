@@ -1,4 +1,4 @@
-import { NoSchedule, ResultsFor, ScheduleList } from "@/components";
+import { NoSchedule, ResultsFor, Schedule, ScheduleList } from "@/components";
 import { OmsuScheduleResponse } from "@/types";
 import { transformSchedule } from "@/utils";
 
@@ -18,13 +18,7 @@ const getProfessor = async (professorID: string) => {
 const Professor = async ({ params }: { params: { professor: string } }) => {
   const data = await getProfessor(params.professor);
 
-  return (
-    <>
-      <ResultsFor resultsFor={data.scheduleFor} />
-
-      <ScheduleList schedule={data} />
-    </>
-  );
+  return <Schedule schedule={data} />;
 };
 
 export default Professor;

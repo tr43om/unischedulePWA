@@ -16,10 +16,12 @@ const CurrentDate = () => {
   });
   return (
     <div>
-      <p className="text-lg font-bold">
+      <p className="text-lg font-bold lg:text-3xl">
         {selectedDay} {selectedMonth}
       </p>
-      <p className="text-sm text-gray-400">{currentWeek} учебная неделя</p>
+      <p className="text-sm text-gray-400 lg:text-lg">
+        {currentWeek} учебная неделя
+      </p>
     </div>
   );
 };

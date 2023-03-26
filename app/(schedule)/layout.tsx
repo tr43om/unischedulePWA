@@ -1,5 +1,4 @@
-import { Navbar, StripeCalendar } from "@/components";
-import { OmsuGroupType, OmsuProfessorType } from "@/types";
+import { Navbar, StripeCalendar, ViewToggle } from "@/components";
 
 export default function RootLayout({
   children,
@@ -10,7 +9,6 @@ export default function RootLayout({
     <>
       <Navbar />
       <StripeCalendar />
-
       {children}
     </>
   );

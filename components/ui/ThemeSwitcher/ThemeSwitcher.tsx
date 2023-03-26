@@ -23,17 +23,19 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <>
+    <div
+      className="group ml-auto max-[1024px]:navbar-start lg:order-2 lg:w-auto  lg:flex-grow-0 lg:btn"
+      onClick={switchTheme}
+    >
       <label
-        className={`swap swap-rotate ${
+        className={`swap-rotate swap ${
           th === "dracula" && "swap-active"
-        } hover:text-primary`}
-        onClick={switchTheme}
+        } group-hover:text-primary`}
       >
-        <SunIcon className="swap-off" width={20} height={20} />
-        <MoonIcon className="swap-on" width={20} height={20} />
+        <SunIcon className="swap-off lg:h-6 lg:w-6" width={20} height={20} />
+        <MoonIcon className="swap-on lg:h-6 lg:w-6" width={20} height={20} />
       </label>
-    </>
+    </div>
   );
 };
 

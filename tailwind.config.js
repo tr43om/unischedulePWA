@@ -17,9 +17,13 @@ module.exports = {
   ],
   daisyui: {
     themes: [
-      "cmyk",
+      {
+        cmyk: {
+          ...require("daisyui/src/colors/themes")["[data-theme=cmyk]"],
+          primary: "#e8488a",
+        },
+      },
       "dracula",
-      
     ],
     darkTheme: "dracula",
   },

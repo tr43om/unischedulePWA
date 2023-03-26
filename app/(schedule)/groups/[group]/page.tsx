@@ -1,4 +1,4 @@
-import { ResultsFor, ScheduleList } from "@/components";
+import { ResultsFor, Schedule, ScheduleGrid, ScheduleList } from "@/components";
 import { OmsuScheduleResponse } from "@/types";
 import { transformSchedule } from "@/utils";
 
@@ -17,12 +17,7 @@ const getGroup = async (groupID: string) => {
 const Group = async ({ params }: { params: { group: string } }) => {
   const data = await getGroup(params.group);
 
-  return (
-    <>
-      <ResultsFor resultsFor={data.scheduleFor} />
-      <ScheduleList schedule={data} />
-    </>
-  );
+  return <Schedule schedule={data} />;
 };
 
 export default Group;

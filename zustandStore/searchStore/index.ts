@@ -15,6 +15,8 @@ type RecentType = {
 interface FavoriteType extends RecentType {}
 
 type Store = {
+  query: string;
+  setQuery: (q: string) => void;
   isOpen: boolean;
   toggleSearch: () => void;
   closeSearch: () => void;
@@ -36,9 +38,14 @@ export const useSearchStore = create<Store>()(
     immer(
       persist(
         (set, get) => ({
+          query: "",
           recents: [],
           favorites: [],
           isOpen: false,
+          setQuery: (q) =>
+            set((state) => {
+              state.query = q;
+            }),
           isDuplicate: (query) => {
             // 1. Check if group exists in favorites or recents arrays
             const duplicateInRecents = get().recents.every(
@@ -56,14 +63,19 @@ export const useSearchStore = create<Store>()(
             useUserStore.getState().storeInfoAbout(query);
             const type = "course" in query ? "group" : "professor";
             get().addToRecents(query, type);
+            set((state) => {
+              state.query = "";
+            });
           },
           toggleSearch: () =>
             set((state) => {
               state.isOpen = !state.isOpen;
+              state.query = "";
             }),
           closeSearch: () =>
             set((state) => {
               state.isOpen = false;
+              state.query = "";
             }),
 
           deleteFromRecents: (id) => {

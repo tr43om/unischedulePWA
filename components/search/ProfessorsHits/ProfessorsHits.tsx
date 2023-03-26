@@ -42,7 +42,6 @@ const ProfessorsHits = <T extends OmsuProfessorType>({
             href={`professors/${hit.obj.id}`}
             onClick={() => {
               chooseProfessor(hit.obj);
-              console.log(hit.obj);
             }}
             key={hit.obj.id}
             className={`flex w-full cursor-pointer items-center justify-between border-b-[1px]  border-base-100 border-opacity-50    py-3 px-6 transition delay-100  ease-in-out first:border-t-[1px]  last:border-none ${

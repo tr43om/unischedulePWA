@@ -70,7 +70,7 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
       >
         <div className="z-15 flex h-full w-full  items-center   justify-center text-center sm:p-0">
           <div
-            className="relative w-full   max-w-xs transform      rounded-lg   text-left transition-all sm:max-w-lg"
+            className="relative w-full   max-w-xs transform  rounded-lg   text-left transition-all sm:max-w-lg"
             onClick={(e) => {
               e.stopPropagation();
             }}
@@ -80,11 +80,10 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
               <div
                 className={`${
                   showNavigationHints && "pb-14"
-                } z-30 mt-3  grid h-72 max-h-72 overflow-y-auto rounded-lg bg-white scrollbar-thin  scrollbar-thumb-primary  dark:bg-neutral  dark:scrollbar-track-neutral-focus    dark:scrollbar-thumb-base-100`}
+                } z-30 mt-3  grid h-72 max-h-72 overflow-y-auto rounded-lg bg-white  dark:bg-neutral  `}
                 ref={ref}
               >
                 {showHits && <Hits hits={[groupsHits, professorsHits]} />}
-                {/* {showRecentsAndFavorites && <NoQuery />} */}
                 {recents.length < 1 && favorites.length < 1 && !query && (
                   <div className="mt-5 grid  items-center justify-items-center">
                     <Image

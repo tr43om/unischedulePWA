@@ -40,10 +40,12 @@ export type OmsuLessonsResponse = {
 };
 
 export interface OmsuScheduleDto
-  extends Pick<OmsuLessonsResponse, "week" | "lesson" | "lesson_id" | "id"> {
+  extends Pick<OmsuLessonsResponse, "lesson" | "lesson_id" | "id"> {
   professors: {
     name: string;
     id: number;
+    shortname: string;
+    secondLanguage?: string | undefined;
   }[];
   groups: {
     name: string;

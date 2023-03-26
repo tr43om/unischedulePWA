@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { format, getDay, getWeek, isSunday, setHours } from "date-fns";
-import { useDateStore } from "@/zustandStore";
 import "swiper/swiper.min.css";
+
+import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { getDay, isSunday } from "date-fns";
+import { useDateStore } from "@/zustandStore";
 import { CalendarControls, CurrentDate, CalendarDate } from "@/components";
 import { Swiper as SwiperType } from "swiper/types";
 import { useCurrentDates } from "@/hooks";
@@ -13,6 +14,14 @@ const StripeCalendar = () => {
   const selectDate = useDateStore((state) => state.selectDate);
   const currentWeek = useDateStore((state) => state.currentWeek);
   const { studyDays } = useCurrentDates();
+
+  const goToPrevWeek = () => {
+    swiperInstance?.slidePrev();
+  };
+
+  const goToNextWeek = () => {
+    swiperInstance?.slideNext();
+  };
 
   useEffect(() => {
     if (!isSunday(new Date())) {
@@ -25,10 +34,12 @@ const StripeCalendar = () => {
   }, []);
 
   return (
-    <section className=" mb-5  print:hidden">
+    <section className=" mb-5 max-w-md print:hidden lg:hidden">
       <div className="flex items-center justify-between">
         <CurrentDate />
-        {swiperInstance && <CalendarControls swiper={swiperInstance} />}
+        {swiperInstance && (
+          <CalendarControls prev={goToPrevWeek} next={goToNextWeek} />
+        )}
       </div>
       <Swiper
         slidesPerView={1}

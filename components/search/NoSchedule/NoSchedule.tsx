@@ -26,14 +26,16 @@ const emojis = [
   128575, // 😿
   128576, // 🙀
 ];
-const NoSchedule = () => {
-  const randomEmoji = String.fromCodePoint(emojis[_.random(0, emojis.length)]);
+const NoSchedule = ({ label }: { label: string }) => {
+  const randomEmoji = String.fromCodePoint(
+    emojis[_.random(0, emojis.length)] || 0
+  );
   return (
     <div className="mt-16 flex flex-col items-center justify-center gap-5 ">
       <span role="img" className=" text-7xl text-primary ">
         {randomEmoji}
       </span>
-      <h3 className="font-bold">На сегодня пар нет</h3>
+      <h3 className="font-bold">{label}</h3>
     </div>
   );
 };

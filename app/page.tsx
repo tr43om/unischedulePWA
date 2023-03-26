@@ -6,7 +6,10 @@ import { useRouter, redirect } from "next/navigation";
 import { useUserStore } from "@/zustandStore";
 
 const DynamicModal = dynamic(
-  () => import("@/components/SearchModal").then((modal) => modal.SearchModal),
+  () =>
+    import("@/components/search/SearchModal").then(
+      (modal) => modal.SearchModal
+    ),
   {
     ssr: false,
     loading: () => <Loading />,

@@ -1,12 +1,9 @@
 "use client";
 
-import React, { useState, useRef, RefObject } from "react";
+import React, { useState, useRef } from "react";
 import { GroupsHits, Highlight, ProfessorsHits } from "@/components";
-import { OmsuGroupType } from "@/types";
+import { OmsuGroupType, OmsuProfessorType } from "@/types";
 import { useSearchStore } from "@/zustandStore";
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
-import { useKeyPress } from "@/hooks";
-import { OmsuProfessorType } from "../../types/index";
 import { useHitsNavigation } from "@/hooks/useHitsNavigation";
 
 import * as _ from "lodash";
@@ -37,7 +34,10 @@ const Hits = <T extends OmsuGroupType | OmsuProfessorType>({
   });
 
   return (
-    <div className="grid  h-full gap-5 overflow-y-auto first:pt-5" ref={ref}>
+    <div
+      className="grid  h-full gap-5 overflow-y-auto scrollbar-thin scrollbar-track-gray-300    scrollbar-thumb-neutral first:pt-5 dark:scrollbar-track-neutral-focus  dark:scrollbar-thumb-base-100"
+      ref={ref}
+    >
       {groupsHits.length >= 1 && (
         <GroupsHits
           hits={groupsHits}

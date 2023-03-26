@@ -1,10 +1,9 @@
 "use client";
 
-import { useKeyPress } from "@/hooks";
 import { useSearchStore } from "@/zustandStore";
 import React, { useRef, useState } from "react";
 import { Recents, Favorites } from "@/components";
-import { useHitsNavigation } from "../../hooks/useHitsNavigation";
+import { useHitsNavigation } from "@/hooks/";
 
 type NoQueryProps = {};
 
@@ -26,7 +25,7 @@ const NoQuery = () => {
 
   return (
     <div
-      className="grid gap-5 py-6 px-6 scrollbar-thin scrollbar-track-neutral-focus   scrollbar-thumb-base-100 "
+      className="grid gap-5 py-6 px-6 scrollbar-thin scrollbar-track-gray-300    scrollbar-thumb-neutral dark:scrollbar-track-neutral-focus  dark:scrollbar-thumb-base-100 "
       ref={ref}
     >
       {recents.length >= 1 && <Recents active={activeRecent} />}
