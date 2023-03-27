@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ducanh2912/next-pwa": "^8.2.0",
     "@happykit/analytics": "^1.0.1",
     "@heroicons/react": "^2.0.14",
     "@next/font": "13.1.6",

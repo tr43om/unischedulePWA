@@ -926,6 +926,21 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@ducanh2912/next-pwa@^8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@ducanh2912/next-pwa/-/next-pwa-8.2.0.tgz#aae431609a55d0ff7121c104f73764c7ca3d32fb"
+  integrity sha512-zIRYlzVPhqwy1FNw0KGZxtx0FtPSfJHLLIgXPIjnT3LQlk1kCYeBWrHmY6lPuIum1xI4u2t+No4DXzL90UB34A==
+  dependencies:
+    "@swc/core" "1.3.42"
+    clean-webpack-plugin "4.0.0"
+    fast-glob "3.2.12"
+    swc-loader "0.2.3"
+    terser-webpack-plugin "5.3.7"
+    workbox-build "6.5.4"
+    workbox-core "6.5.4"
+    workbox-webpack-plugin "6.5.4"
+    workbox-window "6.5.4"
+
 "@eslint/eslintrc@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.4.1.tgz#af58772019a2d271b7e2d4c23ff4ddcba3ccfb3e"
@@ -1710,6 +1725,72 @@
     magic-string "^0.25.0"
     string.prototype.matchall "^4.0.6"
 
+"@swc/core-darwin-arm64@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.42.tgz#fabb645b288199b730d846e3eda370b77f5ebe9f"
+  integrity sha512-hM6RrZFyoCM9mX3cj/zM5oXwhAqjUdOCLXJx7KTQps7NIkv/Qjvobgvyf2gAb89j3ARNo9NdIoLjTjJ6oALtiA==
+
+"@swc/core-darwin-x64@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-darwin-x64/-/core-darwin-x64-1.3.42.tgz#dcd434ec8dda6f2178a10da0def036a071a6e008"
+  integrity sha512-bjsWtHMb6wJK1+RGlBs2USvgZ0txlMk11y0qBLKo32gLKTqzUwRw0Fmfzuf6Ue2a/w//7eqMlPFEre4LvJajGw==
+
+"@swc/core-linux-arm-gnueabihf@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm-gnueabihf/-/core-linux-arm-gnueabihf-1.3.42.tgz#59c57b15113d316e8a4a6d690a6c09429483d201"
+  integrity sha512-Oe0ggMz3MyqXNfeVmY+bBTL0hFSNY3bx8dhcqsh4vXk/ZVGse94QoC4dd92LuPHmKT0x6nsUzB86x2jU9QHW5g==
+
+"@swc/core-linux-arm64-gnu@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-gnu/-/core-linux-arm64-gnu-1.3.42.tgz#50d026b9f4d7a5f25deacc8c8dd45fc12be70a95"
+  integrity sha512-ZJsa8NIW1RLmmHGTJCbM7OPSbBZ9rOMrLqDtUOGrT0uoJXZnnQqolflamB5wviW0X6h3Z3/PSTNGNDCJ3u3Lqg==
+
+"@swc/core-linux-arm64-musl@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-musl/-/core-linux-arm64-musl-1.3.42.tgz#3c0e51b0709dcf06289949803c9a36a46a97827c"
+  integrity sha512-YpZwlFAfOp5vkm/uVUJX1O7N3yJDO1fDQRWqsOPPNyIJkI2ydlRQtgN6ZylC159Qv+TimfXnGTlNr7o3iBAqjg==
+
+"@swc/core-linux-x64-gnu@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.3.42.tgz#059ac0acddebd0360851871929a14dbacf74f865"
+  integrity sha512-0ccpKnsZbyHBzaQFdP8U9i29nvOfKitm6oJfdJzlqsY/jCqwvD8kv2CAKSK8WhJz//ExI2LqNrDI0yazx5j7+A==
+
+"@swc/core-linux-x64-musl@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.3.42.tgz#7a61093d93a3abc2f893b7d31fd6c22c4cab2212"
+  integrity sha512-7eckRRuTZ6+3K21uyfXXgc2ZCg0mSWRRNwNT3wap2bYkKPeqTgb8pm8xYSZNEiMuDonHEat6XCCV36lFY6kOdQ==
+
+"@swc/core-win32-arm64-msvc@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-arm64-msvc/-/core-win32-arm64-msvc-1.3.42.tgz#12f92c960ea801aa26ffa5b91d369ac24c2a3cca"
+  integrity sha512-t27dJkdw0GWANdN4TV0lY/V5vTYSx5SRjyzzZolep358ueCGuN1XFf1R0JcCbd1ojosnkQg2L7A7991UjXingg==
+
+"@swc/core-win32-ia32-msvc@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-ia32-msvc/-/core-win32-ia32-msvc-1.3.42.tgz#be022aff03838515fa5506be300f0ea15f3fb476"
+  integrity sha512-xfpc/Zt/aMILX4IX0e3loZaFyrae37u3MJCv1gJxgqrpeLi7efIQr3AmERkTK3mxTO6R5urSliWw2W3FyZ7D3Q==
+
+"@swc/core-win32-x64-msvc@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.3.42.tgz#fccac26974f03234e502276389f4330e2696887f"
+  integrity sha512-ra2K4Tu++EJLPhzZ6L8hWUsk94TdK/2UKhL9dzCBhtzKUixsGCEqhtqH1zISXNvW8qaVLFIMUP37ULe80/IJaA==
+
+"@swc/core@1.3.42":
+  version "1.3.42"
+  resolved "https://registry.yarnpkg.com/@swc/core/-/core-1.3.42.tgz#7067c4fd9a02536f9ca7b54ed8ebc45e2df810cf"
+  integrity sha512-nVFUd5+7tGniM2cT3LXaqnu3735Cu4az8A9gAKK+8sdpASI52SWuqfDBmjFCK9xG90MiVDVp2PTZr0BWqCIzpw==
+  optionalDependencies:
+    "@swc/core-darwin-arm64" "1.3.42"
+    "@swc/core-darwin-x64" "1.3.42"
+    "@swc/core-linux-arm-gnueabihf" "1.3.42"
+    "@swc/core-linux-arm64-gnu" "1.3.42"
+    "@swc/core-linux-arm64-musl" "1.3.42"
+    "@swc/core-linux-x64-gnu" "1.3.42"
+    "@swc/core-linux-x64-musl" "1.3.42"
+    "@swc/core-win32-arm64-msvc" "1.3.42"
+    "@swc/core-win32-ia32-msvc" "1.3.42"
+    "@swc/core-win32-x64-msvc" "1.3.42"
+
 "@swc/helpers@0.4.14":
   version "0.4.14"
   resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.4.14.tgz#1352ac6d95e3617ccb7c1498ff019654f1e12a74"
@@ -2322,7 +2403,7 @@ chokidar@^3.5.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
-clean-webpack-plugin@^4.0.0:
+clean-webpack-plugin@4.0.0, clean-webpack-plugin@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/clean-webpack-plugin/-/clean-webpack-plugin-4.0.0.tgz#72947d4403d452f38ed61a9ff0ada8122aacd729"
   integrity sha512-WuWE1nyTNAyW5T7oNyys2EN0cfP2fdRxhxnIQWiAp0bMabPdHhoGxM8A6YL2GhqwgrPnnaemVE7nv5XJ2Fhh2w==
@@ -3166,7 +3247,7 @@ fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
-fast-glob@^3.2.11, fast-glob@^3.2.12, fast-glob@^3.2.9:
+fast-glob@3.2.12, fast-glob@^3.2.11, fast-glob@^3.2.12, fast-glob@^3.2.9:
   version "3.2.12"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.12.tgz#7f39ec99c2e6ab030337142da9e0c18f37afae80"
   integrity sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==
@@ -5176,7 +5257,7 @@ serialize-javascript@^4.0.0:
   dependencies:
     randombytes "^2.1.0"
 
-serialize-javascript@^6.0.0:
+serialize-javascript@^6.0.0, serialize-javascript@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-6.0.1.tgz#b206efb27c3da0b0ab6b52f48d170b7996458e5c"
   integrity sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==
@@ -5431,6 +5512,11 @@ svgo@^2.8.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
+swc-loader@0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/swc-loader/-/swc-loader-0.2.3.tgz#6792f1c2e4c9ae9bf9b933b3e010210e270c186d"
+  integrity sha512-D1p6XXURfSPleZZA/Lipb3A8pZ17fP4NObZvFCDjK/OKljroqDpPmsBdTraWhVBqUNpcWBQY1imWdoPScRlQ7A==
+
 swiper@^9.0.3:
   version "9.0.3"
   resolved "https://registry.yarnpkg.com/swiper/-/swiper-9.0.3.tgz#9a8131b297c6cdc1957255ed7e1d4bdba584b0f0"
@@ -5507,6 +5593,17 @@ tempy@^0.6.0:
     type-fest "^0.16.0"
     unique-string "^2.0.0"
 
+terser-webpack-plugin@5.3.7:
+  version "5.3.7"
+  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.3.7.tgz#ef760632d24991760f339fe9290deb936ad1ffc7"
+  integrity sha512-AfKwIktyP7Cu50xNjXF/6Qb5lBNzYaWpU6YfoX3uZicTx0zTy0stDDCsvjDapKsSDvOeWo5MEq4TmdBy2cNoHw==
+  dependencies:
+    "@jridgewell/trace-mapping" "^0.3.17"
+    jest-worker "^27.4.5"
+    schema-utils "^3.1.1"
+    serialize-javascript "^6.0.1"
+    terser "^5.16.5"
+
 terser-webpack-plugin@^5.3.3:
   version "5.3.6"
   resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.3.6.tgz#5590aec31aa3c6f771ce1b1acca60639eab3195c"
@@ -5522,6 +5619,16 @@ terser@^5.0.0, terser@^5.14.1:
   version "5.16.5"
   resolved "https://registry.yarnpkg.com/terser/-/terser-5.16.5.tgz#1c285ca0655f467f92af1bbab46ab72d1cb08e5a"
   integrity sha512-qcwfg4+RZa3YvlFh0qjifnzBHjKGNbtDo9yivMqMFDy9Q6FSaQWSB/j1xKhsoUFJIqDOM3TsN6D5xbrMrFcHbg==
+  dependencies:
+    "@jridgewell/source-map" "^0.3.2"
+    acorn "^8.5.0"
+    commander "^2.20.0"
+    source-map-support "~0.5.20"
+
+terser@^5.16.5:
+  version "5.16.8"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.16.8.tgz#ccde583dabe71df3f4ed02b65eb6532e0fae15d5"
+  integrity sha512-QI5g1E/ef7d+PsDifb+a6nnVgC4F22Bg6T0xrBrz6iloVB4PUkkunp6V8nzoOOZJIzjWVdAGqCdlKlhLq/TbIA==
   dependencies:
     "@jridgewell/source-map" "^0.3.2"
     acorn "^8.5.0"
@@ -6014,7 +6121,7 @@ workbox-sw@6.5.4:
   resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-6.5.4.tgz#d93e9c67924dd153a61367a4656ff4d2ae2ed736"
   integrity sha512-vo2RQo7DILVRoH5LjGqw3nphavEjK4Qk+FenXeUsknKn14eCNedHOXWbmnvP4ipKhlE35pvJ4yl4YYf6YsJArA==
 
-workbox-webpack-plugin@^6.5.4:
+workbox-webpack-plugin@6.5.4, workbox-webpack-plugin@^6.5.4:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/workbox-webpack-plugin/-/workbox-webpack-plugin-6.5.4.tgz#baf2d3f4b8f435f3469887cf4fba2b7fac3d0fd7"
   integrity sha512-LmWm/zoaahe0EGmMTrSLUi+BjyR3cdGEfU3fS6PN1zKFYbqAKuQ+Oy/27e4VSXsyIwAw8+QDfk1XHNGtZu9nQg==

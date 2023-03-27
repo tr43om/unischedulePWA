@@ -23,6 +23,8 @@ const Schedule = ({ schedule }: ScheduleProps) => {
 
             <ViewToggle />
           </div>
+          <LessonTypesPallette />
+
           <div className="relative flex items-start justify-between ">
             <ScheduleList schedule={schedule} />
             <Calendar />

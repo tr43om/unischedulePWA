@@ -9,7 +9,7 @@ const config = {
   },
 };
 
-const nextConfig = require("next-pwa")({
+const nextConfig = require("@ducanh2912/next-pwa").default()({
   // dest: "public",
   register: true,
   skipWaiting: true,

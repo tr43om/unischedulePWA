@@ -50,12 +50,12 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
   }
 
   return (
-    <div className="relative   overflow-hidden">
-      <table className="  table w-full table-fixed border-separate border-spacing-2">
+    <div className="relative    overflow-x-hidden">
+      <table className="relative  table w-full table-fixed border-separate border-spacing-2">
         {/* head */}
         <thead>
           <tr>
-            <th className="!relative  !z-0 w-[75px] justify-items-center bg-neutral">
+            <th className=" sticky top-0 left-0 !z-0 w-[75px] justify-items-center bg-neutral">
               <ClockIcon
                 width={20}
                 height={20}
@@ -63,7 +63,10 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
               />
             </th>
             {weeklySchedule.map((day) => (
-              <th key={day.timestamp + "th"} className="bg-neutral">
+              <th
+                key={day.timestamp + "th"}
+                className="sticky top-0 left-0 bg-neutral"
+              >
                 <div className="grid justify-items-center">
                   <p className="text-2xl font-light text-white">
                     {new Date(day.timestamp).getDate()}
