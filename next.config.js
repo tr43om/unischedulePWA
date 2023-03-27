@@ -2,6 +2,7 @@
 // import withPWA from "next-pwa";
 
 const runtimeCaching = require("next-pwa/cache");
+const isDev = process.env.NODE_ENV !== "production";
 
 const config = {
   experimental: {
@@ -10,12 +11,26 @@ const config = {
 };
 
 const nextConfig = require("@ducanh2912/next-pwa").default({
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === "development",
-  runtimeCaching,
-  sw: "/sw.js",
-  buildExcludes: [/middleware-manifest.json$/],
+  dest: "public",
+  disable: isDev,
+
+  exclude: [
+    // add buildExcludes here
+    ({ asset, compilation }) => {
+      if (
+        asset.name.startsWith("server/") ||
+        asset.name.match(
+          /^((app-|^)build-manifest\.json|react-loadable-manifest\.json)$/
+        )
+      ) {
+        return true;
+      }
+      if (isDev && !asset.name.startsWith("static/runtime/")) {
+        return true;
+      }
+      return false;
+    },
+  ],
 })(config);
 
 module.exports = nextConfig;
