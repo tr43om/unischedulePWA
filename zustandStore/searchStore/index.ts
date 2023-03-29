@@ -10,6 +10,7 @@ type RecentType = {
   id: number;
   name: string;
   type?: string;
+  course?: number;
 };
 
 interface FavoriteType extends RecentType {}
@@ -25,7 +26,7 @@ type Store = {
   deleteFromRecents: (id: number) => void;
   deleteFromFavorites: (id: number) => void;
   addToRecents: (
-    query: OmsuGroupType | OmsuProfessorType,
+    query: OmsuGroupType | OmsuProfessorType | RecentType | FavoriteType,
     type: "group" | "professor"
   ) => void;
   addToFavorites: (query: OmsuGroupType | OmsuProfessorType) => void;
@@ -62,6 +63,7 @@ export const useSearchStore = create<Store>()(
             get().closeSearch();
             useUserStore.getState().storeInfoAbout(query);
             const type = "course" in query ? "group" : "professor";
+
             get().addToRecents(query, type);
             set((state) => {
               state.query = "";
@@ -82,7 +84,7 @@ export const useSearchStore = create<Store>()(
             set((state) => {
               const recent = state.recents.find(
                 (recent) => recent.id === id
-              ) as OmsuGroupType;
+              ) as RecentType;
               state.recents.splice(state.recents.indexOf(recent), 1);
             });
           },

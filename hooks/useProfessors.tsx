@@ -13,6 +13,7 @@ export const useProfessors = () => {
       revalidateIfStale: false,
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
+      fallback: [],
     }
   );
 

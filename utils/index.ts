@@ -1,4 +1,6 @@
 import {
+  OmsuGroupType,
+  OmsuProfessorType,
   OmsuScheduleDto,
   OmsuScheduleResponse,
   TransformedScheduleDto,
@@ -19,6 +21,7 @@ import {
 } from "@/constants";
 
 import * as _ from "lodash";
+import { notFound } from "next/navigation";
 
 export const twClassNames = (...classes: Array<string | boolean>) => {
   return classes.filter(Boolean).join(" ");
@@ -90,10 +93,42 @@ const lessonsEndAt = (time: number) => {
   }
 };
 
+export const transformProfessorsCollection = (data: OmsuProfessorType[]) => {
+  const professors = _.sortBy(data, "name");
+
+  return professors;
+};
+
+export const transformGroupsCollection = (data: OmsuGroupType[]) => {
+  const transformedData = _.map(data, (group) => {
+    if (group.name !== "Резерв") {
+      const year = Number(group.name.split("-")[1][0]);
+      const course = Number((22 - year).toString()[1]) + 1;
+      return { ...group, course };
+    }
+
+    return group;
+  });
+
+  const groups = transformedData
+    .sort((a, b) => {
+      if (Number(a.name.split("-")[3]) && Number(b.name.split("-")[3])) {
+        return Number(b.name.split("-")[3]) - Number(a.name.split("-")[3]);
+      }
+      return 1;
+    })
+    .sort((a, b) => a.course - b.course);
+
+  return groups;
+};
+
 export const transformSchedule = (
   data: OmsuScheduleResponse[],
   type: "group" | "professor"
 ) => {
+  if (data.length < 1) {
+    notFound();
+  }
   const scheduleFor =
     type === "group" ? data[0].lessons[0].group : data[0].lessons[0].teacher;
 
@@ -130,10 +165,11 @@ export const transformSchedule = (
       };
 
       const getShortName = (name: string) => {
-        if (name.split(" ").length <= 1) return name;
+        const dividedName = name.split(" ");
+        if (dividedName.length <= 1) return name;
         const firstname = name.split(" ")[1][0];
         const surname = name.split(" ")[0];
-        const patronym = name.split(" ")[2][0];
+        const patronym = dividedName.length >= 3 ? name.split(" ")[2][0] : "";
 
         return `${surname} ${firstname}.${patronym}.`;
       };

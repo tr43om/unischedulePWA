@@ -1,31 +1,22 @@
 "use client";
 
 import { useSearchStore } from "zustandStore";
-import React from "react";
+import React, { useEffect } from "react";
 import { StarIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { useKeyPress } from "@/hooks";
-import { useRouter } from "next/navigation";
 
 type FavoritesProps = {
   active: number;
 };
 
 const Favorites = ({ active }: FavoritesProps) => {
-  const router = useRouter();
   const { favorites, chooseQuery, deleteFromFavorites } = useSearchStore(
     ({ chooseQuery, favorites, deleteFromFavorites }) => {
       return { favorites, deleteFromFavorites, chooseQuery };
     }
   );
 
-  useKeyPress({
-    callback: () => {
-      chooseQuery(favorites[active]);
-      router.push(`${favorites[active].type}s/${favorites[active].id}`);
-    },
-    keys: ["Enter"],
-  });
+  //
 
   return (
     <div>

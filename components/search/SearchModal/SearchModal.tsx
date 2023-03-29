@@ -1,5 +1,5 @@
 "use client";
-
+import { use } from "react";
 import React, { useRef, useEffect } from "react";
 
 import { useFuzzy, useGroups, useKeyPress, useProfessors } from "@/hooks";
@@ -14,13 +14,35 @@ import {
 import { OmsuGroupType, OmsuProfessorType } from "@/types";
 import Image from "next/image";
 import WelcomeIllustration from "@/assets/welcome.svg";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  transformGroupsCollection,
+  transformProfessorsCollection,
+} from "@/utils";
+import { useSearchCollection } from "@/hooks/useSearchCollection";
 
 type SearchModalProps = {
   fullwidth?: boolean;
 };
+const getGroups = async () => {
+  const response = await fetch("api/groups");
+  const { data } = await response.json();
+
+  return transformGroupsCollection(data);
+};
+
+const getProfessors = async () => {
+  const response = await fetch(
+    "https://eservice.omsu.ru/schedule/backend/dict/tutors",
+    { next: { revalidate: 180 } }
+  );
+  const { data } = await response.json();
+
+  return transformProfessorsCollection(data);
+};
 
 const SearchModal = ({ fullwidth }: SearchModalProps) => {
+  const pathname = usePathname();
   const { favorites, recents, toggleSearch, isOpen } = useSearchStore(
     ({ favorites, recents, toggleSearch, chooseQuery, isOpen }) => {
       return { favorites, recents, toggleSearch, chooseQuery, isOpen };
@@ -29,6 +51,7 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
 
   const { groups } = useGroups();
   const { professors } = useProfessors();
+  // const { groups, professors, loading } = useSearchCollection();
 
   const noQueryItemsLength = favorites.length + recents.length;
 
@@ -50,7 +73,7 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
   const showHits = groupsHits.length + professorsHits.length >= 1;
   const ref = useRef<HTMLDivElement>(null);
 
-  if (!isOpen && !fullwidth) return null;
+  if (!isOpen && pathname !== "/") return null;
 
   return (
     <div
@@ -76,32 +99,31 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
             }}
           >
             <SearchBar search={onSearch} />
-            {
-              <div
-                className={`${
-                  showNavigationHints && "pb-14"
-                } z-30 mt-3  grid h-72 max-h-72 overflow-y-auto rounded-lg bg-white  dark:bg-neutral  `}
-                ref={ref}
-              >
-                {showHits && <Hits hits={[groupsHits, professorsHits]} />}
-                {recents.length < 1 && favorites.length < 1 && !query && (
-                  <div className="mt-5 grid  items-center justify-items-center">
-                    <Image
-                      src={WelcomeIllustration}
-                      alt="searching"
-                      width={200}
-                      height={200}
-                    />
-                    <p className="text-sm ">
-                      Не нужно быть детективом, чтобы узнать следующую пару
-                    </p>
-                  </div>
-                )}
-                {!query && <NoQuery />}
-                {showNoSearchResults && <NoSearchResults query={query} />}
-                {showNavigationHints && <SearchNavigationHints />}
-              </div>
-            }
+
+            <div
+              className={`${
+                showNavigationHints && "pb-14"
+              } z-30 mt-3  grid h-72 max-h-72 overflow-y-auto rounded-lg bg-white  dark:bg-neutral  `}
+              ref={ref}
+            >
+              {showHits && <Hits hits={[groupsHits, professorsHits]} />}
+              {recents.length < 1 && favorites.length < 1 && !query && (
+                <div className="mt-5 grid  items-center justify-items-center">
+                  <Image
+                    src={WelcomeIllustration}
+                    alt="searching"
+                    width={200}
+                    height={200}
+                  />
+                  <p className="text-sm ">
+                    Не нужно быть детективом, чтобы узнать следующую пару
+                  </p>
+                </div>
+              )}
+              {!query && <NoQuery />}
+              {showNoSearchResults && <NoSearchResults query={query} />}
+              {showNavigationHints && <SearchNavigationHints />}
+            </div>
           </div>
         </div>
       </div>

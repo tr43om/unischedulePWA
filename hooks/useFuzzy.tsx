@@ -1,3 +1,4 @@
+"use client";
 import { useSearchStore } from "@/zustandStore";
 import fuzzysort from "fuzzysort";
 import {
@@ -25,10 +26,10 @@ export const useFuzzy = <T extends { id: number }>(
   // defining our query state in there directly
   // const [query, updateQuery] = useState("");
 
-  const hits = useMemo(
-    () => lists.map((list) => fuzzysort.go(query, list, options)),
-    [query, options, lists]
-  );
+  const hits = useMemo(() => {
+    if (!lists) return [];
+    return lists.map((list) => fuzzysort.go(query, list, options));
+  }, [query, options, lists]);
 
   // debounce updateQuery and rename it `setQuery` so it's transparent
   const setQuery = debounce(100, updateQuery);

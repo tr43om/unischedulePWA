@@ -4,16 +4,12 @@ import { useSearchStore } from "zustandStore";
 import React from "react";
 import { StarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { useKeyPress } from "@/hooks";
-import { useRouter } from "next/navigation";
-import { OmsuGroupType } from "@/types";
 
 type RecentsProps = {
   active: number;
 };
 
 const Recents = ({ active }: RecentsProps) => {
-  const router = useRouter();
   const { recents, chooseQuery, deleteFromRecents, addToFavorites } =
     useSearchStore(
       ({
@@ -32,14 +28,6 @@ const Recents = ({ active }: RecentsProps) => {
         };
       }
     );
-
-  useKeyPress({
-    callback: () => {
-      chooseQuery(recents[active]);
-      router.push(`${recents[active].type}s/${recents[active].id}`);
-    },
-    keys: ["Enter"],
-  });
 
   return (
     <div>

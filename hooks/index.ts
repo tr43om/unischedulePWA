@@ -4,3 +4,4 @@ export * from "./useKeyPress";
 export * from "./useProfessors";
 export * from "./useCurrentDates";
 export * from "./useHitsNavigation";
+export * from "./usePWAInstall";

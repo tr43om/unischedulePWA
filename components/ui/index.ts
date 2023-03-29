@@ -5,3 +5,5 @@ export * from "./ThemeSwitcher";
 export * from "./ViewToggle";
 export * from "./Badge";
 export * from "./LessonTypesPallette";
+export * from "./SecondLangFlag";
+export * from "./Avatar";

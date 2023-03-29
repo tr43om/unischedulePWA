@@ -7,7 +7,7 @@ import {
 import React from "react";
 import { OmsuScheduleDto } from "../../types/index";
 import Link from "next/link";
-import { Badge } from "../ui";
+import { Avatar, Badge, SecondLangFlag } from "../ui";
 
 type ScheduleCardProps = {
   type: "group" | "professor";
@@ -35,29 +35,26 @@ const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
           <h3 className=" font-bold transition duration-300 ease-in-out sm:text-lg lg:text-xl">
             {schedule.lesson}
           </h3>
-          {/* <p className="badge badge-sm">{schedule.type}</p> */}
           <Badge label={schedule.type} variant="badge-md" />
         </div>
 
         {type === "group" && (
           <div className="grid ">
-            {schedule.professors.map(({ id, name }, i) => (
+            {schedule.professors.map(({ id, name, secondLanguage }, i) => (
               <div
                 key={`professor-${id}-${schedule.id}`}
                 className="grid gap-2 border-b-[1px] border-primary border-opacity-30 py-3 last:border-none"
               >
                 <div className="flex items-center ">
-                  <div className="placeholder avatar">
-                    <div className="w-8 rounded-full bg-neutral-focus text-neutral-content ">
-                      <span className="lg:text-md text-xs">
-                        {name.split("")[0]}
-                      </span>
-                    </div>
-                  </div>
+                  {secondLanguage ? (
+                    <SecondLangFlag lang={secondLanguage} size="md" />
+                  ) : (
+                    <Avatar name={name} />
+                  )}
 
                   <Link
-                    href={`../professors/${id}`}
-                    className=" btn btn-link btn-xs text-sm normal-case"
+                    href={`professors/${id}`}
+                    className=" btn-link btn-xs btn text-sm normal-case"
                   >
                     {name}
                   </Link>
@@ -81,9 +78,9 @@ const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
           <div>
             {schedule.groups.map(({ id, name }) => (
               <Link
-                href={`../groups/${id}`}
+                href={`groups/${id}`}
                 key={`group-${id}-${schedule.id}`}
-                className="btn btn-link btn-xs flex items-center justify-start gap-1.5 justify-self-start p-0 text-primary"
+                className="btn-link btn-xs btn flex items-center justify-start gap-1.5 justify-self-start p-0 text-primary"
               >
                 <UserIcon width={15} height={15} className="text-primary" />
                 <p className="lg:text-md text-sm">{name}</p>

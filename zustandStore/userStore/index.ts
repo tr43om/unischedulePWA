@@ -11,6 +11,7 @@ type Store = {
   storeInfoAbout: (data: OmsuGroupType | OmsuProfessorType) => void;
   storeGroup: (id: number, name: string) => void;
   storeProfessor: (id: number, name: string) => void;
+  reset: () => void;
 };
 
 function isGroup(
@@ -27,6 +28,12 @@ export const useUserStore = create<Store>()(
         groupId: null,
         course: null,
         name: null,
+        reset: () => {
+          set((state) => {
+            state.groupId = null;
+            state.professorId = null;
+          });
+        },
         storeInfoAbout: (data) =>
           set((state) => {
             if (isGroup(data)) {

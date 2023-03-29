@@ -14,6 +14,7 @@ export const useGroups = () => {
       revalidateIfStale: false,
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
+      fallback: [],
     }
   );
 

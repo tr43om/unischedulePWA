@@ -18,7 +18,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import ReactCountryFlag from "react-country-flag";
-import { Badge } from "../ui";
+import { Badge, SecondLangFlag } from "../ui";
 import { NoSchedule } from "../search";
 type ScheduleGridProps = {
   scheduleData: TransformedScheduleDto;
@@ -108,17 +108,8 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
                                 className="flex items-center gap-1"
                               >
                                 <div className="flex items-center gap-1">
-                                  {secondLanguage === "немецкий" && (
-                                    <DE className="h-5 w-5 rounded-lg opacity-60" />
-                                  )}
-                                  {secondLanguage === "французский" && (
-                                    <FR className="h-5 w-5 rounded-lg opacity-60" />
-                                  )}
-                                  {secondLanguage === "китайский" && (
-                                    <CN className="h-5 w-5 rounded-lg opacity-60" />
-                                  )}
-                                  {secondLanguage === "испанский" && (
-                                    <ES className="h-5 w-5 rounded-lg opacity-60" />
+                                  {secondLanguage && (
+                                    <SecondLangFlag lang={secondLanguage} />
                                   )}
                                   <div
                                     className="tooltip tooltip-top  cursor-pointer hover:tooltip-open"
@@ -151,7 +142,7 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
                             <div key={`group-${id}-${id}`}>
                               <Link
                                 href={`../groups/${id}`}
-                                className="btn btn-link btn-xs flex items-center justify-start gap-1.5 justify-self-start p-0"
+                                className="btn-link btn-xs btn flex items-center justify-start gap-1.5 justify-self-start p-0"
                               >
                                 <UserIcon
                                   width={15}

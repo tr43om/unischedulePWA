@@ -1,4 +1,6 @@
 import { Navbar, StripeCalendar, ViewToggle } from "@/components";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 export default function RootLayout({
   children,
@@ -8,7 +10,6 @@ export default function RootLayout({
   return (
     <>
       <Navbar />
-      <StripeCalendar />
       {children}
     </>
   );

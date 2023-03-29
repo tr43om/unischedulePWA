@@ -3,11 +3,13 @@
 import { useSearchStore } from "@/zustandStore";
 import React, { useRef, useState } from "react";
 import { Recents, Favorites } from "@/components";
-import { useHitsNavigation } from "@/hooks/";
+import { useHitsNavigation, useKeyPress } from "@/hooks/";
+import { useRouter } from "next/navigation";
 
 type NoQueryProps = {};
 
 const NoQuery = () => {
+  const router = useRouter();
   const { chooseQuery, favorites, recents } = useSearchStore(
     ({ favorites, recents, chooseQuery }) => {
       return { favorites, recents, chooseQuery };
@@ -17,10 +19,20 @@ const NoQuery = () => {
 
   const {
     activeList: [activeRecent, activeFavorite],
+    activeHit,
   } = useHitsNavigation({
     hitsList: [recents, favorites],
     choose: chooseQuery,
     scrollTo: ref,
+  });
+
+  useKeyPress({
+    callback: () => {
+      if (!activeHit) return;
+      chooseQuery(activeHit);
+      router.push(`${activeHit.type}s/${activeHit.id}`);
+    },
+    keys: ["Enter"],
   });
 
   return (
