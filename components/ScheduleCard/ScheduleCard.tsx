@@ -20,22 +20,25 @@ const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
       className="w-full rounded-lg border border-neutral border-opacity-50 p-6 dark:border-gray-600"
       key={schedule.id}
     >
-      <div className="flex  h-6 items-center gap-2 bg-base-100 text-primary-content">
-        <ClockIcon
-          width={15}
-          height={15}
-          className="lg:h-4.5 lg:w-4.5 text-gray-600 dark:text-gray-300"
-        />
-        <p className="lg:text-md text-sm  text-gray-600 dark:text-gray-300">
-          {schedule.startsAt} - {schedule.endsAt}
-        </p>
+      <div className="flex items-center justify-between">
+        <div className="flex  h-6 items-center gap-2 bg-base-100 text-primary-content">
+          <ClockIcon
+            width={15}
+            height={15}
+            className="lg:h-4.5 lg:w-4.5 text-gray-600 dark:text-gray-300"
+          />
+          <p className="lg:text-md text-sm  text-gray-600 dark:text-gray-300">
+            {schedule.startsAt} - {schedule.endsAt}
+          </p>
+        </div>
+        <Badge label={schedule.type} variant="badge-md" />
       </div>
-      <div className="card block  max-w-md   ">
-        <div className="mb-3 flex items-start justify-between">
+
+      <div className="card block  max-w-md">
+        <div className="mb-3 ">
           <h3 className=" font-bold transition duration-300 ease-in-out sm:text-lg lg:text-xl">
             {schedule.lesson}
           </h3>
-          <Badge label={schedule.type} variant="badge-md" />
         </div>
 
         {type === "group" && (

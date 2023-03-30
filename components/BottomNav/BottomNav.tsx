@@ -14,7 +14,7 @@ const BottomNav = () => {
   const pathname = usePathname();
 
   return (
-    <nav className=" fixed inset-x-0 bottom-2 mx-auto flex w-full  max-w-xs justify-around   rounded-md bg-neutral/70 p-4 backdrop-blur-md   lg:hidden">
+    <nav className=" fixed inset-x-0 bottom-4 mx-auto flex w-full  max-w-xs justify-around   rounded-md bg-neutral/70 p-4 backdrop-blur-md   lg:hidden">
       <Link href="/">
         <HomeIcon className="h-6 w-6  cursor-pointer text-white" />
       </Link>

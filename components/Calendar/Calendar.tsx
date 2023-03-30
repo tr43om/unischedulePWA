@@ -54,7 +54,7 @@ export const Calendar = () => {
   }
 
   return (
-    <div className=" hidden  lg:block">
+    <div>
       <div className=" max-w-md px-4 sm:px-7 md:max-w-4xl md:px-6">
         <div className="  md:divide-x md:divide-gray-200">
           <div>

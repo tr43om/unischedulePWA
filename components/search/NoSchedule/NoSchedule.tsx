@@ -28,7 +28,7 @@ const emojis = [
 ];
 const NoSchedule = ({ label }: { label: string }) => {
   const randomEmoji = String.fromCodePoint(
-    emojis[_.random(0, emojis.length)] || 0
+    emojis[_.random(0, emojis.length - 1)] || 0
   );
   return (
     <div className="mt-16 flex flex-col items-center justify-center gap-5 ">

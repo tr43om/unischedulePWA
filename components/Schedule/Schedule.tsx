@@ -26,7 +26,7 @@ const Schedule = ({ schedule }: ScheduleProps) => {
         <div className="relative">
           <div className="  fixed top-0 right-0 left-0  z-50 mx-auto w-full  bg-white/30 px-4 py-1 backdrop-blur-md dark:bg-base-100">
             <div className=" mt-6  flex  items-center   justify-between  lg:hidden">
-              <button className="" onClick={() => router.back()}>
+              <button onClick={() => router.back()}>
                 <ArrowLeftIcon width={20} height={20} />
               </button>
               <ResultsFor resultsFor={schedule.scheduleFor} />
@@ -40,12 +40,11 @@ const Schedule = ({ schedule }: ScheduleProps) => {
             <ViewToggle />
           </div>
 
-          <div className="relative flex items-start justify-between gap-52 lg:m-5 ">
-            <div>
-              {/* <LessonTypesPallette /> */}
-              <ScheduleList schedule={schedule} />
+          <div className="relative flex items-start justify-center lg:m-5 lg:justify-between lg:gap-52 ">
+            <ScheduleList schedule={schedule} />
+            <div className="hidden  lg:block">
+              <Calendar />
             </div>
-            <Calendar />
           </div>
         </div>
       )}

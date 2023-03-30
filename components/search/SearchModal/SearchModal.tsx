@@ -95,7 +95,7 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
                     height={200}
                   />
                   <p className="lg:text-md mt-4 text-sm font-semibold">
-                    Найдите следующую пару за пару секунд 🔥
+                    Найди следующую пару за пару секунд
                   </p>
                 </div>
               )}
