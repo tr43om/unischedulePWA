@@ -1,9 +1,7 @@
-import Loading from "@/app/loading";
-import { ResultsFor, Schedule, ScheduleGrid, ScheduleList } from "@/components";
-import { GroupType, OmsuGroupType, OmsuScheduleResponse } from "@/types";
-import { transformGroupsCollection, transformSchedule } from "@/utils";
+import { Schedule } from "@/components";
+import { OmsuScheduleResponse } from "@/types";
+import { transformSchedule } from "@/utils";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
 const getGroup = async (groupID: string) => {
   const {
