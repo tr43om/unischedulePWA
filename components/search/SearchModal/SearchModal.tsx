@@ -13,7 +13,7 @@ import {
 } from "@/components";
 import { usePathname, useRouter } from "next/navigation";
 import { OmsuGroupType, OmsuProfessorType } from "@/types";
-import travolta from "@/assets/travolta.gif";
+import welcome from "@/assets/welcome.svg";
 import Image from "next/image";
 
 type SearchModalProps = {
@@ -87,14 +87,14 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
             >
               {showHits && <Hits hits={[groupsHits, professorsHits]} />}
               {recents.length < 1 && favorites.length < 1 && !query && (
-                <div className="mt-1 grid  items-center justify-items-center">
+                <div className="mt-6 grid   items-center justify-items-center">
                   <Image
-                    src={travolta}
+                    src={welcome}
                     alt="searching"
-                    width={200}
-                    height={200}
+                    width={180}
+                    height={180}
                   />
-                  <p className="lg:text-md mt-4 text-sm font-semibold">
+                  <p className="lg:text-md mt-2 text-sm font-semibold">
                     Найди следующую пару за пару секунд
                   </p>
                 </div>
