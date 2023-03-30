@@ -107,10 +107,10 @@ export const Calendar = () => {
                     type="button"
                     onClick={() => selectDate(day.getTime())}
                     className={twClassNames(
-                      isEqual(day, selectedDate) && "text-white",
+                      isEqual(day, selectedDate) && "text-primary",
                       !isEqual(day, selectedDate) &&
                         isToday(day) &&
-                        "text-red-500",
+                        "text-primary",
                       !isEqual(day, selectedDate) &&
                         !isToday(day) &&
                         isSameMonth(day, firstDayCurrentMonth) &&
@@ -121,13 +121,14 @@ export const Calendar = () => {
                         "text-gray-400",
                       isEqual(day, selectedDate) &&
                         isToday(day) &&
-                        "bg-red-500",
+                        "bg-primary",
                       isEqual(day, selectedDate) &&
                         !isToday(day) &&
                         "bg-primary",
-                      !isEqual(day, selectedDate) && "hover:bg-gray-200",
+                      !isEqual(day, selectedDate) &&
+                        "hover:bg-gray-200 lg:hover:bg-primary",
                       (isEqual(day, selectedDate) || isToday(day)) &&
-                        "font-semibold",
+                        "font-semibold text-neutral",
                       "mx-auto flex h-12 w-12 items-center justify-center rounded-full"
                     )}
                   >

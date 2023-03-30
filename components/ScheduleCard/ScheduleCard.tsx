@@ -43,7 +43,7 @@ const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
             {schedule.professors.map(({ id, name, secondLanguage }, i) => (
               <div
                 key={`professor-${id}-${schedule.id}`}
-                className="grid gap-2 border-b-[1px] border-primary border-opacity-30 py-3 last:border-none"
+                className="grid gap-2 border-b-[1px] border-primary border-opacity-30 py-3 last:border-none lg:flex lg:justify-between"
               >
                 <div className="flex items-center ">
                   {secondLanguage ? (
@@ -75,7 +75,7 @@ const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
         )}
 
         {type === "professor" && (
-          <div className="flex justify-between">
+          <div className="flex items-start justify-between">
             <div>
               {schedule.groups.map(({ id, name }) => (
                 <Link
@@ -88,7 +88,7 @@ const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
                 </Link>
               ))}
             </div>
-            <div className="mt-2 flex items-center gap-1.5">
+            <div className=" flex items-center gap-1.5">
               <MapPinIcon
                 width={20}
                 height={20}
