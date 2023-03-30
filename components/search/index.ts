@@ -5,7 +5,7 @@ export * from "./Hits";
 export * from "./NoQuery";
 export * from "./NoSchedule";
 export * from "./NoSearchResults";
-export * from "./ProfessorsHits";
+export * from "./SearchModal/ProfessorsHits";
 export * from "./Recents";
 export * from "./SearchBar";
 export * from "./SearchModal";

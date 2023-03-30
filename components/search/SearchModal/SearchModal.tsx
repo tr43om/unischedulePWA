@@ -13,6 +13,8 @@ import {
 } from "@/components";
 import { usePathname, useRouter } from "next/navigation";
 import { OmsuGroupType, OmsuProfessorType } from "@/types";
+import travolta from "@/assets/travolta.gif";
+import Image from "next/image";
 
 type SearchModalProps = {
   fullwidth?: boolean;
@@ -84,19 +86,19 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
               ref={ref}
             >
               {showHits && <Hits hits={[groupsHits, professorsHits]} />}
-              {/* {recents.length < 1 && favorites.length < 1 && !query && (
-                <div className="mt-5 grid  items-center justify-items-center">
+              {recents.length < 1 && favorites.length < 1 && !query && (
+                <div className="mt-1 grid  items-center justify-items-center">
                   <Image
-                    src={WelcomeIllustration}
+                    src={travolta}
                     alt="searching"
                     width={200}
                     height={200}
                   />
-                  <p className="text-sm ">
-                    Не нужно быть детективом, чтобы узнать следующую пару
+                  <p className="lg:text-md mt-4 text-sm font-semibold">
+                    Найдите следующую пару за пару секунд 🔥
                   </p>
                 </div>
-              )} */}
+              )}
               {!query && <NoQuery />}
               {showNoSearchResults && <NoSearchResults query={query} />}
               {showNavigationHints && <SearchNavigationHints />}

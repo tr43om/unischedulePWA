@@ -1,4 +1,10 @@
-import { BottomNav, Navbar, StripeCalendar, ViewToggle } from "@/components";
+import {
+  BottomNav,
+  Navbar,
+  SearchModal,
+  StripeCalendar,
+  ViewToggle,
+} from "@/components";
 import { Suspense } from "react";
 import Loading from "../loading";
 
@@ -12,6 +18,7 @@ export default function RootLayout({
       <Navbar />
       {children}
       <BottomNav />
+      <SearchModal />
     </>
   );
 }
