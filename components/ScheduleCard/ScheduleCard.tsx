@@ -61,8 +61,8 @@ const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <MapPinIcon
-                    width={15}
-                    height={15}
+                    width={16}
+                    height={16}
                     className="text-gray-600 dark:text-gray-300 lg:h-5 lg:w-5"
                   />
                   <p className="lg:text-md text-sm ">
@@ -75,21 +75,23 @@ const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
         )}
 
         {type === "professor" && (
-          <div>
-            {schedule.groups.map(({ id, name }) => (
-              <Link
-                href={`groups/${id}`}
-                key={`group-${id}-${schedule.id}`}
-                className="btn-link btn-xs btn flex items-center justify-start gap-1.5 justify-self-start p-0 text-primary"
-              >
-                <UserIcon width={15} height={15} className="text-primary" />
-                <p className="lg:text-md text-sm">{name}</p>
-              </Link>
-            ))}
+          <div className="flex justify-between">
+            <div>
+              {schedule.groups.map(({ id, name }) => (
+                <Link
+                  href={`groups/${id}`}
+                  key={`group-${id}-${schedule.id}`}
+                  className="btn-link btn-xs btn flex items-center justify-start gap-1.5 justify-self-start p-0 text-primary"
+                >
+                  <UserIcon width={15} height={15} className="text-primary" />
+                  <p className="lg:text-md text-sm">{name}</p>
+                </Link>
+              ))}
+            </div>
             <div className="mt-2 flex items-center gap-1.5">
               <MapPinIcon
-                width={15}
-                height={15}
+                width={20}
+                height={20}
                 className="text-gray-600 dark:text-gray-300"
               />
               <p className="lg:text-md text-sm ">

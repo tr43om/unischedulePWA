@@ -50,7 +50,7 @@ const StripeCalendar = () => {
         onSwiper={(swiper) => setSwiperInstance(swiper)}
         preventClicks={true}
         preventClicksPropagation
-        className="touch-pan-x"
+        className="z-10 touch-pan-x"
       >
         <div onClick={(e) => e.stopPropagation()}>
           {studyDays.map((week, index) => (

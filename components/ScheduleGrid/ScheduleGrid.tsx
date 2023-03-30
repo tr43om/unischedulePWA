@@ -71,7 +71,7 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
                   <p className="text-2xl font-light text-white">
                     {new Date(day.timestamp).getDate()}
                   </p>
-                  <p className="text-md font-light text-gray-400">
+                  <p className="text-md font-light text-gray-200">
                     {format(day.timestamp, "EEEE", { locale: ru })}
                   </p>
                 </div>
@@ -83,7 +83,7 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
         <tbody>
           {weeklyTimetable.map((time, i) => (
             <tr key={`${time}`}>
-              <td className="  font-bold text-[#4b5563] dark:text-gray-500">
+              <td className="  font-bold text-neutral dark:text-gray-500">
                 {time}
               </td>
               {weeklySchedule.map(({ lessons, timestamp }) => {

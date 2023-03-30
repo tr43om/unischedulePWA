@@ -23,7 +23,7 @@ const ModalToggle = () => {
   return (
     <>
       <MagnifyingGlassIcon
-        className=" cursor-pointer lg:hidden"
+        className=" h-6 w-6 cursor-pointer text-white lg:hidden"
         width={20}
         height={20}
         onClick={toggleSearch}

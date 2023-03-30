@@ -7,7 +7,7 @@ type SearchBarProps = {
 
 const SearchBar = ({ search }: SearchBarProps) => {
   return (
-    <div className="relative flex h-14 w-full  items-center overflow-hidden rounded-lg bg-white  bg-opacity-50 px-3 focus-within:shadow-lg dark:bg-neutral">
+    <div className="relative flex h-14 w-full  items-center overflow-hidden rounded-lg bg-white/40 px-3    focus-within:shadow-lg dark:bg-neutral">
       <div className="grid h-full w-12 place-items-center ">
         <MagnifyingGlassIcon
           className="  text-gray-400"

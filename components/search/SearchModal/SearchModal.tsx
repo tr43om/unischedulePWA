@@ -11,34 +11,11 @@ import {
   SearchBar,
   NoQuery,
 } from "@/components";
-import { OmsuGroupType, OmsuProfessorType } from "@/types";
-import Image from "next/image";
-import WelcomeIllustration from "@/assets/welcome.svg";
 import { usePathname, useRouter } from "next/navigation";
-import {
-  transformGroupsCollection,
-  transformProfessorsCollection,
-} from "@/utils";
-import { useSearchCollection } from "@/hooks/useSearchCollection";
+import { OmsuGroupType, OmsuProfessorType } from "@/types";
 
 type SearchModalProps = {
   fullwidth?: boolean;
-};
-const getGroups = async () => {
-  const response = await fetch("api/groups");
-  const { data } = await response.json();
-
-  return transformGroupsCollection(data);
-};
-
-const getProfessors = async () => {
-  const response = await fetch(
-    "https://eservice.omsu.ru/schedule/backend/dict/tutors",
-    { next: { revalidate: 180 } }
-  );
-  const { data } = await response.json();
-
-  return transformProfessorsCollection(data);
 };
 
 const SearchModal = ({ fullwidth }: SearchModalProps) => {
@@ -83,17 +60,17 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
       aria-modal="true"
     >
       <div
-        className="fixed inset-0 h-screen bg-base-300 bg-opacity-75 backdrop-blur-sm transition-opacity overflow-y-hidden"
+        className="fixed inset-0 z-[799] h-screen bg-base-300 bg-opacity-75 backdrop-blur-sm transition-opacity overflow-y-hidden"
         onClick={toggleSearch}
       ></div>
 
       <div
-        className="fixed -top-10 left-0 right-0 z-10 h-full   w-full  "
+        className="fixed -top-10 left-0 right-0 z-[899] h-full  w-full   max-sm:px-2  "
         onClick={toggleSearch}
       >
-        <div className="z-15 flex h-full w-full  items-center   justify-center text-center sm:p-0">
+        <div className=" flex h-full w-full  items-center   justify-center text-center sm:p-0">
           <div
-            className="relative w-full   max-w-xs transform  rounded-lg   text-left transition-all sm:max-w-lg"
+            className="relative w-full max-w-sm   transform rounded-lg  text-left   transition-all sm:max-w-lg md:px-0"
             onClick={(e) => {
               e.stopPropagation();
             }}
@@ -107,7 +84,7 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
               ref={ref}
             >
               {showHits && <Hits hits={[groupsHits, professorsHits]} />}
-              {recents.length < 1 && favorites.length < 1 && !query && (
+              {/* {recents.length < 1 && favorites.length < 1 && !query && (
                 <div className="mt-5 grid  items-center justify-items-center">
                   <Image
                     src={WelcomeIllustration}
@@ -119,7 +96,7 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
                     Не нужно быть детективом, чтобы узнать следующую пару
                   </p>
                 </div>
-              )}
+              )} */}
               {!query && <NoQuery />}
               {showNoSearchResults && <NoSearchResults query={query} />}
               {showNavigationHints && <SearchNavigationHints />}

@@ -24,11 +24,7 @@ const getGroup = async (groupID: string) => {
 const Group = async ({ params }: { params: { group: string } }) => {
   const data = await getGroup(params.group);
 
-  return (
-    <Suspense fallback={<Loading />}>
-      <Schedule schedule={data} />
-    </Suspense>
-  );
+  return <Schedule schedule={data} />;
 };
 
 export default Group;
