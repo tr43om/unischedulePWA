@@ -9,9 +9,14 @@ const config = {
   },
 };
 
-const nextConfig = require("@ducanh2912/next-pwa").default({
-  dest: "public",
-  disable: isDev,
+const nextConfig = require("next-pwa")({
+  // dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+  runtimeCaching,
+  sw: "/sw.js",
+  buildExcludes: [/middleware-manifest.json$/],
 })(config);
 
 module.exports = nextConfig;
