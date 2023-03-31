@@ -18,37 +18,37 @@ const plex = IBM_Plex_Sans({
   subsets: ["cyrillic-ext", "latin-ext"],
 });
 
-const getGroups = async () => {
-  const response = await fetch(
-    "https://eservice.omsu.ru/schedule/backend/dict/groups",
-    { next: { revalidate: 180 } }
-  );
-  const { data } = await response.json();
+// const getGroups = async () => {
+//   const response = await fetch(
+//     "https://eservice.omsu.ru/schedule/backend/dict/groups",
+//     { next: { revalidate: 180 } }
+//   );
+//   const { data } = await response.json();
 
-  return transformGroupsCollection(data);
-};
+//   return transformGroupsCollection(data);
+// };
 
-const getProfessors = async () => {
-  const response = await fetch(
-    "https://eservice.omsu.ru/schedule/backend/dict/tutors",
-    { next: { revalidate: 180 } }
-  );
-  const { data } = await response.json();
+// const getProfessors = async () => {
+//   const response = await fetch(
+//     "https://eservice.omsu.ru/schedule/backend/dict/tutors",
+//     { next: { revalidate: 180 } }
+//   );
+//   const { data } = await response.json();
 
-  return transformProfessorsCollection(data);
-};
+//   return transformProfessorsCollection(data);
+// };
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Initiate both requests in parallel
-  const groupsData = getGroups();
-  const professorsData = getProfessors();
+  // // Initiate both requests in parallel
+  // const groupsData = getGroups();
+  // const professorsData = getProfessors();
 
-  // Wait for the promises to resolve
-  const [groups, professors] = await Promise.all([groupsData, professorsData]);
+  // // Wait for the promises to resolve
+  // const [groups, professors] = await Promise.all([groupsData, professorsData]);
 
   return (
     <html lang="ru" suppressHydrationWarning>
