@@ -14,7 +14,7 @@ import {
 import { OmsuGroupType, OmsuProfessorType } from "@/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import hunt from "@/assets/hunt.svg";
+import welcome from "@/assets/welcome.svg";
 
 type SearchModalProps = {
   fullwidth?: boolean;
@@ -60,12 +60,12 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
       aria-modal="true"
     >
       <div
-        className="fixed inset-0 h-screen bg-base-300 bg-opacity-75 backdrop-blur-sm transition-opacity overflow-y-hidden"
+        className="fixed inset-0 z-[888] h-screen bg-base-300 bg-opacity-75 backdrop-blur-sm transition-opacity overflow-y-hidden"
         onClick={toggleSearch}
       ></div>
 
       <div
-        className="fixed -top-10 left-0 right-0 z-10 h-full   w-full  "
+        className="fixed -top-10 left-0 right-0 z-[999] h-full   w-full  "
         onClick={toggleSearch}
       >
         <div className="z-15 flex h-full w-full  items-center   justify-center text-center sm:p-0">
@@ -85,15 +85,15 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
               >
                 {showHits && <Hits hits={[groupsHits, professorsHits]} />}
                 {recents.length < 1 && favorites.length < 1 && !query && (
-                  <div className="mt-5 grid  items-center justify-items-center">
+                  <div className="mt-4 grid  items-center justify-items-center">
                     <Image
-                      src={hunt}
+                      src={welcome}
                       alt="searching"
-                      width={200}
-                      height={200}
+                      width={180}
+                      height={180}
                     />
                     <p className="text-sm ">
-                      Не нужно быть детективом, чтобы узнать следующую пару
+                      Найди следующую пару за пару секунд
                     </p>
                   </div>
                 )}

@@ -20,7 +20,7 @@ export default function RootLayout({
         <title>unischedule</title>
       </head>
       <body
-        className={`${plex.className} container mx-auto px-8  md:max-w-md lg:max-w-[1600px]`}
+        className={`${plex.className} container mx-auto mb-24  px-4 md:max-w-md lg:max-w-[1600px] `}
       >
         <AnalyticsWrapper />
         <ThemeProviders data-theme defaultTheme="cmyk" enableSystem>

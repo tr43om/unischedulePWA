@@ -24,7 +24,7 @@ const ThemeSwitcher = () => {
 
   return (
     <div
-      className="group lg:order-2  lg:ml-auto lg:w-auto  lg:flex-grow-0 lg:btn"
+      className="group grid lg:order-2  lg:ml-auto lg:w-auto  lg:flex-grow-0 lg:btn"
       onClick={switchTheme}
     >
       <label
@@ -33,12 +33,12 @@ const ThemeSwitcher = () => {
         } group-hover:text-primary`}
       >
         <SunIcon
-          className="swap-off text-white lg:h-6 lg:w-6"
+          className="swap-off h-6 w-6 text-white"
           width={20}
           height={20}
         />
         <MoonIcon
-          className="swap-on text-white lg:h-6 lg:w-6"
+          className="swap-on h-6 w-6 text-white"
           width={20}
           height={20}
         />
