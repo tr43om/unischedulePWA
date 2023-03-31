@@ -28,17 +28,17 @@ const ThemeSwitcher = () => {
       onClick={switchTheme}
     >
       <label
-        className={`swap-rotate swap ${
+        className={`swap swap-rotate ${
           th === "dracula" && "swap-active"
         } group-hover:text-primary`}
       >
         <SunIcon
-          className="swap-off h-6 w-6 text-white"
+          className="swap-off h-6 w-6 text-neutral dark:text-white lg:text-white"
           width={20}
           height={20}
         />
         <MoonIcon
-          className="swap-on h-6 w-6 text-white"
+          className="swap-on h-6 w-6 text-neutral dark:text-white lg:text-white"
           width={20}
           height={20}
         />

@@ -34,7 +34,7 @@ const StripeCalendar = () => {
   }, []);
 
   return (
-    <section className=" mb-5 max-w-md print:hidden lg:hidden">
+    <section className=" mb-5  print:hidden lg:hidden">
       <div className="flex items-center justify-between">
         <CurrentDate />
         {swiperInstance && (

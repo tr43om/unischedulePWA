@@ -31,7 +31,7 @@ const CalendarDate = ({ date }: CalendarDateProps) => {
       <div className="flex items-center ">
         <div className="text-center">
           <p
-            className={` flex aspect-square w-10 place-content-center place-items-center rounded-full text-sm transition-all duration-300 sm:group-hover:text-gray-100 ${isTextActive} ${isBackgroundActive} sm:group-hover:bg-primary`}
+            className={` flex h-10 w-10 place-content-center place-items-center rounded-full text-sm transition-all duration-300 sm:group-hover:text-gray-100 ${isTextActive} ${isBackgroundActive} sm:group-hover:bg-primary`}
           >
             {day}
           </p>
