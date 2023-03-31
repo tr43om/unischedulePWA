@@ -13,17 +13,11 @@ const getGroup = async (groupID: string) => {
     { next: { revalidate: 60 } }
   ).then((res) => res.json());
 
-  
   return transformSchedule(data, "group");
 };
 
 const Group = async ({ params }: { params: { group: string } }) => {
-  
   const data = await getGroup(params.group);
-
-  if (!data) {
-    notFound();
-  }
 
   return <Schedule schedule={data} />;
 };

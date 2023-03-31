@@ -2,7 +2,7 @@ import { NoSchedule, ResultsFor, Schedule, ScheduleList } from "@/components";
 import { OmsuScheduleResponse } from "@/types";
 import { transformSchedule } from "@/utils";
 
-import {notFound} from 'next/navigation';
+import { notFound } from "next/navigation";
 
 const getProfessor = async (professorID: string) => {
   const {
@@ -19,10 +19,6 @@ const getProfessor = async (professorID: string) => {
 
 const Professor = async ({ params }: { params: { professor: string } }) => {
   const data = await getProfessor(params.professor);
-
-  if (!data) {
-    notFound();
-  }
 
   return <Schedule schedule={data} />;
 };

@@ -2,7 +2,6 @@ import { useState, useEffect, RefObject, useCallback } from "react";
 import { useKeyPress } from "./useKeyPress";
 import * as _ from "lodash";
 import { debounce } from "throttle-debounce";
-import { useRouter } from "next/router";
 
 type UseHitsNavigationProps<T> = {
   scrollTo: RefObject<HTMLDivElement>;
@@ -74,8 +73,6 @@ export const useHitsNavigation = <T,>(props: UseHitsNavigationProps<T>) => {
 
     keys: ["ArrowUp"],
   });
-
-
 
   return {
     activeList,
