@@ -18,7 +18,7 @@ export const useProfessors = (config?: SWRConfiguration) => {
     revalidateOnReconnect: false,
     ...config,
   };
-  const { data, isLoading, error } = useSWRWithFallbackData<
+  const { data, isLoading, error } = useSwr<
     OmsuProfessorType[] | InitialDataType
   >("../api/professors", fetcher, defaultOptions);
 

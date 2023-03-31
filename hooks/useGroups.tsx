@@ -20,9 +20,11 @@ export const useGroups = (config?: SWRConfiguration) => {
 
     ...config,
   };
-  const { data, isLoading, error } = useSWRWithFallbackData<
-    OmsuGroupType[] | InitialDataType
-  >("../api/groups", fetcher, defaultOptions);
+  const { data, isLoading, error } = useSwr<OmsuGroupType[] | InitialDataType>(
+    "../api/groups",
+    fetcher,
+    defaultOptions
+  );
 
   const groupsData = data && "groups" in data ? data.groups : data;
 
