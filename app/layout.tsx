@@ -1,7 +1,6 @@
 import "./globals.css";
 import { IBM_Plex_Sans } from "@next/font/google";
 import { AnalyticsWrapper, ThemeProviders } from "@/components";
-import Script from "next/script";
 const plex = IBM_Plex_Sans({
   weight: ["400", "700"],
   subsets: ["cyrillic-ext", "latin-ext"],
