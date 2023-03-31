@@ -7,7 +7,6 @@ export async function GET(request: Request) {
       { next: { revalidate: 180 } }
     );
     const { data } = await response.json();
-    console.log(data);
     return NextResponse.json(data);
   } catch (error) {
     console.error(error);

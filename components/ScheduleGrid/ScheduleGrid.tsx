@@ -6,26 +6,10 @@ import { useDateStore } from "@/zustandStore";
 import React from "react";
 import ru from "date-fns/locale/ru";
 import format from "date-fns/format";
-<<<<<<< HEAD
 
 import { ClockIcon, MapPinIcon, UserIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Badge, SecondLangFlag } from "../ui";
-=======
-import { ScheduleCard } from "../ScheduleCard";
-import { DE, FR, CN, ES } from "country-flag-icons/react/3x2";
-
-import {
-  ClockIcon,
-  MapPinIcon,
-  UserIcon,
-  LinkIcon,
-  MapIcon,
-} from "@heroicons/react/24/outline";
-import Link from "next/link";
-import ReactCountryFlag from "react-country-flag";
-import { Badge } from "../ui";
->>>>>>> master
 import { NoSchedule } from "../search";
 type ScheduleGridProps = {
   scheduleData: TransformedScheduleDto;
@@ -57,21 +41,12 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
   }
 
   return (
-<<<<<<< HEAD
     <div className="relative    overflow-x-hidden">
       <table className="relative  table w-full table-fixed border-separate border-spacing-2">
         {/* head */}
         <thead>
           <tr>
             <th className=" sticky top-0 left-0 !z-0 w-[75px] justify-items-center bg-neutral">
-=======
-    <div className="relative   overflow-hidden">
-      <table className="  table w-full table-fixed border-separate border-spacing-2">
-        {/* head */}
-        <thead>
-          <tr>
-            <th className="!relative  !z-0 w-[75px] justify-items-center bg-neutral">
->>>>>>> master
               <ClockIcon
                 width={20}
                 height={20}
@@ -79,23 +54,15 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
               />
             </th>
             {weeklySchedule.map((day) => (
-<<<<<<< HEAD
               <th
                 key={day.timestamp + "th"}
                 className="sticky top-0 left-0 bg-neutral"
               >
-=======
-              <th key={day.timestamp + "th"} className="bg-neutral">
->>>>>>> master
                 <div className="grid justify-items-center">
                   <p className="text-2xl font-light text-white">
                     {new Date(day.timestamp).getDate()}
                   </p>
-<<<<<<< HEAD
                   <p className="text-md font-light text-gray-200">
-=======
-                  <p className="text-md font-light text-gray-400">
->>>>>>> master
                     {format(day.timestamp, "EEEE", { locale: ru })}
                   </p>
                 </div>
@@ -107,11 +74,7 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
         <tbody>
           {weeklyTimetable.map((time, i) => (
             <tr key={`${time}`}>
-<<<<<<< HEAD
               <td className="  font-bold text-neutral dark:text-gray-500">
-=======
-              <td className="  font-bold text-[#4b5563] dark:text-gray-500">
->>>>>>> master
                 {time}
               </td>
               {weeklySchedule.map(({ lessons, timestamp }) => {
@@ -136,22 +99,8 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
                                 className="flex items-center gap-1"
                               >
                                 <div className="flex items-center gap-1">
-<<<<<<< HEAD
                                   {secondLanguage && (
                                     <SecondLangFlag lang={secondLanguage} />
-=======
-                                  {secondLanguage === "немецкий" && (
-                                    <DE className="h-5 w-5 rounded-lg opacity-60" />
-                                  )}
-                                  {secondLanguage === "французский" && (
-                                    <FR className="h-5 w-5 rounded-lg opacity-60" />
-                                  )}
-                                  {secondLanguage === "китайский" && (
-                                    <CN className="h-5 w-5 rounded-lg opacity-60" />
-                                  )}
-                                  {secondLanguage === "испанский" && (
-                                    <ES className="h-5 w-5 rounded-lg opacity-60" />
->>>>>>> master
                                   )}
                                   <div
                                     className="tooltip tooltip-top  cursor-pointer hover:tooltip-open"
@@ -184,11 +133,7 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
                             <div key={`group-${id}-${id}`}>
                               <Link
                                 href={`../groups/${id}`}
-<<<<<<< HEAD
                                 className="btn-link btn-xs btn flex items-center justify-start gap-1.5 justify-self-start p-0"
-=======
-                                className="btn btn-link btn-xs flex items-center justify-start gap-1.5 justify-self-start p-0"
->>>>>>> master
                               >
                                 <UserIcon
                                   width={15}

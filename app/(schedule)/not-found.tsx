@@ -12,7 +12,7 @@ export default function NotFound() {
       <h1 className="text-9xl font-extrabold tracking-widest dark:text-white">
         404
       </h1>
-      <div className="absolute rotate-12 rounded bg-[#FF6A3D] px-2 text-sm">
+      <div className="absolute rotate-12 rounded bg-primary px-2 text-sm">
         {pathname.includes("professors")
           ? "Преподаватель не найден"
           : "Группа не найдена"}

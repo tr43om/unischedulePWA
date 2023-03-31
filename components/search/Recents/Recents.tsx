@@ -1,55 +1,28 @@
-"use client";
 
-import { useSearchStore } from "zustandStore";
 import React from "react";
 import { StarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import {useRouter} from 'next/navigation';
-import { useKeyPress } from "@/hooks";
+import { RecentType } from "@/types";
 
 type RecentsProps = {
-  active: number;
+   active: number;
+  data: RecentType[];
+  deleteRecent: (id: number) => void;
+  chooseRecent: (query: RecentType) => void
 };
 
-const Recents = ({ active }: RecentsProps) => {
-  const router = useRouter();
-  const { recents, chooseQuery, deleteFromRecents, addToFavorites } =
-    useSearchStore(
-      ({
-        chooseQuery,
-        favorites,
-        recents,
-        deleteFromRecents,
-        addToFavorites,
-      }) => {
-        return {
-          favorites,
-          recents,
-          deleteFromRecents,
-          chooseQuery,
-          addToFavorites,
-        };
-      }
-    );
-
-  useKeyPress({
-    callback: () => {
-      chooseQuery(recents[active]);
-      router.push(`${recents[active].type}s/${recents[active].id}`);
-    },
-    keys: ["Enter"],
-  });
+const Recents = ({ active, chooseRecent, data, deleteRecent }: RecentsProps) => {
 
   return (
     <div>
       <h3 className="mb-2 ">Недавние</h3>
       <div>
-        {recents.map((recent, i) => (
+        {data.map((recent, i) => (
           <Link
             href={`${recent.course ? "groups" : "professors"}/${recent.id}`}
             key={`${recent.id}-recent`}
             className="group flex cursor-pointer items-center  justify-between   border-b-[1px]   border-b-base-100  border-opacity-50 py-1.5 transition delay-100 ease-in-out last:border-b-[0] "
-            onClick={() => chooseQuery(recent)}
+            onClick={() => chooseRecent(recent)}
           >
             <p
               className={`${
@@ -71,7 +44,7 @@ const Recents = ({ active }: RecentsProps) => {
               >
                 <StarIcon
                   className="h-4 text-primary hover:fill-primary"
-                  onClick={() => addToFavorites(recent)}
+                  onClick={() => chooseRecent(recent)}
                 />
               </div>
               <div
@@ -80,7 +53,7 @@ const Recents = ({ active }: RecentsProps) => {
               >
                 <XMarkIcon
                   className="h-4 text-gray-400 hover:text-gray-300"
-                  onClick={() => deleteFromRecents(recent.id)}
+                  onClick={() => deleteRecent(recent.id)}
                 />
               </div>
             </div>

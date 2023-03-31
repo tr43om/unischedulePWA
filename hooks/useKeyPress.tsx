@@ -14,11 +14,7 @@ export const useKeyPress = (props: UseKeyPressProps) => {
   const { callback, keys, node, hotkey } = props;
   const callbackRef = useRef(callback);
 
-<<<<<<< HEAD
   useEffect(() => {
-=======
-  useLayoutEffect(() => {
->>>>>>> master
     callbackRef.current = callback;
   });
 

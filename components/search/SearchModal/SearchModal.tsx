@@ -1,7 +1,7 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 
-import { useFuzzy, useGroups, useKeyPress, useProfessors } from "@/hooks";
+import { useFuzzy, useGroups, useProfessors } from "@/hooks";
 import { useSearchStore } from "@/zustandStore";
 import {
   Hits,
@@ -10,9 +10,7 @@ import {
   SearchBar,
   NoQuery,
 } from "@/components";
-import { OmsuGroupType, OmsuProfessorType } from "@/types";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import welcome from "@/assets/welcome.svg";
 
 type SearchModalProps = {

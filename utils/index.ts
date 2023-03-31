@@ -1,9 +1,6 @@
 import {
-<<<<<<< HEAD
   OmsuGroupType,
   OmsuProfessorType,
-=======
->>>>>>> master
   OmsuScheduleDto,
   OmsuScheduleResponse,
   TransformedScheduleDto,
@@ -24,10 +21,6 @@ import {
 } from "@/constants";
 
 import * as _ from "lodash";
-<<<<<<< HEAD
-import { notFound } from "next/navigation";
-=======
->>>>>>> master
 
 export const twClassNames = (...classes: Array<string | boolean>) => {
   return classes.filter(Boolean).join(" ");
@@ -99,7 +92,6 @@ const lessonsEndAt = (time: number) => {
   }
 };
 
-<<<<<<< HEAD
 export const transformProfessorsCollection = (data: OmsuProfessorType[]) => {
   const professors = _.sortBy(data, "name");
 
@@ -129,18 +121,11 @@ export const transformGroupsCollection = (data: OmsuGroupType[]) => {
   return groups;
 };
 
-=======
->>>>>>> master
 export const transformSchedule = (
   data: OmsuScheduleResponse[],
   type: "group" | "professor"
 ) => {
-<<<<<<< HEAD
-  if (data.length < 1) {
-    notFound();
-  }
-=======
->>>>>>> master
+  
   const scheduleFor =
     type === "group" ? data[0].lessons[0].group : data[0].lessons[0].teacher;
 
@@ -177,18 +162,11 @@ export const transformSchedule = (
       };
 
       const getShortName = (name: string) => {
-<<<<<<< HEAD
         const dividedName = name.split(" ");
         if (dividedName.length <= 1) return name;
         const firstname = name.split(" ")[1][0];
         const surname = name.split(" ")[0];
         const patronym = dividedName.length >= 3 ? name.split(" ")[2][0] : "";
-=======
-        if (name.split(" ").length <= 1) return name;
-        const firstname = name.split(" ")[1][0];
-        const surname = name.split(" ")[0];
-        const patronym = name.split(" ")[2][0];
->>>>>>> master
 
         return `${surname} ${firstname}.${patronym}.`;
       };

@@ -7,6 +7,15 @@ export type GroupType = {
   name: string;
 };
 
+export type RecentType = {
+  id: number;
+  name: string;
+  type?: string;
+  course?: number;
+};
+
+export interface FavoriteType extends RecentType {}
+
 export type TransformedScheduleDto = {
   type: "group" | "professor";
   scheduleFor: string;

@@ -20,11 +20,7 @@ const ScheduleList = ({ schedule }: ScheduleListProps) => {
 
   if (scheduleOfSelectedDay === undefined) {
     return (
-<<<<<<< HEAD
-      <div className="w-full max-w-lg items-center lg:items-center">
-=======
-      <div className="w-full max-w-lg lg:items-center">
->>>>>>> master
+      <div className="w-full max-w-lg items-center ">
         <NoSchedule label="На сегодня пар нет" />
       </div>
     );

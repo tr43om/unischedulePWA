@@ -75,17 +75,8 @@ export const useHitsNavigation = <T,>(props: UseHitsNavigationProps<T>) => {
     keys: ["ArrowUp"],
   });
 
-<<<<<<< HEAD
-=======
-  // useKeyPress({
-  //   callback: () => {
-  //     const query = hits[active];
-  //     props.choose(query as T);
-  //   },
-  //   keys: ["Enter"],
-  // });
 
->>>>>>> master
+
   return {
     activeList,
     activeHit,

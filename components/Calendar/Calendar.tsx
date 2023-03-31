@@ -54,11 +54,7 @@ export const Calendar = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <div>
-=======
     <div className=" hidden pt-5 lg:block">
->>>>>>> master
       <div className=" max-w-md px-4 sm:px-7 md:max-w-4xl md:px-6">
         <div className="  md:divide-x md:divide-gray-200">
           <div>
@@ -111,17 +107,10 @@ export const Calendar = () => {
                     type="button"
                     onClick={() => selectDate(day.getTime())}
                     className={twClassNames(
-<<<<<<< HEAD
                       isEqual(day, selectedDate) && "text-primary",
                       !isEqual(day, selectedDate) &&
                         isToday(day) &&
                         "text-primary",
-=======
-                      isEqual(day, selectedDate) && "text-white",
-                      !isEqual(day, selectedDate) &&
-                        isToday(day) &&
-                        "text-red-500",
->>>>>>> master
                       !isEqual(day, selectedDate) &&
                         !isToday(day) &&
                         isSameMonth(day, firstDayCurrentMonth) &&
@@ -132,7 +121,6 @@ export const Calendar = () => {
                         "text-gray-400",
                       isEqual(day, selectedDate) &&
                         isToday(day) &&
-<<<<<<< HEAD
                         "bg-primary",
                       isEqual(day, selectedDate) &&
                         !isToday(day) &&
@@ -141,15 +129,6 @@ export const Calendar = () => {
                         "hover:bg-gray-200 lg:hover:bg-primary",
                       (isEqual(day, selectedDate) || isToday(day)) &&
                         "font-semibold text-neutral",
-=======
-                        "bg-red-500",
-                      isEqual(day, selectedDate) &&
-                        !isToday(day) &&
-                        "bg-primary",
-                      !isEqual(day, selectedDate) && "hover:bg-gray-200",
-                      (isEqual(day, selectedDate) || isToday(day)) &&
-                        "font-semibold",
->>>>>>> master
                       "mx-auto flex h-12 w-12 items-center justify-center rounded-full"
                     )}
                   >
