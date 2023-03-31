@@ -1,18 +1,14 @@
-"use client";
 import React from "react";
 import {
   MagnifyingGlassIcon,
   HomeIcon,
   Cog6ToothIcon as SettingsIcon,
 } from "@heroicons/react/24/outline";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ModalToggle } from "../ModalToggle";
 import { ThemeSwitcher } from "../ui";
 
 const BottomNav = () => {
-  const pathname = usePathname();
-
   return (
     <nav className=" fixed inset-x-0 bottom-4 mx-auto flex w-full  max-w-xs justify-around   rounded-md bg-neutral/70 p-4 backdrop-blur-md   lg:hidden">
       <Link href="/">

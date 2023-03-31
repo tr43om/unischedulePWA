@@ -11,7 +11,7 @@ import {
   SearchBar,
   NoQuery,
 } from "@/components";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { OmsuGroupType, OmsuProfessorType } from "@/types";
 import welcome from "@/assets/welcome.svg";
 import Image from "next/image";
@@ -87,16 +87,19 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
             >
               {showHits && <Hits hits={[groupsHits, professorsHits]} />}
               {recents.length < 1 && favorites.length < 1 && !query && (
-                <div className="mt-6 grid   items-center justify-items-center">
+                <div className="mt-6 grid   items-center justify-items-center ">
                   <Image
                     src={welcome}
                     alt="searching"
                     width={180}
                     height={180}
                   />
-                  <p className="lg:text-md mt-2 text-sm font-semibold">
-                    Найди следующую пару за пару секунд
-                  </p>
+                  <div className="flex items-end gap-2">
+                    <p className="lg:text-md mt-2 text-sm font-semibold">
+                      Найди следующую пару за пару секунд{" "}
+                    </p>
+                    <div className="animate-bounce">🔎</div>
+                  </div>
                 </div>
               )}
               {!query && <NoQuery />}

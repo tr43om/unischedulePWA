@@ -1,5 +1,4 @@
 "use client";
-import { useSearchCollection } from "@/hooks/useSearchCollection";
 import { TransformedScheduleDto } from "@/types";
 import { useAppearanceStore, useDateStore } from "@/zustandStore";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
@@ -61,8 +60,6 @@ const Schedule = ({ schedule }: ScheduleProps) => {
           </div>
           <div className="mt-10 mb-3 flex items-center justify-between">
             <ResultsFor resultsFor={schedule.scheduleFor} />
-
-            {/* <LessonTypesPallette /> */}
           </div>
           <ScheduleGrid scheduleData={schedule} />
         </div>

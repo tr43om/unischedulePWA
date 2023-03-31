@@ -6,18 +6,9 @@ import { useDateStore } from "@/zustandStore";
 import React from "react";
 import ru from "date-fns/locale/ru";
 import format from "date-fns/format";
-import { ScheduleCard } from "../ScheduleCard";
-import { DE, FR, CN, ES } from "country-flag-icons/react/3x2";
 
-import {
-  ClockIcon,
-  MapPinIcon,
-  UserIcon,
-  LinkIcon,
-  MapIcon,
-} from "@heroicons/react/24/outline";
+import { ClockIcon, MapPinIcon, UserIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import ReactCountryFlag from "react-country-flag";
 import { Badge, SecondLangFlag } from "../ui";
 import { NoSchedule } from "../search";
 type ScheduleGridProps = {

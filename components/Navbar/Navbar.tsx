@@ -11,7 +11,6 @@ const Navbar = () => {
       </div>
       <div className="max-[1024px]:navbar-end lg:w-full lg:max-w-xs">
         <ModalToggle />
-        <SearchModal />
       </div>
     </nav>
   );

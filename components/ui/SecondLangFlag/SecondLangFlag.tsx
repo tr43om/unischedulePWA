@@ -1,3 +1,5 @@
+"use client";
+
 import { DE, FR, CN, ES } from "country-flag-icons/react/3x2";
 import React from "react";
 import { twClassNames } from "@/utils";
