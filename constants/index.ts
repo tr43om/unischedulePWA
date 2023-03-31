@@ -36,7 +36,10 @@ export const CHINESE_PROFESSORS = [
   "Хрипля Татьяна Сергеевна",
   "Федорцов Никита Сергеевич",
   "Рогова Ирина Вячеславовна",
+<<<<<<< HEAD
   "Мунгалова Вероника Алексеевна",
+=======
+>>>>>>> master
 ];
 
 export const OMSU_SECOND_LANGUAGES = [

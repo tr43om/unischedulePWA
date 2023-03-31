@@ -3,13 +3,20 @@
 import { useSearchStore } from "@/zustandStore";
 import React, { useRef, useState } from "react";
 import { Recents, Favorites } from "@/components";
+<<<<<<< HEAD
 import { useHitsNavigation, useKeyPress } from "@/hooks/";
 import { useRouter } from "next/navigation";
+=======
+import { useHitsNavigation } from "@/hooks/";
+>>>>>>> master
 
 type NoQueryProps = {};
 
 const NoQuery = () => {
+<<<<<<< HEAD
   const router = useRouter();
+=======
+>>>>>>> master
   const { chooseQuery, favorites, recents } = useSearchStore(
     ({ favorites, recents, chooseQuery }) => {
       return { favorites, recents, chooseQuery };
@@ -19,13 +26,17 @@ const NoQuery = () => {
 
   const {
     activeList: [activeRecent, activeFavorite],
+<<<<<<< HEAD
     activeHit,
+=======
+>>>>>>> master
   } = useHitsNavigation({
     hitsList: [recents, favorites],
     choose: chooseQuery,
     scrollTo: ref,
   });
 
+<<<<<<< HEAD
   useKeyPress({
     callback: () => {
       if (!activeHit) return;
@@ -35,6 +46,8 @@ const NoQuery = () => {
     keys: ["Enter"],
   });
 
+=======
+>>>>>>> master
   return (
     <div
       className="grid gap-5 py-6 px-6 scrollbar-thin scrollbar-track-gray-300    scrollbar-thumb-neutral dark:scrollbar-track-neutral-focus  dark:scrollbar-thumb-base-100 "

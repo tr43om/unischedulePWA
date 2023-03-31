@@ -10,10 +10,15 @@ const LessonTypesPallette = () => {
     <ul className="flex gap-6 justify-self-end ">
       {lessonTypes.map(({ color, type }, i) => (
         <li key={i} className="flex gap-2  ">
+<<<<<<< HEAD
           <div className={`h-5 w-5 ${color} rounded-full`}></div>
           <p className="text-xs text-gray-500 dark:text-gray-300 md:text-sm">
             {type}
           </p>
+=======
+          <div className={`h-5 w-5 ${color} rounded-md`}></div>
+          <p className="text-sm text-gray-500 dark:text-gray-300">{type}</p>
+>>>>>>> master
         </li>
       ))}
     </ul>

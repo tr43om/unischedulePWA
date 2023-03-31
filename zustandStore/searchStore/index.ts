@@ -63,7 +63,6 @@ export const useSearchStore = create<Store>()(
             get().closeSearch();
             useUserStore.getState().storeInfoAbout(query);
             const type = "course" in query ? "group" : "professor";
-
             get().addToRecents(query, type);
             set((state) => {
               state.query = "";

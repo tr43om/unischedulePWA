@@ -34,7 +34,7 @@ const StripeCalendar = () => {
   }, []);
 
   return (
-    <section className=" mb-5 max-w-md print:hidden lg:hidden">
+    <section className=" mb-5  print:hidden lg:hidden">
       <div className="flex items-center justify-between">
         <CurrentDate />
         {swiperInstance && (
@@ -50,7 +50,7 @@ const StripeCalendar = () => {
         onSwiper={(swiper) => setSwiperInstance(swiper)}
         preventClicks={true}
         preventClicksPropagation
-        className="z-10 touch-pan-x"
+        className="touch-pan-x"
       >
         <div onClick={(e) => e.stopPropagation()}>
           {studyDays.map((week, index) => (

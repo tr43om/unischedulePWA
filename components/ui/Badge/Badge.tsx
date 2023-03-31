@@ -14,7 +14,7 @@ const Badge = ({ label, variant = "badge-sm" }: BadgeProps) => {
   return (
     <span
       className={twClassNames(
-        " mb-2 rounded-md border-none  bg-neutral px-2.5 py-0.5  text-white",
+        "  rounded-md border-none bg-neutral px-2.5 py-0.5  text-white",
 
         variant === "badge-sm" && "text-xs",
         variant === "badge-md" && "px-3 py-1 text-sm",

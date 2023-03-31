@@ -12,7 +12,10 @@ const getProfessor = async (professorID: string) => {
 
     { next: { revalidate: 60 } }
   ).then((res) => res.json());
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
   return transformSchedule(data, "professor");
 };
 
