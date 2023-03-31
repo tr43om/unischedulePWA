@@ -1,6 +1,10 @@
 import "./globals.css";
 import { IBM_Plex_Sans } from "@next/font/google";
-import { AnalyticsWrapper, ThemeProviders } from "@/components";
+import {
+  AnalyticsWrapper,
+  ServiceWorkerWrapper,
+  ThemeProviders,
+} from "@/components";
 const plex = IBM_Plex_Sans({
   weight: ["400", "700"],
   subsets: ["cyrillic-ext", "latin-ext"],
@@ -22,6 +26,7 @@ export default function RootLayout({
       <body
         className={`${plex.className} container mx-auto mb-24  px-4 md:max-w-md lg:max-w-[1600px] `}
       >
+        <ServiceWorkerWrapper />
         <AnalyticsWrapper />
         <ThemeProviders data-theme defaultTheme="cmyk" enableSystem>
           {children}
