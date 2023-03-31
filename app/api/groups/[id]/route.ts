@@ -9,10 +9,11 @@ export async function GET(
 
     const response = await fetch(
       `https://eservice.omsu.ru/schedule/backend/schedule/group/${id}`,
-      { next: { revalidate: 10 }, cache: "no-store" }
+      { next: { revalidate: 180 } }
     );
 
     const { data } = await response.json();
+    console.log("GROUPS", data);
 
     return NextResponse.json(data);
   } catch (error) {

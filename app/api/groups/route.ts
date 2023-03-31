@@ -4,7 +4,7 @@ export async function GET(request: Request) {
   try {
     const response = await fetch(
       "https://eservice.omsu.ru/schedule/backend/dict/groups",
-      { next: { revalidate: 20 } }
+      { next: { revalidate: 180 } }
     );
     const { data } = await response.json();
     return NextResponse.json(data);
