@@ -17,7 +17,6 @@ export const useGroups = (config?: SWRConfiguration) => {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    suspense: true,
 
     ...config,
   };

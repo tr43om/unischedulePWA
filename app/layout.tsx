@@ -64,15 +64,7 @@ export default async function RootLayout({
         <AnalyticsWrapper />
         <ServiceWorkerWrapper />
         <ThemeProviders data-theme defaultTheme="cmyk" enableSystem>
-          <SwrWrapper
-            fallback={{
-              "../api/groups": groups,
-              "../api/professors": professors,
-            }}
-            fallbackData={{ groups, professors }}
-          >
-            {children}
-          </SwrWrapper>
+          {children}
         </ThemeProviders>
       </body>
     </html>

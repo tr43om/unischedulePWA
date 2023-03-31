@@ -16,7 +16,6 @@ export const useProfessors = (config?: SWRConfiguration) => {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    suspense: true,
     ...config,
   };
   const { data, isLoading, error } = useSWRWithFallbackData<
