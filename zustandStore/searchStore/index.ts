@@ -2,11 +2,13 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { devtools } from "zustand/middleware";
 import { persist } from "zustand/middleware";
-import { OmsuGroupType, OmsuProfessorType, RecentType, FavoriteType } from "types";
+import {
+  OmsuGroupType,
+  OmsuProfessorType,
+  RecentType,
+  FavoriteType,
+} from "types";
 import { useUserStore } from "../userStore";
-import { useRouter } from "next/router";
-
-
 
 type Store = {
   query: string;

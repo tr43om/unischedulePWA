@@ -59,6 +59,7 @@ export interface OmsuScheduleDto
   groups: {
     name: string;
     id: number;
+    course: number;
   }[];
   auditories: {
     name: string;

@@ -92,6 +92,12 @@ const lessonsEndAt = (time: number) => {
   }
 };
 
+const getCourse = (group: string) => {
+  const year = Number(group.split("-")[1][0]);
+  const course = Number((22 - year).toString()[1]) + 1;
+  return course;
+};
+
 export const transformProfessorsCollection = (data: OmsuProfessorType[]) => {
   const professors = _.sortBy(data, "name");
 
@@ -101,8 +107,7 @@ export const transformProfessorsCollection = (data: OmsuProfessorType[]) => {
 export const transformGroupsCollection = (data: OmsuGroupType[]) => {
   const transformedData = _.map(data, (group) => {
     if (group.name !== "Резерв") {
-      const year = Number(group.name.split("-")[1][0]);
-      const course = Number((22 - year).toString()[1]) + 1;
+      const course = getCourse(group.name);
       return { ...group, course };
     }
 
@@ -125,7 +130,6 @@ export const transformSchedule = (
   data: OmsuScheduleResponse[],
   type: "group" | "professor"
 ) => {
-  
   const scheduleFor =
     type === "group" ? data[0].lessons[0].group : data[0].lessons[0].teacher;
 
@@ -185,6 +189,7 @@ export const transformSchedule = (
 
       const groups = _.map(course, ({ group, group_id }) => ({
         name: group,
+        course: getCourse(group),
         id: group_id,
       }));
 
