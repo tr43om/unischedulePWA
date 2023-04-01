@@ -1,7 +1,6 @@
 "use client";
 import { useUserStore } from "@/zustandStore";
-import { redirect } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 const RedirectHandler = () => {
@@ -18,7 +17,8 @@ const RedirectHandler = () => {
       push(redirectRoute);
     }
   }, []);
-  return <div>RedirectHandler</div>;
+
+  return null;
 };
 
 export default RedirectHandler;
