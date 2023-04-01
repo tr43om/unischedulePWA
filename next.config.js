@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV !== "production";
 const withPWA = withPWAInit({
   dest: "public",
   disable: isDev,
-  fallbacks: { document: "app/fallback.js" },
+  fallbacks: { document: "app/fallback.tsx" },
 
   exclude: [
     // add buildExcludes here
