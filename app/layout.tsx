@@ -11,8 +11,21 @@ import {
   transformGroupsCollection,
   transformProfessorsCollection,
 } from "@/utils";
+import dynamic from "next/dynamic";
 import { Suspense, use } from "react";
 import SwrWrapper from "@/components/wrappers/SwrWrapper/SwrWrapper";
+import Loading from "./loading";
+
+const DynamicModal = dynamic(
+  () =>
+    import("@/components/search/SearchModal").then(
+      (modal) => modal.SearchModal
+    ),
+  {
+    ssr: false,
+    loading: () => <Loading />,
+  }
+);
 const plex = IBM_Plex_Sans({
   weight: ["400", "700"],
   subsets: ["cyrillic-ext", "latin-ext"],
@@ -71,7 +84,7 @@ export default async function RootLayout({
             fallbackData={{ groups, professors }}
           >
             {children}
-            <SearchModal />
+            <DynamicModal />
           </SwrWrapper>
         </ThemeProviders>
       </body>
