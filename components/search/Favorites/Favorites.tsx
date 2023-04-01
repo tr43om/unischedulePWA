@@ -21,9 +21,11 @@ const Favorites = ({
       <div>
         {data.map((favorite, i) => (
           <Link
-            href={`${favorite.type === "group" ? "groups" : "professors"}/${
-              favorite.id
-            }`}
+            href={`${
+              favorite.type === "group" || favorite.course
+                ? "groups"
+                : "professors"
+            }/${favorite.id}`}
             onClick={() => chooseFavorite(favorite)}
             key={`${favorite.id}-favorite`}
             className="group flex cursor-pointer items-center  justify-between   border-b-[1px]   border-b-base-100  border-opacity-50 py-1.5 transition delay-100 ease-in-out last:border-b-[0] "

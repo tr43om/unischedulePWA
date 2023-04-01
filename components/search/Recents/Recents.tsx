@@ -24,9 +24,9 @@ const Recents = ({
       <div>
         {data.map((recent, i) => (
           <Link
-            href={`${recent.type === "group" ? "groups" : "professors"}/${
-              recent.id
-            }`}
+            href={`${
+              recent.type === "group" || recent.course ? "groups" : "professors"
+            }/${recent.id}`}
             key={`${recent.id}-recent`}
             className="group flex cursor-pointer items-center  justify-between   border-b-[1px]   border-b-base-100  border-opacity-50 py-1.5 transition delay-100 ease-in-out last:border-b-[0] "
             onClick={() => chooseRecent(recent)}
