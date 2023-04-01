@@ -20,12 +20,13 @@ module.exports = {
       {
         cmyk: {
           ...require("daisyui/src/colors/themes")["[data-theme=cmyk]"],
-          primary: "#0891b2",
+          primary: "#f06f78",
           neutral: "#414558",
         },
         dracula: {
           ...require("daisyui/src/colors/themes")["[data-theme=dracula]"],
-          primary: "#0891b2",
+          primary: "#f06f78",
+          neutral: "#414558",
         },
       },
     ],

@@ -1,7 +1,6 @@
 import { Schedule } from "@/components";
 import { OmsuScheduleResponse } from "@/types";
 import { transformSchedule } from "@/utils";
-import { notFound } from "next/navigation";
 
 const getGroup = async (groupID: string) => {
   const {

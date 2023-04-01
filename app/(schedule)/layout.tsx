@@ -16,7 +16,6 @@ export default function RootLayout({
       <Navbar />
       {children}
       <BottomNav />
-      <SearchModal />
     </Suspense>
   );
 }

@@ -12,12 +12,14 @@ import {
 } from "@/components";
 import Image from "next/image";
 import welcome from "@/assets/welcome.svg";
+import { usePathname } from "next/navigation";
 
 type SearchModalProps = {
   fullwidth?: boolean;
 };
 
 const SearchModal = ({ fullwidth }: SearchModalProps) => {
+  const pathname = usePathname();
   const { favorites, recents, toggleSearch, isOpen } = useSearchStore(
     ({ favorites, recents, toggleSearch, chooseQuery, isOpen }) => {
       return { favorites, recents, toggleSearch, chooseQuery, isOpen };
@@ -47,7 +49,7 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
   const showHits = groupsHits.length + professorsHits.length >= 1;
   const ref = useRef<HTMLDivElement>(null);
 
-  if (!isOpen && !fullwidth) return null;
+  if (!isOpen && pathname !== "/") return null;
 
   return (
     <div
