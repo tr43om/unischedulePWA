@@ -4,8 +4,8 @@ import React from "react";
 
 const HomeButton = () => {
   return (
-    <Link href="/" className="btn-circle btn fixed bottom-4 left-4">
-      <HomeIcon className="h-5 w-5" />
+    <Link href="/" className="btn-lg btn-circle btn fixed bottom-5 left-5 ">
+      <HomeIcon className="h-6 w-6" />
     </Link>
   );
 };
