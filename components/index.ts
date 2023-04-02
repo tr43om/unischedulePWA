@@ -13,3 +13,4 @@ export * from "./Calendar";
 export * from "./ui";
 export * from "./search";
 export * from "./wrappers";
+export * from "./tabs";

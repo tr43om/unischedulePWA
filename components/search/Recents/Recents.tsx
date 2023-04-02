@@ -50,7 +50,7 @@ const Recents = ({
                 data-tip="Добавить в избранное"
               >
                 <StarIcon
-                  className="h-4 text-primary hover:fill-primary"
+                  className="h-6 text-primary hover:fill-primary lg:h-5"
                   onClick={() => addToFavorites(recent)}
                 />
               </div>
@@ -59,7 +59,7 @@ const Recents = ({
                 data-tip="Убрать из недавних"
               >
                 <XMarkIcon
-                  className="h-4 text-gray-400 hover:text-gray-300"
+                  className="h-6 text-gray-400 hover:text-gray-300 lg:h-5"
                   onClick={() => deleteRecent(recent.id)}
                 />
               </div>

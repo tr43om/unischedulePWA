@@ -30,6 +30,7 @@ const withPWA = withPWAInit({
 const nextConfig = {
   experimental: {
     appDir: true,
+    forceSwcTransforms: true,
   },
 };
 

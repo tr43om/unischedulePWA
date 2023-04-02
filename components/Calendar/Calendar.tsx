@@ -128,7 +128,7 @@ export const Calendar = () => {
                       !isEqual(day, selectedDate) &&
                         " hover:bg-primary hover:font-semibold hover:text-white",
                       (isEqual(day, selectedDate) || isToday(day)) &&
-                        "font-semibold text-neutral",
+                        "font-semibold text-white",
                       "mx-auto flex h-12 w-12 items-center justify-center rounded-full "
                     )}
                   >

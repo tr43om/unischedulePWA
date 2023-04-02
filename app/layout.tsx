@@ -70,9 +70,7 @@ export default async function RootLayout({
 
         <title>unischedule</title>
       </head>
-      <body
-        className={`${plex.className} container mx-auto mb-24  px-4 md:max-w-md lg:max-w-[1600px] `}
-      >
+      <body className={`${plex.className} `}>
         <ServiceWorkerWrapper />
         <AnalyticsWrapper />
         <ThemeProviders data-theme defaultTheme="cmyk" enableSystem>

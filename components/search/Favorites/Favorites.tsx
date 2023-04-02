@@ -47,7 +47,7 @@ const Favorites = ({
                 deleteFavorite(favorite.id);
               }}
             >
-              <StarIcon className="h-4 fill-primary text-primary hover:fill-transparent" />
+              <StarIcon className="h-6 fill-primary text-primary hover:fill-transparent lg:h-5" />
             </div>
           </Link>
         ))}
