@@ -8,3 +8,4 @@ export * from "./LessonTypesPallette";
 export * from "./SecondLangFlag";
 export * from "./Avatar";
 export * from "./Announcement";
+export * from "./HomeButton";
