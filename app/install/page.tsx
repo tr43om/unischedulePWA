@@ -4,6 +4,7 @@ import {
   IosIntallationTab,
   Tabs,
 } from "@/components";
+import { HomeButton } from "@/components/ui/HomeButton";
 import { ArrowDownOnSquareIcon } from "@heroicons/react/24/outline";
 
 const Install = async () => {
@@ -23,6 +24,7 @@ const Install = async () => {
           </Tabs>
         </main>
       </div>
+      <HomeButton />
     </div>
   );
 };

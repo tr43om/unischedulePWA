@@ -7,3 +7,4 @@ export * from "./Badge";
 export * from "./LessonTypesPallette";
 export * from "./SecondLangFlag";
 export * from "./Avatar";
+export * from "./Announcement";
