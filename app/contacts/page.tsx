@@ -10,7 +10,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { twClassNames } from "@/utils";
 import { BsEnvelopeCheck } from "react-icons/bs";
-import { HomeButton } from "@/components";
 import { send, init } from "@emailjs/browser";
 import Link from "next/link";
 import { HomeIcon } from "@heroicons/react/24/outline";
