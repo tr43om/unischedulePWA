@@ -2,6 +2,19 @@ import { BottomNav, Navbar, SearchModal } from "@/components";
 import Loading from "./loading";
 import { Suspense } from "react";
 
+import dynamic from "next/dynamic";
+
+const DynamicModal = dynamic(
+  () =>
+    import("@/components/search/SearchModal").then(
+      (modal) => modal.SearchModal
+    ),
+  {
+    ssr: false,
+    loading: () => <Loading />,
+  }
+);
+
 export default function RootLayout({
   children,
 }: {
@@ -13,6 +26,7 @@ export default function RootLayout({
         <Navbar />
 
         <main>{children}</main>
+        <DynamicModal />
         <BottomNav />
       </Suspense>
     </div>

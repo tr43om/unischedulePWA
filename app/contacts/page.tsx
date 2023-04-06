@@ -1,7 +1,8 @@
 "use client";
 
 import { SlSocialVkontakte } from "react-icons/sl";
-import { RiTelegramFill } from "react-icons/ri";
+import { RiTelegramFill, RiMailSendLine } from "react-icons/ri";
+import { FcIdea } from "react-icons/fc";
 import { FaDiscord } from "react-icons/fa";
 
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -11,10 +12,12 @@ import { twClassNames } from "@/utils";
 import { BsEnvelopeCheck } from "react-icons/bs";
 import { HomeButton } from "@/components";
 import { send, init } from "@emailjs/browser";
+import Link from "next/link";
+import { HomeIcon } from "@heroicons/react/24/outline";
 
 const reasons = [
   "Предложить интересную идею",
-  "Предложить работу (напр. кассиром)",
+  "Предложить работу (напр. грузчиком)",
   "Высказать своё мнение",
   "Сообщить об ошибке",
 ];
@@ -43,20 +46,29 @@ const Contacts = () => {
 
   return (
     <div className="mx-auto  max-w-4xl  px-4 py-8">
-      <header className="mb-8">
+      <header className="mb-8 flex items-start justify-between">
         <h1 className="text-5xl font-bold">
-          Сделаем <br />
-          <span className="text-gradient text-6xl uppercase">это</span>
-          <br /> вместе
+          Вместе
+          <br />
+          возможно
+          <br />
+          <span className="text-gradient text-6xl font-extrabold uppercase leading-tight">
+            всё
+          </span>
         </h1>
+        <Link href="/" className="btn-square btn bg-primaryGradient  ">
+          <HomeIcon className="h-6 w-6 text-white lg:h-7 lg:w-7" />
+        </Link>
       </header>
       <main>
-        <h3 className="mb-2 text-lg">
-          Возможные причины, по которым можно ко мне обратиться:
-        </h3>
-        <ul className="mb-6 flex flex-wrap gap-2">
+        <h3 className="mb-2 text-lg">Напишите мне, чтобы:</h3>
+        <ul className="mb-10 flex flex-wrap gap-2 gap-y-4">
           {reasons.map((reason, i) => (
-            <li className="badge" key={`reason-${i}`}>
+            <li
+              className="badge gap-2  text-white md:badge-lg"
+              key={`reason-${i}`}
+            >
+              <FcIdea className="h-4 w-4" />
               {reason}
             </li>
           ))}
@@ -82,8 +94,8 @@ const Contacts = () => {
                   {...register("name")}
                 />
 
-                <span className="label-text-alt  mt-1 flex text-neutral-content">
-                  *необязательно, если хотите обратиться анонимно
+                <span className="label-text-alt  mt-1 flex text-neutral-content/50">
+                  * необязательно, если хотите обратиться анонимно
                 </span>
               </label>
               <input
@@ -141,36 +153,38 @@ const Contacts = () => {
                 </div>
               </div>
             )}
-            <button type="submit" className="btn basis-full">
-              отправить
-            </button>
+            <div className="flex  basis-full justify-between gap-2">
+              <button type="submit" className="btn items-center gap-2">
+                <RiMailSendLine className="h-5 w-5" />
+                отправить
+              </button>
+              <div className="flex gap-2">
+                <a
+                  className="btn-square btn "
+                  href="https://t.me/tr43o"
+                  target="_blank"
+                >
+                  <RiTelegramFill className="h-6 w-6" />
+                </a>
+                <a
+                  className="btn-square btn"
+                  href="https://vk.com/tr43om"
+                  target="_blank"
+                >
+                  <SlSocialVkontakte className="h-6 w-6" />
+                </a>
+                <a
+                  className="btn-square btn"
+                  href="https://discordapp.com/users/475026604524044288/"
+                  target="_blank"
+                >
+                  <FaDiscord className="h-6 w-6" />
+                </a>
+              </div>
+            </div>
           </form>
         )}
-        <div className="flex gap-2">
-          <a
-            className="btn-square btn "
-            href="https://t.me/tr43o"
-            target="_blank"
-          >
-            <RiTelegramFill className="h-6 w-6" />
-          </a>
-          <a
-            className="btn-square btn"
-            href="https://vk.com/tr43om"
-            target="_blank"
-          >
-            <SlSocialVkontakte className="h-6 w-6" />
-          </a>
-          <a
-            className="btn-square btn"
-            href="https://discordapp.com/users/475026604524044288/"
-            target="_blank"
-          >
-            <FaDiscord className="h-6 w-6" />
-          </a>
-        </div>
       </main>
-      <HomeButton />
     </div>
   );
 };
