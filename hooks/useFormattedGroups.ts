@@ -1,9 +1,9 @@
 import { OmsuGroupType } from "@/types";
 
-import * as _ from "lodash";
+import { map } from "lodash";
 
 export const useFormattedGroups = (data: OmsuGroupType[] | undefined) => {
-  const transformedData = _.map(data, (group) => {
+  const transformedData = map(data, (group) => {
     if (group.name !== "Резерв") {
       const year = Number(group.name.split("-")[1][0]);
       const course = Number((22 - year).toString()[1]) + 1;

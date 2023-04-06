@@ -9,3 +9,5 @@ export * from "./SecondLangFlag";
 export * from "./Avatar";
 export * from "./Announcement";
 export * from "./HomeButton";
+export * from "./Logo";
+export * from "./CTAButtonsGroup";

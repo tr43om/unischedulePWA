@@ -6,7 +6,7 @@ type ResultsForProps = {
 };
 
 const ResultsFor = ({ resultsFor }: ResultsForProps) => {
-  return <Badge label={resultsFor} variant="badge-lg" />;
+  return <Badge label={resultsFor} size="badge-lg" />;
 };
 
 export default ResultsFor;

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  MagnifyingGlassIcon,
   HomeIcon,
   Cog6ToothIcon as SettingsIcon,
 } from "@heroicons/react/24/outline";

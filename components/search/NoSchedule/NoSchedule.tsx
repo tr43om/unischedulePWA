@@ -1,5 +1,5 @@
 import React from "react";
-import * as _ from "lodash";
+import { random } from "lodash";
 
 const emojis = [
   127774, // 🌞
@@ -17,7 +17,7 @@ const emojis = [
 ];
 const NoSchedule = ({ label }: { label: string }) => {
   const randomEmoji = String.fromCodePoint(
-    emojis[_.random(0, emojis.length - 1)] || 0
+    emojis[random(0, emojis.length - 1)] || 0
   );
   return (
     <div className="mt-16 flex flex-col items-center justify-center gap-5 ">

@@ -20,7 +20,7 @@ import {
   SPANISH_PROFESSORS,
 } from "@/constants";
 
-import * as _ from "lodash";
+import { map, groupBy, sortBy } from "lodash";
 
 export const twClassNames = (...classes: Array<string | boolean>) => {
   return classes.filter(Boolean).join(" ");
@@ -99,13 +99,13 @@ const getCourse = (group: string) => {
 };
 
 export const transformProfessorsCollection = (data: OmsuProfessorType[]) => {
-  const professors = _.sortBy(data, "name");
+  const professors = sortBy(data, "name");
 
   return professors;
 };
 
 export const transformGroupsCollection = (data: OmsuGroupType[]) => {
-  const transformedData = _.map(data, (group) => {
+  const transformedData = map(data, (group) => {
     if (group.name !== "Резерв") {
       const course = getCourse(group.name);
       return { ...group, course };
@@ -126,6 +126,19 @@ export const transformGroupsCollection = (data: OmsuGroupType[]) => {
   return groups;
 };
 
+const getFullType = (type: string) => {
+  switch (type) {
+    case "Лаб":
+      return "Лабораторная";
+    case "Лек":
+      return "Лекция";
+    case "Прак":
+      return "Практика";
+    default:
+      return type;
+  }
+};
+
 export const transformSchedule = (
   data: OmsuScheduleResponse[],
   type: "group" | "professor"
@@ -133,13 +146,13 @@ export const transformSchedule = (
   const scheduleFor =
     type === "group" ? data[0].lessons[0].group : data[0].lessons[0].teacher;
 
-  const schedule = _.map(data, ({ lessons, day }) => {
+  const schedule = map(data, ({ lessons, day }) => {
     const [date, month, year] = day.split(".");
     const timestamp = new Date(`${year}/${month}/${date}`).getTime();
 
-    const groupedSchedule = _.groupBy(lessons, "time");
+    const groupedSchedule = groupBy(lessons, "time");
 
-    const formattedLessons = _.map(groupedSchedule, (course) => {
+    const formattedLessons = map(groupedSchedule, (course) => {
       const { lesson, lesson_id, type_work: type, id, time } = course[0];
 
       const formatLessonName = (lesson: string) => {
@@ -175,19 +188,19 @@ export const transformSchedule = (
         return `${surname} ${firstname}.${patronym}.`;
       };
 
-      const professors = _.map(course, ({ teacher, teacher_id }) => ({
+      const professors = map(course, ({ teacher, teacher_id }) => ({
         name: teacher,
         id: teacher_id,
         shortname: getShortName(teacher),
         secondLanguage: getProfessorSecondLanguage(teacher),
       }));
 
-      const auditories = _.map(course, ({ auditCorps, auditory_id }) => ({
+      const auditories = map(course, ({ auditCorps, auditory_id }) => ({
         name: auditCorps,
         id: auditory_id,
       }));
 
-      const groups = _.map(course, ({ group, group_id }) => ({
+      const groups = map(course, ({ group, group_id }) => ({
         name: group,
         course: getCourse(group),
         id: group_id,
@@ -199,6 +212,7 @@ export const transformSchedule = (
         professors,
         auditories,
         id,
+        typeFull: getFullType(type),
         type,
         lesson_id,
         startsAt: lessonsStartAt(time),

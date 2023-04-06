@@ -1,6 +1,6 @@
 import { useState, useEffect, RefObject, useCallback } from "react";
 import { useKeyPress } from "./useKeyPress";
-import * as _ from "lodash";
+import { find } from "lodash";
 import { debounce } from "throttle-debounce";
 
 type UseHitsNavigationProps<T> = {
@@ -14,7 +14,7 @@ export const useHitsNavigation = <T,>(props: UseHitsNavigationProps<T>) => {
   const [active, setActive] = useState(0);
 
   const [activeList, setActiveList] = useState(Array(props.hitsList.length));
-  const activeHit = _.find(hits, (hit) => hits[active] === hit);
+  const activeHit = find(hits, (hit) => hits[active] === hit);
   const setList = debounce(100, setActiveList);
   const setDebouncedActive = debounce(100, setActive);
 
@@ -33,7 +33,7 @@ export const useHitsNavigation = <T,>(props: UseHitsNavigationProps<T>) => {
 
     setList(
       props.hitsList.map((list, i) => {
-        if (_.find(list, (el) => el === activeHit)) {
+        if (find(list, (el) => el === activeHit)) {
           if (props.hitsList[i - 1]) {
             return active - props.hitsList[i - 1].length;
           } else {

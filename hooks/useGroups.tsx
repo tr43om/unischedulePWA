@@ -1,8 +1,6 @@
 import { OmsuGroupType, OmsuProfessorType } from "@/types";
 
-import useSwr from "swr";
 import { fetcher } from "@/utils";
-import * as _ from "lodash";
 import type { SWRConfiguration } from "swr";
 import { useFormattedGroups } from "./useFormattedGroups";
 import { useSWRWithFallbackData } from "./useSWRWithFallbackData";

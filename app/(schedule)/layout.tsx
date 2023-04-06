@@ -8,12 +8,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="container mx-auto mb-24  px-4 md:max-w-md lg:max-w-[1600px] ">
+    <div className="container relative mx-auto   mb-24 px-4 md:max-w-md lg:max-w-[1200px] ">
       <Suspense fallback={<Loading />}>
         <Navbar />
-        {children}
+
+        <main>{children}</main>
         <BottomNav />
       </Suspense>
-    </main>
+    </div>
   );
 }

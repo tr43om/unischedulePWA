@@ -1,8 +1,7 @@
 import { OmsuGroupType, OmsuProfessorType } from "@/types";
 
-import useSwr from "swr";
 import { fetcher } from "@/utils";
-import * as _ from "lodash";
+import { sortBy } from "lodash";
 import type { SWRConfiguration } from "swr";
 import { useSWRWithFallbackData } from "./useSWRWithFallbackData";
 
@@ -24,7 +23,7 @@ export const useProfessors = (config?: SWRConfiguration) => {
 
   const professorsData = data && "professors" in data ? data.professors : data;
 
-  const professors = _.sortBy(professorsData, "name");
+  const professors = sortBy(professorsData, "name");
 
   return { professors, isLoading, error };
 };

@@ -49,7 +49,7 @@ const GroupsLayout = ({ auditories, professors }: ProfessorsLayoutProps) => {
       {professors.map(({ id, name, secondLanguage }, i) => (
         <div
           key={`professor-${id}-${name}`}
-          className="grid gap-2  border-b-[1px] border-primary border-opacity-30 last:border-none lg:flex lg:justify-between"
+          className="grid border-b-[1px] border-neutral/30  py-2 last:border-none dark:border-neutral/60 lg:flex lg:justify-between"
         >
           <div className="flex items-center ">
             {secondLanguage ? (
@@ -102,7 +102,7 @@ const ScheduleCard = ({ schedule, type }: ScheduleCardProps) => {
             {startsAt} - {endsAt}
           </p>
         </div>
-        <Badge label={workType} variant="badge-md" />
+        <Badge label={workType} size="badge-md" />
       </div>
 
       <div className=" block  ">

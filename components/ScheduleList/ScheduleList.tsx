@@ -4,7 +4,7 @@ import React from "react";
 import { TransformedScheduleDto } from "@/types";
 import { useDateStore } from "@/zustandStore";
 import { ScheduleCard, NoSchedule } from "@/components";
-import * as _ from "lodash";
+import { find } from "lodash";
 import { isSameDay } from "date-fns";
 
 type ScheduleListProps = {
@@ -14,7 +14,7 @@ type ScheduleListProps = {
 const ScheduleList = ({ schedule }: ScheduleListProps) => {
   const selectedDate = useDateStore((state) => state.selectedDate);
 
-  const scheduleOfSelectedDay = _.find(schedule.data, (day) => {
+  const scheduleOfSelectedDay = find(schedule.data, (day) => {
     return isSameDay(selectedDate, day.timestamp);
   });
 

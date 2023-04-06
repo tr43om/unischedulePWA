@@ -1,7 +1,9 @@
 "use client";
 
-import { DE, FR, CN, ES } from "country-flag-icons/react/3x2";
-import React from "react";
+import DE from "country-flag-icons/react/3x2/DE";
+import FR from "country-flag-icons/react/3x2/FR";
+import CN from "country-flag-icons/react/3x2/CN";
+import ES from "country-flag-icons/react/3x2/ES";
 import { twClassNames } from "@/utils";
 
 type SecondLangFlagProps = {

@@ -6,8 +6,6 @@ import { OmsuGroupType, OmsuProfessorType } from "@/types";
 import { useSearchStore } from "@/zustandStore";
 import { useHitsNavigation } from "@/hooks/useHitsNavigation";
 
-import * as _ from "lodash";
-
 type HitsProps<T> = {
   hits: Fuzzysort.KeyResults<T>[];
 };

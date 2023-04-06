@@ -9,10 +9,12 @@ import {
   SearchNavigationHints,
   SearchBar,
   NoQuery,
+  Logo,
 } from "@/components";
 import Image from "next/image";
 import welcome from "@/assets/welcome.svg";
 import { usePathname } from "next/navigation";
+import { CTAButtonsGroup } from "@/components/ui/CTAButtonsGroup";
 
 type SearchModalProps = {
   fullwidth?: boolean;
@@ -74,6 +76,9 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
               e.stopPropagation();
             }}
           >
+            <Logo />
+            {pathname === "/" && <CTAButtonsGroup />}
+
             <SearchBar search={onSearch} />
             {
               <div

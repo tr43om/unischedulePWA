@@ -1,12 +1,11 @@
 import "./globals.css";
-import { IBM_Plex_Sans } from "@next/font/google";
+import { IBM_Plex_Sans, Open_Sans } from "next/font/google";
 import {
   AnalyticsWrapper,
   SearchModal,
   ServiceWorkerWrapper,
   ThemeProviders,
 } from "@/components";
-import Script from "next/script";
 import {
   transformGroupsCollection,
   transformProfessorsCollection,
@@ -28,6 +27,11 @@ const DynamicModal = dynamic(
 );
 const plex = IBM_Plex_Sans({
   weight: ["400", "700"],
+  subsets: ["cyrillic-ext", "latin-ext"],
+});
+
+const open_sans = Open_Sans({
+  weight: ["400", "500", "600", "700"],
   subsets: ["cyrillic-ext", "latin-ext"],
 });
 
@@ -70,7 +74,7 @@ export default async function RootLayout({
 
         <title>unischedule</title>
       </head>
-      <body className={`${plex.className} `}>
+      <body className={`${open_sans.className} `}>
         <ServiceWorkerWrapper />
         <AnalyticsWrapper />
         <ThemeProviders data-theme defaultTheme="cmyk" enableSystem>

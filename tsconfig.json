@@ -31,7 +31,8 @@
     ".next/types/**/*.ts",
     "app/error.js",
     "app/error.js",
-    "app/groups/[group]/loading.tsx"
+    "app/groups/[group]/loading.tsx",
+    "vite.config.js"
   ],
   "exclude": ["node_modules"]
 }

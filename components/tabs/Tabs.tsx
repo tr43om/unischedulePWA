@@ -4,26 +4,27 @@ import React, { ReactNode, useState } from "react";
 
 type TabsProps = {
   children: ReactNode[];
+  icons?: ReactNode[];
   titles: string[];
 };
 
-const Tabs = ({ titles, children }: TabsProps) => {
+const Tabs = ({ titles, children, icons }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(0);
   return (
     <div>
-      <div className="tabs  mb-8 justify-between">
+      <div className=" tabs  mb-8 items-start gap-y-4 max-[540px]:flex-col md:justify-between">
         {titles.map((title, i) => (
-          <a
+          <div
             key={title + i}
             onClick={() => setActiveTab(i)}
             className={twClassNames(
-              i === activeTab &&
-                "rounded-md  bg-gradient-to-r from-primary to-[#726CF8]  text-white",
-              " tab tab-lifted text-white lg:tab-lg"
+              i === activeTab && " bg-primaryGradient  text-white",
+              "  flex flex-1 cursor-pointer flex-col items-center  gap-1 rounded-md p-2 text-white max-[540px]:w-full"
             )}
           >
-            {title}
-          </a>
+            {icons && icons[i]}
+            <a>{title}</a>
+          </div>
         ))}
       </div>
       <>{children[activeTab]}</>

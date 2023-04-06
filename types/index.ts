@@ -36,7 +36,7 @@ export type OmsuLessonsResponse = {
   week: number;
   time: number;
   lesson: string;
-  type_work: "Лаб" | "Лек";
+  type_work: string;
   lesson_id: number;
   teacher: string;
 
@@ -67,6 +67,7 @@ export interface OmsuScheduleDto
   }[];
   startsAt: string;
   type: string;
+  typeFull: string;
   endsAt: string;
 }
 

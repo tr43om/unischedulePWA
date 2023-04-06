@@ -28,18 +28,26 @@ const Schedule = ({ schedule }: ScheduleProps) => {
               <button onClick={() => router.back()}>
                 <ArrowLeftIcon width={20} height={20} />
               </button>
-              <ResultsFor resultsFor={schedule.scheduleFor} />
+              <Badge
+                size="badge-md"
+                label={schedule.scheduleFor}
+                variant="primary"
+              />
             </div>
           </div>
 
           <StripeCalendar />
 
           <div className="mb-5  hidden items-center justify-between lg:mb-6 lg:flex">
-            <ResultsFor resultsFor={schedule.scheduleFor} />
+            <Badge
+              size="badge-lg"
+              label={schedule.scheduleFor}
+              variant="primary"
+            />
             <ViewToggle />
           </div>
 
-          <div className="relative flex items-start justify-center  lg:justify-between lg:gap-52 ">
+          <div className="relative flex items-start justify-center  lg:justify-between lg:gap-44 ">
             <ScheduleList schedule={schedule} />
             <div className="hidden  lg:block">
               <Calendar />
@@ -59,7 +67,11 @@ const Schedule = ({ schedule }: ScheduleProps) => {
             </div>
           </div>
           <div className="mt-10 mb-3 flex items-center justify-between">
-            <ResultsFor resultsFor={schedule.scheduleFor} />
+            <Badge
+              size="badge-lg"
+              label={schedule.scheduleFor}
+              variant="primary"
+            />
           </div>
           <ScheduleGrid scheduleData={schedule} />
         </div>

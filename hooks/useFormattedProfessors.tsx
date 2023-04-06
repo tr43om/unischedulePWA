@@ -1,11 +1,11 @@
 import { OmsuProfessorType } from "@/types";
 
-import * as _ from "lodash";
+import { sortBy } from "lodash";
 
 export const useFormattedProfessors = (
   data: OmsuProfessorType[] | undefined
 ) => {
-  const professors = _.sortBy(data, "name");
+  const professors = sortBy(data, "name");
 
   return { professors };
 };
