@@ -1,6 +1,11 @@
 "use client";
 import { TransformedScheduleDto } from "@/types";
-import { useAppearanceStore, useDateStore } from "@/zustandStore";
+import {
+  useAppearanceStore,
+  useDateStore,
+  useSearchStore,
+  useUserStore,
+} from "@/zustandStore";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import React, { Suspense } from "react";
@@ -20,13 +25,15 @@ type ScheduleProps = {
 const Schedule = ({ schedule }: ScheduleProps) => {
   const { view } = useAppearanceStore((state) => state);
   const { nextWeek, prevWeek } = useDateStore((state) => state);
+  const name = useUserStore((state) => state.name);
+
   const router = useRouter();
   if (schedule === undefined)
     return (
       <section className="mx-auto grid max-w-md justify-center">
         <Image src={notFoundIllustration} alt="not found" />
         <p className="text-center text-lg">
-          К сожалению, данного расписания не существует
+          К сожалению, расписания для &quot;{name}&quot; не существует
         </p>
       </section>
     );

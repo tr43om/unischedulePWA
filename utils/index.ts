@@ -143,8 +143,10 @@ const getFullType = (type: string) => {
 };
 
 const formatWorkType = (type: string) => {
+  const formatted = type.slice(0, 3).toLowerCase();
   if (type.toLowerCase() === "прак") return type;
-  return type.slice(0, 3);
+  if (formatted === "прк") return "Прак";
+  return type;
 };
 
 export const transformSchedule = (
