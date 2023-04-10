@@ -12,12 +12,13 @@ import { ScheduleList } from "../ScheduleList";
 import { StripeCalendar } from "../StripeCalendar";
 import { Badge, LessonTypesPallette, ResultsFor, ViewToggle } from "../ui";
 type ScheduleProps = {
-  schedule: TransformedScheduleDto;
+  schedule: TransformedScheduleDto | undefined;
 };
 const Schedule = ({ schedule }: ScheduleProps) => {
   const { view } = useAppearanceStore((state) => state);
   const { nextWeek, prevWeek } = useDateStore((state) => state);
   const router = useRouter();
+  if (schedule === undefined) return <div>no data</div>;
 
   return (
     <main className="mt-24 mb-8 lg:mt-12">

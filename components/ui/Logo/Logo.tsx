@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link
       href="/"
-      className="text-gradient flex select-none items-center gap-2 text-center text-2xl font-bold normal-case"
+      className="text-gradient mb-1 flex select-none items-center gap-2 text-center text-2xl font-bold normal-case"
     >
       uniSchedule
     </Link>

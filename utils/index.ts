@@ -93,6 +93,9 @@ const lessonsEndAt = (time: number) => {
 };
 
 const getCourse = (group: string) => {
+  if (!group.split("-")[1][0]) {
+    console.log(group);
+  }
   const year = Number(group.split("-")[1][0]);
   const course = Number((22 - year).toString()[1]) + 1;
   return course;

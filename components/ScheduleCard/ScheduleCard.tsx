@@ -51,15 +51,17 @@ const GroupsLayout = ({ auditories, professors }: ProfessorsLayoutProps) => {
           key={`professor-${id}-${name}`}
           className="grid border-b-[1px] border-neutral/30  py-2 last:border-none dark:border-neutral/60 lg:flex lg:justify-between"
         >
-          <div className="flex items-center ">
-            {secondLanguage ? (
-              <SecondLangFlag lang={secondLanguage} size="md" />
-            ) : (
-              <Avatar name={name} />
-            )}
+          {name !== "_" && (
+            <div className="flex items-center ">
+              {secondLanguage ? (
+                <SecondLangFlag lang={secondLanguage} size="md" />
+              ) : (
+                <Avatar name={name} />
+              )}
 
-            <ProfessorLink id={id} name={name} />
-          </div>
+              <ProfessorLink id={id} name={name} />
+            </div>
+          )}
           <div className="flex items-center gap-1.5">
             <MapPinIcon
               width={16}

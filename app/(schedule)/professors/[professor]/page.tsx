@@ -2,19 +2,24 @@ import { NoSchedule, ResultsFor, Schedule, ScheduleList } from "@/components";
 import { OmsuScheduleResponse } from "@/types";
 import { transformSchedule } from "@/utils";
 
-import { notFound } from "next/navigation";
-
 const getProfessor = async (professorID: string) => {
-  const {
-    data,
-  }: {
-    data: OmsuScheduleResponse[];
-  } = await fetch(
-    `https://eservice.omsu.ru/schedule/backend/schedule/tutor/${professorID}`,
+  try {
+    const {
+      data,
+    }: {
+      data: OmsuScheduleResponse[];
+    } = await fetch(
+      `https://eservice.omsu.ru/schedule/backend/schedule/tutor/${professorID}`,
 
-    { next: { revalidate: 60 } }
-  ).then((res) => res.json());
-  return transformSchedule(data, "professor");
+      { next: { revalidate: 60 } }
+    ).then((res) => res.json());
+
+    const schedule = transformSchedule(data, "professor");
+    if (!schedule.data) throw new Error("no data");
+    return schedule;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const Professor = async ({ params }: { params: { professor: string } }) => {
