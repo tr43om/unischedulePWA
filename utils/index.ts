@@ -146,7 +146,7 @@ const formatWorkType = (type: string) => {
   const formatted = type.slice(0, 3).toLowerCase();
   if (type.toLowerCase() === "прак") return type;
   if (formatted === "прк") return "Прак";
-  return type;
+  return type.slice(0, 3);
 };
 
 export const transformSchedule = (
