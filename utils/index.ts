@@ -142,6 +142,11 @@ const getFullType = (type: string) => {
   }
 };
 
+const formatWorkType = (type: string) => {
+  if (type.toLowerCase() === "прак") return type;
+  return type.slice(0, 3);
+};
+
 export const transformSchedule = (
   data: OmsuScheduleResponse[],
   type: "group" | "professor"
@@ -216,7 +221,7 @@ export const transformSchedule = (
         auditories,
         id,
         typeFull: getFullType(type),
-        type,
+        type: formatWorkType(type),
         lesson_id,
         startsAt: lessonsStartAt(time),
         endsAt: lessonsEndAt(time),

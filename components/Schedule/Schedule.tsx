@@ -11,6 +11,9 @@ import { ScheduleGrid } from "../ScheduleGrid";
 import { ScheduleList } from "../ScheduleList";
 import { StripeCalendar } from "../StripeCalendar";
 import { Badge, LessonTypesPallette, ResultsFor, ViewToggle } from "../ui";
+import notFoundIllustration from "@/assets/404.svg";
+import Image from "next/image";
+
 type ScheduleProps = {
   schedule: TransformedScheduleDto | undefined;
 };
@@ -18,7 +21,15 @@ const Schedule = ({ schedule }: ScheduleProps) => {
   const { view } = useAppearanceStore((state) => state);
   const { nextWeek, prevWeek } = useDateStore((state) => state);
   const router = useRouter();
-  if (schedule === undefined) return <div>no data</div>;
+  if (schedule === undefined)
+    return (
+      <section className="mx-auto grid max-w-md justify-center">
+        <Image src={notFoundIllustration} alt="not found" />
+        <p className="text-center text-lg">
+          К сожалению, данного расписания не существует
+        </p>
+      </section>
+    );
 
   return (
     <main className="mt-24 mb-8 lg:mt-12">
