@@ -49,7 +49,7 @@ const GroupsLayout = ({ auditories, professors }: ProfessorsLayoutProps) => {
       {professors.map(({ id, name, secondLanguage }, i) => (
         <div
           key={`professor-${id}-${name}`}
-          className="grid border-b-[1px] border-neutral/30  py-2 last:border-none dark:border-neutral/60 lg:flex lg:justify-between"
+          className="grid gap-y-3 border-b-[1px]  border-neutral/30 py-2 last:border-none dark:border-neutral/60 lg:flex lg:flex-wrap lg:justify-between"
         >
           {name !== "_" && (
             <div className="flex items-center ">
