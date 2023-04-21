@@ -10,6 +10,7 @@ import {
   transformProfessorsCollection,
 } from "@/utils";
 import SwrWrapper from "@/components/wrappers/SwrWrapper/SwrWrapper";
+import LanguageProvider from "@/components/LanguageProvider/LanguageProvider";
 
 const open_sans = Open_Sans({
   weight: ["400", "500", "600", "700", "800"],
@@ -66,7 +67,7 @@ export default async function RootLayout({
             }}
             fallbackData={{ groups, professors }}
           >
-            {children}
+            <LanguageProvider>{children}</LanguageProvider>
           </SwrWrapper>
         </ThemeProviders>
       </body>

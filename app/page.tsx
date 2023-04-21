@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Loading from "./loading";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const DynamicModal = dynamic(
   () =>
@@ -13,5 +14,9 @@ const DynamicModal = dynamic(
 );
 
 export default async function Home() {
-  return <DynamicModal />;
+  return (
+    <>
+      <DynamicModal />
+    </>
+  );
 }

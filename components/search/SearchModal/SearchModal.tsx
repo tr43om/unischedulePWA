@@ -15,6 +15,7 @@ import Image from "next/image";
 import welcome from "@/assets/welcome.svg";
 import { usePathname } from "next/navigation";
 import { CTAButtonsGroup } from "@/components/ui/CTAButtonsGroup";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 type SearchModalProps = {
   fullwidth?: boolean;
@@ -78,6 +79,7 @@ const SearchModal = ({ fullwidth }: SearchModalProps) => {
           >
             <Logo />
             {pathname === "/" && <CTAButtonsGroup />}
+            <LanguageSwitcher />
 
             <SearchBar search={onSearch} />
             {
