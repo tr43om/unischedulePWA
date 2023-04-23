@@ -1,8 +1,8 @@
 "use client";
-import { Analytics } from "@vercel/analytics/react";
+import { YMInitializer } from "react-yandex-metrika";
 
 const AnalyticsWrapper = () => {
-  return <Analytics />;
+  return <YMInitializer accounts={[93331003]} />;
 };
 
 export default AnalyticsWrapper;
