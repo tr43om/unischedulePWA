@@ -30,7 +30,7 @@ export const twClassNames = (...classes: Array<string | boolean>) => {
 
 export const getCurrentWeek = (date: Date | number) => {
   const now = date || new Date();
-  const year = now.getFullYear();
+  const year = new Date(date).getFullYear();
   const firstSemesterStart = new Date(year, 8, 3); // September 3
   const firstSemesterEnd = new Date(year + 1, 0, 1); // January 1 +1 year because first semester ends in new year
   const secondSemesterStart = new Date(year, 1, 11); // February 11
