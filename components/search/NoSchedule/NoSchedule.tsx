@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { random } from "lodash";
+import { useDateStore } from "@/zustandStore";
 
 const emojis = [
   127774, // 🌞
@@ -16,6 +19,8 @@ const emojis = [
   128576, // 🙀
 ];
 const NoSchedule = ({ label }: { label: string }) => {
+  const currentWeek = useDateStore((state) => state.currentWeek);
+
   const randomEmoji = String.fromCodePoint(
     emojis[random(0, emojis.length - 1)] || 0
   );
@@ -24,7 +29,11 @@ const NoSchedule = ({ label }: { label: string }) => {
       <span role="img" className=" text-7xl text-primary ">
         {randomEmoji}
       </span>
-      <h3 className="font-bold">{label}</h3>
+      <h3 className="font-bold">
+        {currentWeek === 0
+          ? "Наслаждайся каникулами"
+          : "Сегодня у тебя выходной"}
+      </h3>
     </div>
   );
 };

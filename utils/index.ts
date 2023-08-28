@@ -11,6 +11,8 @@ import {
   differenceInWeeks,
   getWeek,
   getMonth,
+  isWithinInterval,
+  parse,
 } from "date-fns";
 import {
   CHINESE_PROFESSORS,
@@ -27,18 +29,24 @@ export const twClassNames = (...classes: Array<string | boolean>) => {
 };
 
 export const getCurrentWeek = (date: Date | number) => {
-  const isFirstTerm = getMonth(date) >= 8 && getMonth(date) <= 12;
-  const isSecondTerm = getMonth(date) >= 1 && getMonth(date) <= 6;
+  const now = date || new Date();
+  const year = now.getFullYear();
+  const firstSemesterStart = new Date(year, 8, 3); // September 3
+  const firstSemesterEnd = new Date(year + 1, 0, 1); // January 1 +1 year because first semester ends in new year
+  const secondSemesterStart = new Date(year, 1, 11); // February 11
+  const secondSemesterEnd = new Date(year, 6, 1); // July 1
 
-  const currentWeek =
-    differenceInWeeks(
-      new Date(date).setFullYear(2000),
-      isFirstTerm
-        ? new Date(2000, 8, 6)
-        : isSecondTerm
-        ? new Date(2000, 0, 30)
-        : 0
-    ) || 1;
+  const isFirstSemester = now >= firstSemesterStart && now <= firstSemesterEnd;
+  const isSecondSemester =
+    now >= secondSemesterStart && now <= secondSemesterEnd;
+
+  console.log(isFirstSemester, isSecondSemester);
+
+  let currentWeek = isFirstSemester
+    ? differenceInWeeks(now, firstSemesterStart) + 1
+    : isSecondSemester
+    ? differenceInWeeks(now, secondSemesterStart) + 1
+    : 0;
 
   return currentWeek;
 };

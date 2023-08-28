@@ -8,44 +8,46 @@ import {
   getMonth,
   differenceInWeeks,
 } from "date-fns";
+import { is } from "immer/dist/internal";
 
 export const useCurrentDates = () => {
-  const secondSemesterStarts = new Date(getYear(new Date()), 1, 8);
-  const secondSemesterEnds = addWeeks(secondSemesterStarts, 17);
+  // const firstSemesterStart = new Date(year, 7, 3); // September 3
+  // const firstSemesterEnd = new Date(year + 1, 0, 1); // January 1 +1 year because first semester ends in new year
+  // const secondSemesterStart = new Date(year, 1, 11); // February 11
+  // const secondSemesterEnd = new Date(year, 6, 1); // July 1
+  // const SEMESTER_START_DATE = isFirstSemester
+  //   ? firstSemesterStart
+  //   : isSecondSemester
+  //   ? secondSemesterStart
+  //   : 0;
+  // const SEMESTER_END_DATE = isFirstSemester
+  //   ? firstSemesterEnd
+  //   : isSecondSemester
+  //   ? secondSemesterEnd
+  //   : 0;
 
-  const firstSemesterStarts = new Date(getYear(new Date()), 8, 1);
-  const firstSemesterEnds = addWeeks(firstSemesterStarts, 17);
+  const STUDY_DAYS = useMemo(() => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const SEMESTER_START_DATE = new Date(year, 7, 28);
+    const SEMESTER_END_DATE = new Date(year + 1, 6, 1);
+    return eachWeekOfInterval(
+      {
+        start: SEMESTER_START_DATE,
+        end: SEMESTER_END_DATE,
+      },
+      { weekStartsOn: 1 }
+    ).reduce((acc: Array<Date[]>, monday) => {
+      acc.push(
+        eachDayOfInterval({
+          start: monday,
+          end: addDays(monday, 5),
+        })
+      );
 
-  const SEMESTER_START_DATE =
-    new Date().getMonth() >= 9 && new Date().getMonth() <= 12
-      ? firstSemesterStarts
-      : secondSemesterStarts;
-
-  const SEMESTER_END_DATE =
-    new Date().getMonth() >= 9 && new Date().getMonth() <= 12
-      ? firstSemesterEnds
-      : secondSemesterEnds;
-
-  const STUDY_DAYS = useMemo(
-    () =>
-      eachWeekOfInterval(
-        {
-          start: SEMESTER_START_DATE,
-          end: SEMESTER_END_DATE,
-        },
-        { weekStartsOn: 1 }
-      ).reduce((acc: Array<Date[]>, monday) => {
-        acc.push(
-          eachDayOfInterval({
-            start: monday,
-            end: addDays(monday, 5),
-          })
-        );
-
-        return acc;
-      }, []),
-    [SEMESTER_END_DATE, SEMESTER_START_DATE]
-  );
+      return acc;
+    }, []);
+  }, []);
 
   return { studyDays: STUDY_DAYS };
 };

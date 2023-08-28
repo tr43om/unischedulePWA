@@ -46,7 +46,7 @@ const Contacts = () => {
   return (
     <div className="mx-auto  max-w-4xl  px-4 py-8">
       <header className="mb-8 flex items-start justify-between">
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-5xl font-bold ">
           Вместе
           <br />
           возможно

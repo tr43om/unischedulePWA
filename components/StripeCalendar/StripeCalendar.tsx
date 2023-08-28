@@ -23,15 +23,13 @@ const StripeCalendar = () => {
     swiperInstance?.slideNext();
   };
 
-  useEffect(() => {
-    if (!isSunday(new Date())) {
-      selectDate(
-        studyDays[currentWeek - 1][
-          isSunday(new Date()) ? getDay(new Date()) : getDay(new Date()) - 1
-        ].getTime()
-      );
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!isSunday(new Date())) {
+  //     selectDate(studyDays[currentWeek][getDay(new Date())].getTime());
+  //   }
+  // }, []);
+
+  console.log(currentWeek);
 
   return (
     <section className=" mb-5  print:hidden lg:hidden">

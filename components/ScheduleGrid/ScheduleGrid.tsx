@@ -32,7 +32,7 @@ const ScheduleGrid = ({ scheduleData }: ScheduleGridProps) => {
     )
   );
 
-  if (weeklySchedule.length === 0) {
+  if (weeklySchedule.length === 0 || getCurrentWeek(selectedDate) === 0) {
     return (
       <div className="w-full  items-center ">
         <NoSchedule label="Расписание на эту неделю пока не вышло" />

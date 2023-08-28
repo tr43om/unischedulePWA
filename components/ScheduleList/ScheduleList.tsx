@@ -13,6 +13,7 @@ type ScheduleListProps = {
 
 const ScheduleList = ({ schedule }: ScheduleListProps) => {
   const selectedDate = useDateStore((state) => state.selectedDate);
+  const currentWeek = useDateStore((state) => state.currentWeek);
 
   const scheduleOfSelectedDay = find(schedule.data, (day) => {
     return isSameDay(selectedDate, day.timestamp);
@@ -21,7 +22,13 @@ const ScheduleList = ({ schedule }: ScheduleListProps) => {
   if (scheduleOfSelectedDay === undefined) {
     return (
       <div className="w-full max-w-lg items-center ">
-        <NoSchedule label="На сегодня пар нет" />
+        <NoSchedule
+          label={
+            currentWeek === 0
+              ? "Наслаждайся каникулами"
+              : "Сегодня у тебя выходной"
+          }
+        />
       </div>
     );
   }

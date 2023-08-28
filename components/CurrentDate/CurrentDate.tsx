@@ -19,9 +19,13 @@ const CurrentDate = () => {
       <p className="text-lg font-bold lg:text-3xl">
         {selectedDay} {selectedMonth}
       </p>
-      <p className="text-sm text-gray-400 lg:text-lg">
-        {currentWeek} учебная неделя
-      </p>
+      {currentWeek === 0 ? (
+        <p className="text-sm text-gray-400 lg:text-lg">Ура, каникулы! 🥳</p>
+      ) : (
+        <p className="text-sm text-gray-400 lg:text-lg">
+          {currentWeek} учебная неделя
+        </p>
+      )}
     </div>
   );
 };
